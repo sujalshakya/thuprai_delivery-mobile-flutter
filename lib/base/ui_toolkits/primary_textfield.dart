@@ -36,18 +36,20 @@ class PrimaryTextfield extends StatelessWidget {
           controller: controller,
           obscureText: obscure,
           decoration: InputDecoration(
+            enabledBorder: OutlineInputBorder(
+                borderSide:
+                    BorderSide(color: Theme.of(context).colorScheme.onPrimary),
+                borderRadius: BorderRadius.circular(16)),
             focusedBorder: OutlineInputBorder(
                 borderSide:
                     BorderSide(color: Theme.of(context).colorScheme.onPrimary),
                 borderRadius: BorderRadius.circular(16)),
-            border: OutlineInputBorder(
-                borderSide:
-                    BorderSide(color: Theme.of(context).colorScheme.secondary),
-                borderRadius: BorderRadius.circular(16)),
             hintText: hintText,
             hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
             suffixIcon: suffix,
+            suffixIconColor: Theme.of(context).colorScheme.onPrimary,
             prefixIcon: prefix,
+            prefixIconColor: Theme.of(context).colorScheme.onPrimary,
           ),
         ),
       ),

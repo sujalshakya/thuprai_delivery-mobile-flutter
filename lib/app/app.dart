@@ -1,4 +1,5 @@
 import 'package:thuprai_delivery/ui/bottom_sheets/notice/notice_sheet.dart';
+import 'package:thuprai_delivery/ui/dialogs/error_alert/error_alert_dialog.dart';
 import 'package:thuprai_delivery/ui/dialogs/info_alert/info_alert_dialog.dart';
 import 'package:thuprai_delivery/ui/views/home/home_view.dart';
 import 'package:thuprai_delivery/ui/views/startup/startup_view.dart';
@@ -28,6 +29,8 @@ import 'package:thuprai_delivery/ui/views/login/login_view.dart';
   ],
   dialogs: [
     StackedDialog(classType: InfoAlertDialog),
+    StackedDialog(classType: ErrorAlertDialog),
+
     // @stacked-dialog
   ],
 )

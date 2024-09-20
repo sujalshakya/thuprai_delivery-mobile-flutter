@@ -20,7 +20,7 @@ class HomeViewModel extends BaseViewModel {
 
   void showDialog() {
     _dialogService.showCustomDialog(
-      variant: DialogType.infoAlert,
+      variant: DialogType.errorAlert,
       title: 'Stacked Rocks!',
       description: 'Give stacked $_counter stars on Github',
     );
@@ -29,7 +29,6 @@ class HomeViewModel extends BaseViewModel {
   void showBottomSheet() {
     _bottomSheetService.showCustomSheet(
       variant: BottomSheetType.notice,
-      title: ksHomeBottomSheetTitle,
       description: ksHomeBottomSheetDescription,
     );
   }

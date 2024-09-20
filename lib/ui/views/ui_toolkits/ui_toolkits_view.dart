@@ -5,6 +5,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/logo.dart';
+import 'package:thuprai_delivery/base/ui_toolkits/primary_appbar.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/secondary_button.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_button.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_textfield.dart';
@@ -27,32 +28,35 @@ class UiToolkitsView extends StackedView<UiToolkitsViewModel>
   ) {
     return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.surface,
-        appBar: AppBar(
-          leading: Icon(Icons.arrow_back_ios_new,
-              color: Theme.of(context).colorScheme.onPrimary),
-          backgroundColor: Theme.of(context).colorScheme.secondary,
-          centerTitle: true,
-          title: TitleText(
-            text: "UI ToolKit",
-            color: Theme.of(context).colorScheme.onPrimary,
-          ),
+
+        /// AppBar
+        appBar: const PrimaryAppBar(
+          title: "UI Toolkit",
         ),
         body: SingleChildScrollView(
             child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
+              /// Logo
               const Logo(height: 150, width: 150),
-              const TitleText(text: "With only required fields."),
+
+              /// Title Text
+              const TitleText(text: "Title text."),
+
+              /// Primary TextField with only required fields
               PrimaryTextfield(controller: nameController, obscure: false),
+
+              /// Body Text
               PrimaryText(
-                text: "With all possible fields",
+                text: "primary text",
                 align: TextAlign.center,
                 color: Theme.of(context).colorScheme.onPrimary,
-                fontSize: 18,
                 fontWeight: FontWeight.w300,
                 maxLines: 2,
               ),
+
+              /// Primary TextField with all fields.
               PrimaryTextfield(
                 obscure: viewModel.passwordVisible,
                 suffix: GestureDetector(
@@ -68,11 +72,15 @@ class UiToolkitsView extends StackedView<UiToolkitsViewModel>
                   size: 16,
                 ),
               ),
+
+              /// Outline button
               SecondaryButton(
                 width: 100.w,
                 text: 'Sec Button',
                 onTap: () {},
               ),
+
+              /// Primary Button
               PrimaryButton(
                 text: "Button",
                 onTap: () {},
