@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:thuprai_delivery/ui/common/app_colors.dart';
-import 'package:thuprai_delivery/ui/common/ui_helpers.dart';
+import 'package:thuprai_delivery/base/common/app_colors.dart';
+import 'package:thuprai_delivery/base/common/ui_helpers.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 

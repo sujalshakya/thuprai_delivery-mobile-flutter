@@ -6,7 +6,8 @@ import 'package:thuprai_delivery/app/app.locator.dart';
 import 'package:thuprai_delivery/app/app.router.dart';
 import 'package:thuprai_delivery/ui/views/login/repository/login_repository_implementation.dart';
 
-class LoginViewModel extends BaseViewModel {
+class LoginViewModel extends FormViewModel {
+  final _formKey = GlobalKey<FormState>();
   final _loginRepo = locator<LoginRepositoryImplementation>();
   final _navigationService = locator<NavigationService>();
   final _bottomSheetService = locator<BottomSheetService>();
@@ -21,14 +22,16 @@ class LoginViewModel extends BaseViewModel {
   }
 
   Future<void> login(String email, String password) async {
-    try {
-      await _loginRepo.loginApiRequest(email, password);
-      _navigationService.replaceWithHomeView();
-      _bottomSheetService.showCustomSheet(
-          variant: BottomSheetType.floatingBoxBottom,
-          description: "Login Successful");
-    } catch (e) {
-      rethrow;
+    if (_formKey.currentState!.validate()) {
+      try {
+        await _loginRepo.loginApiRequest(email, password);
+        _navigationService.replaceWithHomeView();
+        _bottomSheetService.showCustomSheet(
+            variant: BottomSheetType.floatingBoxBottom,
+            description: "Login Successful");
+      } catch (e) {
+        rethrow;
+      }
     }
   }
 }

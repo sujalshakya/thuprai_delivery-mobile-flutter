@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thuprai_delivery/ui/common/assets.dart';
+import 'package:thuprai_delivery/base/common/assets.dart';
 
 class Logo extends StatelessWidget {
   const Logo({

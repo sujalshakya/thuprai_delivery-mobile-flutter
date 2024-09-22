@@ -3,6 +3,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
+import 'package:thuprai_delivery/base/common/validators.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/logo.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_button.dart';
@@ -12,8 +13,10 @@ import 'package:thuprai_delivery/ui/views/login/login_view.form.dart';
 
 import 'login_viewmodel.dart';
 
-@FormView(
-    fields: [FormTextField(name: 'email'), FormTextField(name: "password")])
+@FormView(fields: [
+  FormTextField(name: 'email', validator: Validators.validateEmail),
+  FormTextField(name: "password", validator: Validators.validateLogin)
+])
 class LoginView extends StackedView<LoginViewModel> with $LoginView {
   const LoginView({Key? key}) : super(key: key);
 
@@ -54,6 +57,16 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
                   obscure: false,
                   hintText: "Email",
                 ),
+                if (viewModel.hasEmailValidationMessage) ...[
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      viewModel.passwordValidationMessage!,
+                      style:
+                          TextStyle(color: Theme.of(context).colorScheme.error),
+                    ),
+                  )
+                ],
                 PrimaryTextfield(
                   obscure: viewModel.passwordVisible,
                   suffix: GestureDetector(
@@ -69,12 +82,24 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
                     size: 16,
                   ),
                 ),
+                if (viewModel.hasPasswordValidationMessage) ...[
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      viewModel.passwordValidationMessage!,
+                      style:
+                          TextStyle(color: Theme.of(context).colorScheme.error),
+                    ),
+                  )
+                ],
                 SizedBox(
                   height: 10.h,
                 ),
                 PrimaryButton(
                   text: "Login",
                   onTap: () {
+                    syncFormWithViewModel(viewModel);
+
                     viewModel.login(
                         emailController.text, passwordController.text);
                   },

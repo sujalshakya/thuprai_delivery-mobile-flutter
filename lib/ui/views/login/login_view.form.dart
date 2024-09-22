@@ -8,6 +8,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:thuprai_delivery/base/common/validators.dart';
 
 const bool _autoTextFieldValidation = true;
 
@@ -19,8 +20,8 @@ final Map<String, TextEditingController> _LoginViewTextEditingControllers = {};
 final Map<String, FocusNode> _LoginViewFocusNodes = {};
 
 final Map<String, String? Function(String?)?> _LoginViewTextValidations = {
-  EmailValueKey: null,
-  PasswordValueKey: null,
+  EmailValueKey: Validators.validateEmail,
+  PasswordValueKey: Validators.validateLogin,
 };
 
 mixin $LoginView {
