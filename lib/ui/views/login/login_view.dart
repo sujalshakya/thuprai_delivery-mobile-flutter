@@ -3,6 +3,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
+import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/logo.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_button.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_textfield.dart';
@@ -25,8 +26,6 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
     return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: AppBar(
-          leading: Icon(Icons.arrow_back_ios_new,
-              color: Theme.of(context).colorScheme.onPrimary),
           backgroundColor: Theme.of(context).colorScheme.secondary,
           centerTitle: true,
           title: TitleText(
@@ -40,7 +39,7 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
             child: Column(
               children: [
                 SizedBox(
-                  height: 80.h,
+                  height: 70.h,
                 ),
                 Logo(
                   height: 150.h,
@@ -70,14 +69,38 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
                     size: 16,
                   ),
                 ),
+                SizedBox(
+                  height: 10.h,
+                ),
                 PrimaryButton(
                   text: "Login",
-                  onTap: () {},
+                  onTap: () {
+                    viewModel.login(
+                        emailController.text, passwordController.text);
+                  },
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: PrimaryText(
+                        text: "Forgot Password?",
+                        color: Theme.of(context).colorScheme.onPrimary,
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           ),
         ));
+  }
+
+  @override
+  void onDispose(LoginViewModel viewModel) {
+    super.onDispose(viewModel);
+    disposeForm();
   }
 
   @override

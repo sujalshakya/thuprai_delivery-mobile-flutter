@@ -41,12 +41,6 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        request.title!,
-                        style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w900),
-                      ),
-                      verticalSpaceTiny,
-                      Text(
                         request.description!,
                         style:
                             const TextStyle(fontSize: 14, color: kcMediumGrey),
