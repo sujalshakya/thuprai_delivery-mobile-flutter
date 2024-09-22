@@ -11,13 +11,15 @@ class PrimaryText extends StatelessWidget {
       this.maxLines,
       this.fontWeight,
       this.fontSize,
-      this.color});
+      this.color,
+      this.softWrap});
 
   /// Text to be displayed
   final String text;
 
   /// Alignment of the text
   final TextAlign? align;
+  final bool? softWrap;
 
   /// The number of lines to be displayed before getting trunctuated.
   final int? maxLines;
@@ -36,6 +38,7 @@ class PrimaryText extends StatelessWidget {
       text,
       textAlign: align,
       maxLines: maxLines,
+      softWrap: softWrap,
       style:
           TextStyle(fontWeight: fontWeight, color: color, fontSize: fontSize),
     );

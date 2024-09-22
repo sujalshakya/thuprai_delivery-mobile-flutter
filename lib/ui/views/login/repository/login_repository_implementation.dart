@@ -8,7 +8,6 @@ class LoginRepositoryImplementation {
   Future<LoginResponse> loginApiRequest(email, password) async {
     LoginRequest loginRequest =
         LoginRequest(username: email, password: password);
-    final response = await _loginService.loginApiRequest(loginRequest);
-    return response;
+    return await _loginService.loginApiRequest(loginRequest);
   }
 }

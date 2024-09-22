@@ -1,6 +1,7 @@
 import 'package:thuprai_delivery/base/network/dio_service.dart';
 import 'package:thuprai_delivery/base/network/retrofit_service.dart';
 import 'package:thuprai_delivery/base/service/secure_storage_service.dart';
+import 'package:thuprai_delivery/ui/bottom_sheets/floating/floating_box_bottom_sheet.dart';
 import 'package:thuprai_delivery/ui/bottom_sheets/notice/notice_sheet.dart';
 import 'package:thuprai_delivery/ui/dialogs/error_alert/error_alert_dialog.dart';
 import 'package:thuprai_delivery/ui/dialogs/info_alert/info_alert_dialog.dart';
@@ -37,6 +38,7 @@ import 'package:thuprai_delivery/ui/views/login/login_view.dart';
   ],
   bottomsheets: [
     StackedBottomsheet(classType: NoticeSheet),
+    StackedBottomsheet(classType: FloatingBoxBottomSheet)
     // @stacked-bottom-sheet
   ],
   dialogs: [

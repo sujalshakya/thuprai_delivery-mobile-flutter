@@ -8,8 +8,7 @@ class LoginService {
 
   Future<LoginResponse> loginApiRequest(loginRequest) async {
     try {
-      final response = await _retrofitService.login(loginRequest);
-      return response;
+      return await _retrofitService.login(loginRequest);
     } catch (e) {
       debugPrint(e.toString());
       rethrow;

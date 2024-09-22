@@ -3,7 +3,6 @@ import 'package:thuprai_delivery/app/app.dialogs.dart';
 import 'package:thuprai_delivery/app/app.locator.dart';
 import 'package:thuprai_delivery/app/app.router.dart';
 import 'package:thuprai_delivery/base/service/secure_storage_service.dart';
-import 'package:thuprai_delivery/main.dart';
 import 'package:thuprai_delivery/ui/common/app_strings.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
