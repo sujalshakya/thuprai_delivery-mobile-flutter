@@ -31,7 +31,7 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => BottomSheetService());
   locator.registerLazySingleton(() => DialogService());
   locator.registerLazySingleton(() => NavigationService());
-  locator.registerLazySingleton(() => RetrofitService(dio));
+  locator.registerLazySingleton(() => ApiService(dio));
   locator.registerLazySingleton(() => DioService());
   locator.registerLazySingleton(() => LoginService());
   locator.registerLazySingleton(() => SecureStorageService());

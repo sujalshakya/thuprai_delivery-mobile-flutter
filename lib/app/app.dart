@@ -27,7 +27,7 @@ import 'package:thuprai_delivery/ui/views/login/login_view.dart';
     LazySingleton(classType: BottomSheetService),
     LazySingleton(classType: DialogService),
     LazySingleton(classType: NavigationService),
-    LazySingleton(classType: RetrofitService),
+    LazySingleton(classType: ApiService),
     LazySingleton(classType: DioService),
     LazySingleton(classType: LoginService),
     LazySingleton(classType: SecureStorageService),
