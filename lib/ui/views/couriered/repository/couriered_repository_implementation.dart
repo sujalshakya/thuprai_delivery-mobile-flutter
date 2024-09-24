@@ -1,14 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:thuprai_delivery/app/app.locator.dart';
 import 'package:thuprai_delivery/base/network/api_service.dart';
-import 'package:thuprai_delivery/ui/views/processing/models/processing_model.dart';
+import 'package:thuprai_delivery/ui/views/couriered/models/couriered_model.dart';
 
-class ProcessingRepositoryImplementation {
+class CourieredRepositoryImplementation {
   final _apiService = locator<ApiService>();
 
-  Future<List<Processing>> getProcessingOrders() async {
+  Future<List<Couriered>> getCourieredOrders() async {
     try {
-      return await _apiService.getProcessingOrders();
+      return await _apiService.getCourieredOrders();
     } on DioException catch (e) {
       rethrow;
     }
