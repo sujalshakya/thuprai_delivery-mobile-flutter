@@ -1,6 +1,6 @@
 class ApiUrls {
   static String orderEndPoint = "delivery/order";
-  static String dispatchEndPoint = "$orderEndPoint/dispatched/";
+  static final String dispatchEndPoint = "$orderEndPoint/dispatched/";
   static String pendingEndPoint = "$orderEndPoint/pending/";
   static String fullfilledEndPoint = "$orderEndPoint/fulfilled/";
   static String returnedEndPoint = "$orderEndPoint/returned/";
