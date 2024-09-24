@@ -6,7 +6,6 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:thuprai_delivery/base/common/validators.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/logo.dart';
-import 'package:thuprai_delivery/base/ui_toolkits/primary_appbar.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_button.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_textfield.dart';
 import 'package:thuprai_delivery/ui/views/login/login_view.form.dart';
@@ -27,7 +26,7 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
   ) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
-      appBar: const PrimaryAppBar(title: "Login"),
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Form(
           key: viewModel.formKey,

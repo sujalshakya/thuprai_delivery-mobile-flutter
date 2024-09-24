@@ -1,0 +1,76 @@
+import 'package:flutter/material.dart';
+import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
+
+class OrderListtile extends StatelessWidget {
+  const OrderListtile(
+      {super.key,
+      required this.orderId,
+      required this.paid,
+      this.address,
+      required this.name});
+  final int orderId;
+  final String paid;
+  final String name;
+  final String? address;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Row(
+              children: [
+                PrimaryText(
+                  text: "Order Id: #$orderId",
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+                const Spacer(),
+                PrimaryText(
+                  text: paid,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  color: Theme.of(context).colorScheme.secondary,
+                )
+              ],
+            ),
+          ),
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    PrimaryText(
+                      text: name,
+                      color: Theme.of(context).colorScheme.onSecondary,
+                      fontWeight: FontWeight.w700,
+                    ),
+                    PrimaryText(text: address ?? "No Address")
+                  ],
+                ),
+              ),
+              const Spacer(),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CircleAvatar(
+                  backgroundColor: Colors.pink,
+                  radius: 20,
+                  child: Icon(Icons.phone,
+                      color: Theme.of(context).colorScheme.surface),
+                ),
+              ),
+            ],
+          ),
+          Divider(
+            color: Theme.of(context).colorScheme.onSecondary,
+          )
+        ],
+      ),
+    );
+  }
+}

@@ -11,8 +11,8 @@ import 'package:stacked_services/src/dialog/dialog_service.dart';
 import 'package:stacked_services/src/navigation/navigation_service.dart';
 import 'package:stacked_shared/stacked_shared.dart';
 
-import '../base/network/dio_service.dart';
 import '../base/network/api_service.dart';
+import '../base/network/dio_service.dart';
 import '../base/service/secure_storage_service.dart';
 import '../ui/views/login/repository/login_repository_implementation.dart';
 

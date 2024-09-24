@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
+import 'package:thuprai_delivery/base/ui_toolkits/primary_appbar.dart';
+import 'package:thuprai_delivery/ui/views/dispatched/dispatched_view.dart';
 
 import 'home_viewmodel.dart';
 
@@ -18,7 +20,37 @@ class HomeView extends StackedView<HomeViewModel> {
     return DefaultTabController(
       length: 7,
       child: Scaffold(
-          body: PageView(),
+          appBar: PrimaryAppBar(
+            title: 'Dispatched',
+            actions: [
+              IconButton(
+                icon: Icon(
+                  Icons.search,
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: Icon(
+                  Icons.logout_outlined,
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+                onPressed: () {
+                  viewModel.logout();
+                },
+              ),
+              IconButton(
+                icon: Icon(
+                  Icons.qr_code_2_outlined,
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+                onPressed: () {},
+              ),
+            ],
+          ),
+          body: PageView(
+            children: const [DispatchedView()],
+          ),
           bottomNavigationBar: Material(
             color: Theme.of(context).colorScheme.onPrimary,
             child: SizedBox(
@@ -29,17 +61,17 @@ class HomeView extends StackedView<HomeViewModel> {
                   labelStyle: const TextStyle(fontSize: 16),
                   indicator: const BoxDecoration(),
                   splashFactory: NoSplash.splashFactory,
-                  labelColor: Theme.of(context).colorScheme.secondary,
+                  labelColor: Theme.of(context).colorScheme.surface,
                   unselectedLabelColor:
                       Theme.of(context).colorScheme.onSecondary,
                   tabs: const [
                     PrimaryText(text: "Dispatched"),
-                    PrimaryText(text: "Pending"),
-                    PrimaryText(text: "Fulfilled"),
-                    PrimaryText(text: "Returned"),
-                    PrimaryText(text: "Processing"),
                     PrimaryText(text: "Picking Up"),
+                    PrimaryText(text: "Processing"),
+                    PrimaryText(text: "Pending"),
+                    PrimaryText(text: "Returned"),
                     PrimaryText(text: "Couriered"),
+                    PrimaryText(text: "Fulfilled"),
                   ]),
             ),
           )),

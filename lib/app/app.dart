@@ -12,6 +12,7 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:thuprai_delivery/ui/views/ui_toolkits/ui_toolkits_view.dart';
 import 'package:thuprai_delivery/ui/views/login/login_view.dart';
+import 'package:thuprai_delivery/ui/views/dispatched/dispatched_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -20,6 +21,7 @@ import 'package:thuprai_delivery/ui/views/login/login_view.dart';
     MaterialRoute(page: StartupView),
     MaterialRoute(page: UiToolkitsView),
     MaterialRoute(page: LoginView),
+    MaterialRoute(page: DispatchedView),
 // @stacked-route
   ],
   dependencies: [

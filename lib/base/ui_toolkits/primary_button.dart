@@ -29,7 +29,7 @@ class PrimaryButton extends StatelessWidget {
             child: Center(
                 child: Text(
               text,
-              style: TextStyle(color: Theme.of(context).colorScheme.secondary),
+              style: TextStyle(color: Theme.of(context).colorScheme.surface),
             ))),
       ),
     );
