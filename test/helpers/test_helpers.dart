@@ -2,6 +2,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:thuprai_delivery/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:thuprai_delivery/ui/views/login/repository/login_repository_implementation.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -10,12 +11,17 @@ import 'test_helpers.mocks.dart';
   MockSpec<NavigationService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<BottomSheetService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<DialogService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<LoginRepositoryImplementation>(
+      onMissingStub: OnMissingStub.returnDefault)
+
   // @stacked-mock-spec
 ])
 void registerServices() {
   getAndRegisterNavigationService();
   getAndRegisterBottomSheetService();
   getAndRegisterDialogService();
+  getAndRegisterLoginRepositoryImplementationService();
+
   // @stacked-mock-register
 }
 
@@ -59,6 +65,14 @@ MockBottomSheetService getAndRegisterBottomSheetService<T>({
       Future.value(showCustomSheetResponse ?? SheetResponse<T>()));
 
   locator.registerSingleton<BottomSheetService>(service);
+  return service;
+}
+
+MockLoginRepositoryImplementation
+    getAndRegisterLoginRepositoryImplementationService() {
+  _removeRegistrationIfExists<MockLoginRepositoryImplementation>();
+  final service = MockLoginRepositoryImplementation();
+  locator.registerSingleton<MockLoginRepositoryImplementation>(service);
   return service;
 }
 

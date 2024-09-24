@@ -26,17 +26,23 @@ class LoginViewModel extends FormViewModel {
     rebuildUi();
   }
 
-  Future<void> login(String email, String password) async {
+  bool isOdd(int num) {
+    return num % 2 == 0 ? false : true;
+  }
+
+  Future<bool> login(String email, String password) async {
     try {
       await _loginRepo.loginApiRequest(email, password);
       _navigationService.replaceWithHomeView();
       _bottomSheetService.showCustomSheet(
           variant: BottomSheetType.floatingBoxBottom,
           description: "Login Successful");
+      return true;
     } on DioException catch (e) {
       _dialogService.showCustomDialog(
           variant: DialogType.errorAlert,
           description: e.response!.data['non_field_errors'][0]);
+      return false;
     }
   }
 }

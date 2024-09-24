@@ -1,7 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
-import 'package:thuprai_delivery/base/common/app_colors.dart';
-import 'package:thuprai_delivery/base/common/ui_helpers.dart';
+import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
 
 import 'home_viewmodel.dart';
 
@@ -14,66 +15,34 @@ class HomeView extends StackedView<HomeViewModel> {
     HomeViewModel viewModel,
     Widget? child,
   ) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25.0),
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                verticalSpaceLarge,
-                Column(
-                  children: [
-                    const Text(
-                      'Hello, STACKED!',
-                      style: TextStyle(
-                        fontSize: 35,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                    verticalSpaceMedium,
-                    MaterialButton(
-                      color: Colors.black,
-                      onPressed: viewModel.logout,
-                      child: Text(
-                        viewModel.counterLabel,
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    MaterialButton(
-                      color: kcDarkGreyColor,
-                      onPressed: viewModel.showDialog,
-                      child: const Text(
-                        'Show Dialog',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    MaterialButton(
-                      color: kcDarkGreyColor,
-                      onPressed: viewModel.showBottomSheet,
-                      child: const Text(
-                        'Show Bottom Sheet',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                )
-              ],
+    return DefaultTabController(
+      length: 7,
+      child: Scaffold(
+          body: PageView(),
+          bottomNavigationBar: Material(
+            color: Theme.of(context).colorScheme.onPrimary,
+            child: SizedBox(
+              height: 50.h,
+              child: TabBar(
+                  dragStartBehavior: DragStartBehavior.start,
+                  isScrollable: true,
+                  labelStyle: const TextStyle(fontSize: 16),
+                  indicator: const BoxDecoration(),
+                  splashFactory: NoSplash.splashFactory,
+                  labelColor: Theme.of(context).colorScheme.secondary,
+                  unselectedLabelColor:
+                      Theme.of(context).colorScheme.onSecondary,
+                  tabs: const [
+                    PrimaryText(text: "Dispatched"),
+                    PrimaryText(text: "Pending"),
+                    PrimaryText(text: "Fulfilled"),
+                    PrimaryText(text: "Returned"),
+                    PrimaryText(text: "Processing"),
+                    PrimaryText(text: "Picking Up"),
+                    PrimaryText(text: "Couriered"),
+                  ]),
             ),
-          ),
-        ),
-      ),
+          )),
     );
   }
 

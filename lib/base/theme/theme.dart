@@ -6,7 +6,7 @@ final ThemeData light = ThemeData(
       primary: Colors.black,
       onPrimary: Color(0xff0066FF),
       secondary: Colors.white,
-      onSecondary: Colors.white,
+      onSecondary: Colors.grey,
       error: Colors.red,
       onError: Colors.white,
       surface: Colors.white,
