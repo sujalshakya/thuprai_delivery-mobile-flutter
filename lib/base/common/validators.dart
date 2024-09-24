@@ -13,7 +13,7 @@ class Validators {
       return 'Please enter your email';
     }
     if (!value.contains('@') || !value.contains('.')) {
-      return 'Please enter a viable email addresss';
+      return 'Please enter a viable email address';
     }
     return null;
   }
@@ -21,10 +21,13 @@ class Validators {
   /// Dont allow controller without length of 8 and containing atleast 1 of
   /// small letter, capital letter, number and symbol.
   static String? validatePassword(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter your password';
+    if (value!.length < 8 ||
+        !value.contains(RegExp(r"[a-z]")) ||
+        !value.contains(RegExp(r"[A-Z]")) ||
+        (!value.contains(RegExp(r"[0-9]"))) ||
+        !value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+      return 'Requires small letter, capital letter, number and symbol';
     }
-
     return null;
   }
 }

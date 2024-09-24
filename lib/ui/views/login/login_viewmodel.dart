@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -38,10 +37,9 @@ class LoginViewModel extends FormViewModel {
           variant: BottomSheetType.floatingBoxBottom,
           description: "Login Successful");
       return true;
-    } on DioException catch (e) {
+    } catch (e) {
       _dialogService.showCustomDialog(
-          variant: DialogType.errorAlert,
-          description: e.response!.data['non_field_errors'][0]);
+          variant: DialogType.errorAlert, description: e.toString());
       return false;
     }
   }

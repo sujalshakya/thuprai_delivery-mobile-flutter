@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:thuprai_delivery/app/app.locator.dart';
 import 'package:thuprai_delivery/base/network/api_service.dart';
 import 'package:thuprai_delivery/ui/views/login/models/login_request.dart';
@@ -10,8 +11,8 @@ class LoginRepositoryImplementation {
         LoginRequest(username: email, password: password);
     try {
       return await _apiService.login(loginRequest);
-    } catch (e) {
-      rethrow;
+    } on DioException catch (e) {
+      throw e.response!.data['non_field_errors'][0];
     }
   }
 }
