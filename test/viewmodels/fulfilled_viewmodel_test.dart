@@ -4,7 +4,7 @@ import 'package:thuprai_delivery/app/app.locator.dart';
 import '../helpers/test_helpers.dart';
 
 void main() {
-  group('HomeViewmodelTest -', () {
+  group('FulfilledViewModel Tests -', () {
     setUp(() => registerServices());
     tearDown(() => locator.reset());
   });

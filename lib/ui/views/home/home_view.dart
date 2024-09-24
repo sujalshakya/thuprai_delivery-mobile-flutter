@@ -4,8 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_appbar.dart';
+import 'package:thuprai_delivery/ui/views/couriered/couriered_view.dart';
 import 'package:thuprai_delivery/ui/views/dispatched/dispatched_view.dart';
-
+import 'package:thuprai_delivery/ui/views/fulfilled/fulfilled_view.dart';
+import 'package:thuprai_delivery/ui/views/pending/pending_view.dart';
+import 'package:thuprai_delivery/ui/views/picking_up/picking_up_view.dart';
+import 'package:thuprai_delivery/ui/views/processing/processing_view.dart';
+import 'package:thuprai_delivery/ui/views/returned/returned_view.dart';
 import 'home_viewmodel.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
@@ -21,7 +26,7 @@ class HomeView extends StackedView<HomeViewModel> {
       length: 7,
       child: Scaffold(
           appBar: PrimaryAppBar(
-            title: 'Dispatched',
+            title: viewModel.currentTitle,
             actions: [
               IconButton(
                 icon: Icon(
@@ -48,14 +53,26 @@ class HomeView extends StackedView<HomeViewModel> {
               ),
             ],
           ),
-          body: PageView(
-            children: const [DispatchedView()],
+          body: const TabBarView(
+            physics: NeverScrollableScrollPhysics(),
+            children: [
+              DispatchedView(),
+              PickingUpView(),
+              ProcessingView(),
+              PendingView(),
+              ReturnedView(),
+              CourieredView(),
+              FulfilledView()
+            ],
           ),
           bottomNavigationBar: Material(
             color: Theme.of(context).colorScheme.onPrimary,
             child: SizedBox(
               height: 50.h,
               child: TabBar(
+                  onTap: (index) {
+                    viewModel.setTitle(index);
+                  },
                   dragStartBehavior: DragStartBehavior.start,
                   isScrollable: true,
                   labelStyle: const TextStyle(fontSize: 16),

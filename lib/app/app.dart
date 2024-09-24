@@ -13,6 +13,12 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:thuprai_delivery/ui/views/ui_toolkits/ui_toolkits_view.dart';
 import 'package:thuprai_delivery/ui/views/login/login_view.dart';
 import 'package:thuprai_delivery/ui/views/dispatched/dispatched_view.dart';
+import 'package:thuprai_delivery/ui/views/picking_up/picking_up_view.dart';
+import 'package:thuprai_delivery/ui/views/processing/processing_view.dart';
+import 'package:thuprai_delivery/ui/views/pending/pending_view.dart';
+import 'package:thuprai_delivery/ui/views/returned/returned_view.dart';
+import 'package:thuprai_delivery/ui/views/couriered/couriered_view.dart';
+import 'package:thuprai_delivery/ui/views/fulfilled/fulfilled_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -22,6 +28,12 @@ import 'package:thuprai_delivery/ui/views/dispatched/dispatched_view.dart';
     MaterialRoute(page: UiToolkitsView),
     MaterialRoute(page: LoginView),
     MaterialRoute(page: DispatchedView),
+    MaterialRoute(page: PickingUpView),
+    MaterialRoute(page: ProcessingView),
+    MaterialRoute(page: PendingView),
+    MaterialRoute(page: ReturnedView),
+    MaterialRoute(page: CourieredView),
+    MaterialRoute(page: FulfilledView),
 // @stacked-route
   ],
   dependencies: [

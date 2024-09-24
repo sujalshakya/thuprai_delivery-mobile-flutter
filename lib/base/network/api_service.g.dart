@@ -14,7 +14,7 @@ class _ApiService implements ApiService {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://tbe.thuprai.com/v1/api';
+    baseUrl ??= 'https://tbe.thuprai.com/v1/';
   }
 
   final Dio _dio;
@@ -37,7 +37,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          '/login/',
+          'api/login/',
           queryParameters: queryParameters,
           data: _data,
         )
