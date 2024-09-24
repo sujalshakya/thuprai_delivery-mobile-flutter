@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
 
 class OrderListtile extends StatelessWidget {
@@ -6,12 +7,15 @@ class OrderListtile extends StatelessWidget {
       {super.key,
       required this.orderId,
       required this.paid,
-      this.address,
+      required this.address1,
+      required this.address2,
       required this.name});
-  final int orderId;
+  final String orderId;
   final String paid;
   final String name;
-  final String? address;
+  final String address1;
+  final String address2;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,10 +34,9 @@ class OrderListtile extends StatelessWidget {
                 ),
                 const Spacer(),
                 PrimaryText(
-                  text: paid,
-                  fontSize: 18,
+                  text: "Rs. $paid",
+                  fontSize: 16,
                   fontWeight: FontWeight.w700,
-                  color: Theme.of(context).colorScheme.secondary,
                 )
               ],
             ),
@@ -50,7 +53,9 @@ class OrderListtile extends StatelessWidget {
                       color: Theme.of(context).colorScheme.onSecondary,
                       fontWeight: FontWeight.w700,
                     ),
-                    PrimaryText(text: address ?? "No Address")
+                    SizedBox(
+                        width: 200.w,
+                        child: PrimaryText(text: "$address1, $address2")),
                   ],
                 ),
               ),

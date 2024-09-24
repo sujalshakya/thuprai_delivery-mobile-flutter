@@ -19,7 +19,7 @@ class TokenInterceptor extends Interceptor {
     final token = await _secureStorage.getToken('token');
     if (token != null) {
       options.headers.addAll({
-        "Authorization": "Bearer $token",
+        "Authorization": "token $token",
       });
     }
 
