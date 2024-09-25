@@ -16,25 +16,34 @@ class PickingUpView extends StackedView<PickingUpViewModel> {
   ) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
-      body: Expanded(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
         child: ListView.builder(
           shrinkWrap: true,
           itemCount: viewModel.orders.length,
           itemBuilder: (context, i) {
             final order = viewModel.orders[i];
 
-            return SizedBox(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: order.lines.length,
-                itemBuilder: (context, j) {
-                  final line = order.lines[j];
-                  return PickupTileWidget(
-                    partner: line.partner,
-                    book1: line.title,
-                  );
-                },
-              ),
+            return Column(
+              children: [
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: order.lines.length,
+                  itemBuilder: (context, j) {
+                    final line = order.lines[j];
+                    if (line.status == "Picking-Up") {
+                      return PickupTileWidget(
+                        partner: line.partner,
+                        book1: line.title,
+                      );
+                    }
+                    return const SizedBox.shrink();
+                  },
+                ),
+                Divider(
+                  color: Theme.of(context).colorScheme.onSecondary,
+                )
+              ],
             );
           },
         ),

@@ -20,6 +20,8 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+        shadowColor: Theme.of(context).colorScheme.primary,
+        elevation: 4,
         leading: leading,
         backgroundColor: Theme.of(context).colorScheme.surface,
         title: Padding(

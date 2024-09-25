@@ -15,19 +15,22 @@ class CourieredView extends StackedView<CourieredViewModel> {
   ) {
     return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.surface,
-        body: ListView.builder(
-            itemCount: viewModel.orders.length,
-            itemBuilder: (context, index) {
-              final order = viewModel.orders[index];
+        body: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
+          child: ListView.builder(
+              itemCount: viewModel.orders.length,
+              itemBuilder: (context, index) {
+                final order = viewModel.orders[index];
 
-              return OrderListtile(
-                orderId: order.number,
-                paid: order.totalInclTax,
-                name: order.shippingAddress.firstName,
-                address1: order.shippingAddress.line1,
-                address2: order.shippingAddress.line4,
-              );
-            }));
+                return OrderListtile(
+                  orderId: order.number,
+                  paid: order.totalInclTax,
+                  name: order.shippingAddress.firstName,
+                  address1: order.shippingAddress.line1,
+                  address2: order.shippingAddress.line4,
+                );
+              }),
+        ));
   }
 
   @override

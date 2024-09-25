@@ -25,7 +25,7 @@ class FloatingBoxBottomSheet extends StackedView<FloatingBoxModel> {
       padding: const EdgeInsets.all(25.0),
       child: Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.secondary,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Column(
