@@ -9,7 +9,7 @@ class OrderDispatchedRepositoryImplementation {
   Future<List<OrderDispatch>> getDispatchedOrders() async {
     try {
       return await _apiService.getDispatchedOrders();
-    } on DioException catch (e) {
+    } on DioException {
       rethrow;
     }
   }

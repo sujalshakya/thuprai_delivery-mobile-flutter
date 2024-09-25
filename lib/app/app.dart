@@ -10,7 +10,9 @@ import 'package:thuprai_delivery/ui/views/dispatched/repository/order_dispatched
 import 'package:thuprai_delivery/ui/views/home/home_view.dart';
 import 'package:thuprai_delivery/ui/views/login/repository/login_repository_implementation.dart';
 import 'package:thuprai_delivery/ui/views/pending/repository/pending_repository_implementation.dart';
+import 'package:thuprai_delivery/ui/views/picking_up/repository/picking_up_repository_implementation.dart';
 import 'package:thuprai_delivery/ui/views/processing/repository/processing_repository_implementation.dart';
+import 'package:thuprai_delivery/ui/views/returned/repository/returned_repository_implementation.dart';
 import 'package:thuprai_delivery/ui/views/startup/startup_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -51,6 +53,8 @@ import 'package:thuprai_delivery/ui/views/fulfilled/fulfilled_view.dart';
     LazySingleton(classType: ProcessingRepositoryImplementation),
     LazySingleton(classType: CourieredRepositoryImplementation),
     LazySingleton(classType: PendingRepositoryImplementation),
+    LazySingleton(classType: ReturnedRepositoryImplementation),
+    LazySingleton(classType: PickingUpRepositoryImplementation),
 
     LazySingleton(classType: LoginRepositoryImplementation),
 

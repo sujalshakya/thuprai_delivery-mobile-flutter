@@ -9,7 +9,7 @@ class CourieredRepositoryImplementation {
   Future<List<Couriered>> getCourieredOrders() async {
     try {
       return await _apiService.getCourieredOrders();
-    } on DioException catch (e) {
+    } on DioException {
       rethrow;
     }
   }

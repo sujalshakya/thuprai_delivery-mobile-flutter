@@ -12,7 +12,9 @@ import 'package:stacked_services/src/navigation/navigation_service.dart';
 import 'package:stacked_shared/stacked_shared.dart';
 import 'package:thuprai_delivery/ui/views/couriered/repository/couriered_repository_implementation.dart';
 import 'package:thuprai_delivery/ui/views/pending/repository/pending_repository_implementation.dart';
+import 'package:thuprai_delivery/ui/views/picking_up/repository/picking_up_repository_implementation.dart';
 import 'package:thuprai_delivery/ui/views/processing/repository/processing_repository_implementation.dart';
+import 'package:thuprai_delivery/ui/views/returned/repository/returned_repository_implementation.dart';
 
 import '../base/network/api_service.dart';
 import '../base/network/dio_service.dart';
@@ -42,6 +44,8 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => ProcessingRepositoryImplementation());
   locator.registerLazySingleton(() => LoginRepositoryImplementation());
   locator.registerLazySingleton(() => PendingRepositoryImplementation());
+  locator.registerLazySingleton(() => ReturnedRepositoryImplementation());
+  locator.registerLazySingleton(() => PickingUpRepositoryImplementation());
 
   locator.registerLazySingleton(() => CourieredRepositoryImplementation());
 }

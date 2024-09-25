@@ -9,7 +9,7 @@ class ProcessingRepositoryImplementation {
   Future<List<Processing>> getProcessingOrders() async {
     try {
       return await _apiService.getProcessingOrders();
-    } on DioException catch (e) {
+    } on DioException {
       rethrow;
     }
   }

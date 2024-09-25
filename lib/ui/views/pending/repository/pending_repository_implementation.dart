@@ -9,7 +9,7 @@ class PendingRepositoryImplementation {
   Future<List<Pending>> getPendingOrders() async {
     try {
       return await _apiService.getPendingOrders();
-    } on DioException catch (e) {
+    } on DioException {
       rethrow;
     }
   }

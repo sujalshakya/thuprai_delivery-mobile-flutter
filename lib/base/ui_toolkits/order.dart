@@ -45,18 +45,19 @@ class OrderListtile extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    PrimaryText(
-                      text: name,
-                      color: Theme.of(context).colorScheme.onSecondary,
-                      fontWeight: FontWeight.w700,
-                    ),
-                    SizedBox(
-                        width: 200.w,
-                        child: PrimaryText(text: "$address1, $address2")),
-                  ],
+                child: SizedBox(
+                  width: 200.w,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      PrimaryText(
+                        text: name,
+                        color: Theme.of(context).colorScheme.onSecondary,
+                        fontWeight: FontWeight.w700,
+                      ),
+                      PrimaryText(text: "$address1, $address2"),
+                    ],
+                  ),
                 ),
               ),
               const Spacer(),
