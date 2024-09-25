@@ -22,6 +22,4 @@ class ProcessingViewModel extends BaseViewModel {
     }
     rebuildUi();
   }
-
-  getPrice() {}
 }

@@ -7,11 +7,13 @@ class OrderListtile extends StatelessWidget {
       {super.key,
       required this.orderId,
       required this.paid,
+      required this.payment,
       required this.address1,
       required this.address2,
       required this.name});
   final String orderId;
-  final String paid;
+  final String payment;
+  final bool paid;
   final String name;
   final String address1;
   final String address2;
@@ -33,11 +35,19 @@ class OrderListtile extends StatelessWidget {
                   color: Theme.of(context).colorScheme.onPrimary,
                 ),
                 const Spacer(),
-                PrimaryText(
-                  text: "Rs. $paid",
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                )
+                paid
+                    ? PrimaryText(
+                        text: "PAID",
+                        fontSize: 16,
+                        color: Theme.of(context).colorScheme.secondary,
+                        fontWeight: FontWeight.w700,
+                      )
+                    : PrimaryText(
+                        text: "Rs. $payment",
+                        fontSize: 16,
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.w700,
+                      )
               ],
             ),
           ),

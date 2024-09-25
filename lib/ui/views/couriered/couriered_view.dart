@@ -22,13 +22,30 @@ class CourieredView extends StackedView<CourieredViewModel> {
               itemBuilder: (context, index) {
                 final order = viewModel.orders[index];
 
-                return OrderListtile(
-                  orderId: order.number,
-                  paid: order.totalInclTax,
-                  name: order.shippingAddress.firstName,
-                  address1: order.shippingAddress.line1,
-                  address2: order.shippingAddress.line4,
-                );
+                String? payment = order.paymentEvents?.isNotEmpty == true
+                    ? order.paymentEvents![0].amount
+                    : '0';
+
+                String? price = order.totalInclTax;
+                double result =
+                    double.parse(price!) - double.parse(payment ?? '0');
+                return result == 0
+                    ? OrderListtile(
+                        orderId: order.number!,
+                        paid: true,
+                        payment: order.totalInclTax!,
+                        name: order.shippingAddress!.firstName!,
+                        address1: order.shippingAddress!.line1!,
+                        address2: order.shippingAddress!.line4!,
+                      )
+                    : OrderListtile(
+                        payment: order.totalInclTax!,
+                        orderId: order.number!,
+                        paid: false,
+                        name: order.shippingAddress!.firstName!,
+                        address1: order.shippingAddress!.line1!,
+                        address2: order.shippingAddress!.line4!,
+                      );
               }),
         ));
   }
