@@ -3,6 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
 
 class OrderListtile extends StatelessWidget {
+  /// The list tile to be used to show the orders.
+  /// Requires [orderId], [paid], [payment], [address1], [address2] and [name].
+  /// Does not require [navigate].
   const OrderListtile(
       {super.key,
       required this.orderId,
@@ -12,12 +15,26 @@ class OrderListtile extends StatelessWidget {
       required this.address2,
       this.navigate,
       required this.name});
+
+  /// The id of the order.
   final String orderId;
+
+  /// The money left to be payed.
   final String payment;
+
+  /// Whether the money has already been paid or not.
   final bool paid;
+
+  /// The name of the customer.
   final String name;
+
+  /// The first half of the address of delivery.
   final String address1;
+
+  /// The second half of the address of delivery.
   final String address2;
+
+  /// to track from where order details is navigated from.
   final Function()? navigate;
   @override
   Widget build(BuildContext context) {
@@ -28,7 +45,7 @@ class OrderListtile extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
               child: Row(
                 children: [
                   PrimaryText(

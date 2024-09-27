@@ -42,7 +42,7 @@ class OrderDetailsView extends StackedView<OrderDetailsViewModel> {
           child: Column(
             children: [
               HeaderContainer(order: order, price: price),
-              CustomerContainer(order: order),
+              CustomerContainer(order: order, vm: viewModel),
               BookOrderedContainer(order: order),
               orderDispatch ?? false
                   ? PrimaryButton(

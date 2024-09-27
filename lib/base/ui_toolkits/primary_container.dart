@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PrimaryContainer extends StatelessWidget {
+  /// Container with elevation and border sligtly circular.
   const PrimaryContainer({
     this.child,
     super.key,

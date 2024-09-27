@@ -6,13 +6,18 @@ import 'package:thuprai_delivery/base/ui_toolkits/primary_container.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/title_text.dart';
 
 class HeaderContainer extends StatelessWidget {
+  /// The first container in the order details page.
+  /// Requires [order] and [price].
   const HeaderContainer({
     super.key,
     required this.order,
     required this.price,
   });
 
+  /// The details of the specific order.
   final Order order;
+
+  /// The price of the order after substracting advance from total price.
   final String price;
 
   @override

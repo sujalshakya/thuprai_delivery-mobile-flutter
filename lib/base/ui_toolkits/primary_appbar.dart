@@ -4,7 +4,7 @@ import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
 class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// the primary app bar.
   /// Requires [title].
-  /// Not required [leading], [leadingWidth].
+  /// Not required [leading], [center], [actions].
   const PrimaryAppBar(
       {super.key,
       this.leading,
@@ -14,13 +14,16 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   /// The start of the app bar, can be any widget.
   final Widget? leading;
+
+  /// Whether title is to be at center.
   final bool? center;
 
   /// The title of the appbar and the view.
   final String title;
+
+  /// The icons or widgets at the end of appbar.
   final List<Widget>? actions;
 
-  /// The width of the leading widgets.
   @override
   Widget build(BuildContext context) {
     return AppBar(

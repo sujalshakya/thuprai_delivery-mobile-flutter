@@ -6,11 +6,14 @@ import 'package:thuprai_delivery/base/ui_toolkits/primary_container.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/title_text.dart';
 
 class BookOrderedContainer extends StatelessWidget {
+  /// The container containing information about the books being ordered.
+  /// Requires [order].
   const BookOrderedContainer({
     super.key,
     required this.order,
   });
 
+  /// The details of the specific order.
   final Order order;
 
   @override
