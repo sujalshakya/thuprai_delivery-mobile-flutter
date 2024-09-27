@@ -10,17 +10,17 @@ import 'package:stacked_services/src/bottom_sheet/bottom_sheet_service.dart';
 import 'package:stacked_services/src/dialog/dialog_service.dart';
 import 'package:stacked_services/src/navigation/navigation_service.dart';
 import 'package:stacked_shared/stacked_shared.dart';
-import 'package:thuprai_delivery/ui/views/couriered/repository/couriered_repository_implementation.dart';
-import 'package:thuprai_delivery/ui/views/pending/repository/pending_repository_implementation.dart';
-import 'package:thuprai_delivery/ui/views/picking_up/repository/picking_up_repository_implementation.dart';
-import 'package:thuprai_delivery/ui/views/processing/repository/processing_repository_implementation.dart';
-import 'package:thuprai_delivery/ui/views/returned/repository/returned_repository_implementation.dart';
 
 import '../base/network/api_service.dart';
 import '../base/network/dio_service.dart';
 import '../base/service/secure_storage_service.dart';
+import '../ui/views/couriered/repository/couriered_repository_implementation.dart';
 import '../ui/views/dispatched/repository/order_dispatched_repository_implementation.dart';
 import '../ui/views/login/repository/login_repository_implementation.dart';
+import '../ui/views/pending/repository/pending_repository_implementation.dart';
+import '../ui/views/picking_up/repository/picking_up_repository_implementation.dart';
+import '../ui/views/processing/repository/processing_repository_implementation.dart';
+import '../ui/views/returned/repository/returned_repository_implementation.dart';
 
 final locator = StackedLocator.instance;
 final dio = locator<DioService>().dio;
@@ -42,10 +42,9 @@ Future<void> setupLocator({
   locator
       .registerLazySingleton(() => OrderDispatchedRepositoryImplementation());
   locator.registerLazySingleton(() => ProcessingRepositoryImplementation());
-  locator.registerLazySingleton(() => LoginRepositoryImplementation());
+  locator.registerLazySingleton(() => CourieredRepositoryImplementation());
   locator.registerLazySingleton(() => PendingRepositoryImplementation());
   locator.registerLazySingleton(() => ReturnedRepositoryImplementation());
   locator.registerLazySingleton(() => PickingUpRepositoryImplementation());
-
-  locator.registerLazySingleton(() => CourieredRepositoryImplementation());
+  locator.registerLazySingleton(() => LoginRepositoryImplementation());
 }

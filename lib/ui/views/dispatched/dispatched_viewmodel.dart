@@ -13,6 +13,7 @@ class DispatchedViewModel extends BaseViewModel {
   List<OrderDispatch> orders = [];
 
   Future<void> getOrders() async {
+    setBusy(true);
     try {
       List<OrderDispatch> fetchedOrders =
           await _dispatchRepo.getDispatchedOrders();
@@ -22,6 +23,8 @@ class DispatchedViewModel extends BaseViewModel {
           variant: DialogType.errorAlert,
           description: e.response!.data['detail']);
     }
+    setBusy(false);
+
     rebuildUi();
   }
 }

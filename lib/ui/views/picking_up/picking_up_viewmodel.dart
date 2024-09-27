@@ -13,6 +13,8 @@ class PickingUpViewModel extends BaseViewModel {
 
   Future<void> getOrders() async {
     try {
+      setBusy(true);
+
       List<PickingUp> fetchedOrders = await _pickingupRepo.getPickingUpOrders();
       orders = fetchedOrders;
     } on DioException catch (e) {
@@ -20,6 +22,8 @@ class PickingUpViewModel extends BaseViewModel {
           variant: DialogType.errorAlert,
           description: e.response!.data['detail']);
     }
+    setBusy(false);
+
     rebuildUi();
   }
 }

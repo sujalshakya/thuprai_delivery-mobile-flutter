@@ -12,6 +12,8 @@ class ProcessingViewModel extends BaseViewModel {
   List<Processing> orders = [];
 
   Future<void> getOrders() async {
+    setBusy(true);
+
     try {
       List<Processing> fetchedOrders = await _processRepo.getProcessingOrders();
       orders = fetchedOrders;
@@ -20,6 +22,8 @@ class ProcessingViewModel extends BaseViewModel {
           variant: DialogType.errorAlert,
           description: e.response!.data['detail']);
     }
+    setBusy(false);
+
     rebuildUi();
   }
 }

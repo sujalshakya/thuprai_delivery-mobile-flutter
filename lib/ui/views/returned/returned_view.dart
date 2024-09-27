@@ -18,35 +18,25 @@ class ReturnedView extends StackedView<ReturnedViewModel> {
         backgroundColor: Theme.of(context).colorScheme.surface,
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 16.0),
-          child: ListView.builder(
-              itemCount: viewModel.orders.length,
-              itemBuilder: (context, index) {
-                final order = viewModel.orders[index];
-                String? payment = order.paymentEvents?.isNotEmpty == true
-                    ? order.paymentEvents![0].amount
-                    : '0';
+          child: viewModel.isBusy
+              ? Center(
+                  child: CircularProgressIndicator(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ))
+              : ListView.builder(
+                  itemCount: viewModel.orders.length,
+                  itemBuilder: (context, index) {
+                    final order = viewModel.orders[index];
 
-                String? price = order.totalInclTax;
-                double result =
-                    double.parse(price!) - double.parse(payment ?? '0');
-                return result == 0
-                    ? OrderListtile(
-                        orderId: order.number!,
-                        paid: true,
-                        payment: order.totalInclTax!,
-                        name: order.shippingAddress!.firstName!,
-                        address1: order.shippingAddress!.line1!,
-                        address2: order.shippingAddress!.line4!,
-                      )
-                    : OrderListtile(
-                        payment: order.totalInclTax!,
-                        orderId: order.number!,
-                        paid: false,
-                        name: order.shippingAddress!.firstName!,
-                        address1: order.shippingAddress!.line1!,
-                        address2: order.shippingAddress!.line4!,
-                      );
-              }),
+                    return OrderListtile(
+                      orderId: order.number,
+                      payment: order.totalInclTax,
+                      name: order.shippingAddress?.firstName ?? "",
+                      address1: order.shippingAddress?.line1 ?? "",
+                      address2: order.shippingAddress?.line4 ?? "",
+                      paid: false,
+                    );
+                  }),
         ));
   }
 

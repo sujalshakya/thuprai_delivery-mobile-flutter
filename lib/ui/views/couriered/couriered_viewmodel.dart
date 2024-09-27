@@ -13,6 +13,8 @@ class CourieredViewModel extends BaseViewModel {
 
   Future<void> getOrders() async {
     try {
+      setBusy(true);
+
       List<Couriered> fetchedOrders = await _processRepo.getCourieredOrders();
       orders = fetchedOrders;
     } on DioException catch (e) {
@@ -20,6 +22,8 @@ class CourieredViewModel extends BaseViewModel {
           variant: DialogType.errorAlert,
           description: e.response!.data['detail']);
     }
+    setBusy(false);
+
     rebuildUi();
   }
 }

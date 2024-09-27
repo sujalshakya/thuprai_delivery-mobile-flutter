@@ -5,10 +5,10 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i13;
+import 'package:flutter/material.dart' as _i14;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i14;
+import 'package:stacked_services/stacked_services.dart' as _i15;
 import 'package:thuprai_delivery/ui/views/couriered/couriered_view.dart'
     as _i11;
 import 'package:thuprai_delivery/ui/views/dispatched/dispatched_view.dart'
@@ -17,6 +17,8 @@ import 'package:thuprai_delivery/ui/views/fulfilled/fulfilled_view.dart'
     as _i12;
 import 'package:thuprai_delivery/ui/views/home/home_view.dart' as _i2;
 import 'package:thuprai_delivery/ui/views/login/login_view.dart' as _i5;
+import 'package:thuprai_delivery/ui/views/order_details/order_details_view.dart'
+    as _i13;
 import 'package:thuprai_delivery/ui/views/pending/pending_view.dart' as _i9;
 import 'package:thuprai_delivery/ui/views/picking_up/picking_up_view.dart'
     as _i7;
@@ -50,6 +52,8 @@ class Routes {
 
   static const fulfilledView = '/fulfilled-view';
 
+  static const orderDetailsView = '/order-details-view';
+
   static const all = <String>{
     homeView,
     startupView,
@@ -62,6 +66,7 @@ class Routes {
     returnedView,
     courieredView,
     fulfilledView,
+    orderDetailsView,
   };
 }
 
@@ -111,72 +116,82 @@ class StackedRouter extends _i1.RouterBase {
       Routes.fulfilledView,
       page: _i12.FulfilledView,
     ),
+    _i1.RouteDef(
+      Routes.orderDetailsView,
+      page: _i13.OrderDetailsView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i13.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i3.StartupView: (data) {
-      return _i13.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },
     _i4.UiToolkitsView: (data) {
-      return _i13.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.UiToolkitsView(),
         settings: data,
       );
     },
     _i5.LoginView: (data) {
-      return _i13.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.LoginView(),
         settings: data,
       );
     },
     _i6.DispatchedView: (data) {
-      return _i13.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.DispatchedView(),
         settings: data,
       );
     },
     _i7.PickingUpView: (data) {
-      return _i13.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.PickingUpView(),
         settings: data,
       );
     },
     _i8.ProcessingView: (data) {
-      return _i13.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.ProcessingView(),
         settings: data,
       );
     },
     _i9.PendingView: (data) {
-      return _i13.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.PendingView(),
         settings: data,
       );
     },
     _i10.ReturnedView: (data) {
-      return _i13.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i10.ReturnedView(),
         settings: data,
       );
     },
     _i11.CourieredView: (data) {
-      return _i13.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i11.CourieredView(),
         settings: data,
       );
     },
     _i12.FulfilledView: (data) {
-      return _i13.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i12.FulfilledView(),
+        settings: data,
+      );
+    },
+    _i13.OrderDetailsView: (data) {
+      return _i14.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i13.OrderDetailsView(),
         settings: data,
       );
     },
@@ -189,7 +204,7 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i14.NavigationService {
+extension NavigatorStateExtension on _i15.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -344,6 +359,20 @@ extension NavigatorStateExtension on _i14.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToOrderDetailsView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.orderDetailsView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> replaceWithHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -492,6 +521,20 @@ extension NavigatorStateExtension on _i14.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.fulfilledView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithOrderDetailsView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.orderDetailsView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

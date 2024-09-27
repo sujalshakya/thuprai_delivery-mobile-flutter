@@ -25,6 +25,7 @@ import 'package:thuprai_delivery/ui/views/pending/pending_view.dart';
 import 'package:thuprai_delivery/ui/views/returned/returned_view.dart';
 import 'package:thuprai_delivery/ui/views/couriered/couriered_view.dart';
 import 'package:thuprai_delivery/ui/views/fulfilled/fulfilled_view.dart';
+import 'package:thuprai_delivery/ui/views/order_details/order_details_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -40,6 +41,7 @@ import 'package:thuprai_delivery/ui/views/fulfilled/fulfilled_view.dart';
     MaterialRoute(page: ReturnedView),
     MaterialRoute(page: CourieredView),
     MaterialRoute(page: FulfilledView),
+    MaterialRoute(page: OrderDetailsView),
 // @stacked-route
   ],
   dependencies: [

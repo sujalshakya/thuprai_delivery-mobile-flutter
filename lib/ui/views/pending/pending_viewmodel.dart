@@ -12,6 +12,8 @@ class PendingViewmodel extends BaseViewModel {
   List<Pending> orders = [];
 
   Future<void> getOrders() async {
+    setBusy(true);
+
     try {
       List<Pending> fetchedOrders = await _processRepo.getPendingOrders();
       orders = fetchedOrders;
@@ -20,6 +22,8 @@ class PendingViewmodel extends BaseViewModel {
           variant: DialogType.errorAlert,
           description: e.response!.data['detail']);
     }
+    setBusy(false);
+
     rebuildUi();
   }
 }
