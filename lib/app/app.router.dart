@@ -211,8 +211,10 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i14.PickupDetailsView: (data) {
+      final args = data.getArgs<PickupDetailsViewArguments>(nullOk: false);
       return _i15.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i14.PickupDetailsView(),
+        builder: (context) =>
+            _i14.PickupDetailsView(key: args.key, partner: args.partner),
         settings: data,
       );
     },
@@ -261,6 +263,33 @@ class OrderDetailsViewArguments {
         orderDispatch.hashCode ^
         order.hashCode ^
         price.hashCode;
+  }
+}
+
+class PickupDetailsViewArguments {
+  const PickupDetailsViewArguments({
+    this.key,
+    required this.partner,
+  });
+
+  final _i15.Key? key;
+
+  final String partner;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "partner": "$partner"}';
+  }
+
+  @override
+  bool operator ==(covariant PickupDetailsViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key && other.partner == partner;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ partner.hashCode;
   }
 }
 
@@ -439,14 +468,17 @@ extension NavigatorStateExtension on _i17.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToPickupDetailsView([
+  Future<dynamic> navigateToPickupDetailsView({
+    _i15.Key? key,
+    required String partner,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.pickupDetailsView,
+        arguments: PickupDetailsViewArguments(key: key, partner: partner),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -627,14 +659,17 @@ extension NavigatorStateExtension on _i17.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithPickupDetailsView([
+  Future<dynamic> replaceWithPickupDetailsView({
+    _i15.Key? key,
+    required String partner,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.pickupDetailsView,
+        arguments: PickupDetailsViewArguments(key: key, partner: partner),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
