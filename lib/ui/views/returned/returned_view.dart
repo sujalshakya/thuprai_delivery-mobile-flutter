@@ -27,15 +27,36 @@ class ReturnedView extends StackedView<ReturnedViewModel> {
                   itemCount: viewModel.orders.length,
                   itemBuilder: (context, index) {
                     final order = viewModel.orders[index];
+                    String? payment = order.paymentEvents?.isNotEmpty == true
+                        ? order.paymentEvents![0].amount
+                        : '0';
 
-                    return OrderListtile(
-                      orderId: order.number!,
-                      payment: order.totalInclTax!,
-                      name: order.shippingAddress?.firstName ?? "",
-                      address1: order.shippingAddress?.line1 ?? "",
-                      address2: order.shippingAddress?.line4 ?? "",
-                      paid: false,
-                    );
+                    String? price = order.totalInclTax;
+                    double result =
+                        double.parse(price!) - double.parse(payment ?? '0');
+                    return result == 0
+                        ? OrderListtile(
+                            navigate: () {
+                              viewModel.navigate(order, result.toString());
+                            },
+                            orderId: order.number!,
+                            paid: true,
+                            payment: result.toString(),
+                            name: order.shippingAddress?.firstName ?? "",
+                            address1: order.shippingAddress?.line1 ?? "",
+                            address2: order.shippingAddress?.line4 ?? "",
+                          )
+                        : OrderListtile(
+                            navigate: () {
+                              viewModel.navigate(order, result.toString());
+                            },
+                            payment: result.toString(),
+                            orderId: order.number!,
+                            paid: false,
+                            name: order.shippingAddress?.firstName ?? "",
+                            address1: order.shippingAddress?.line1 ?? "",
+                            address2: order.shippingAddress?.line4 ?? "",
+                          );
                   }),
         ));
   }

@@ -37,20 +37,22 @@ class CourieredView extends StackedView<CourieredViewModel> {
                     return result == 0
                         ? OrderListtile(
                             navigate: () {
-                              viewModel.navigate();
+                              viewModel.navigate(
+                                  order, result.toStringAsFixed(2));
                             },
                             orderId: order.number!,
                             paid: true,
-                            payment: order.totalInclTax!,
+                            payment: result.toStringAsFixed(2),
                             name: order.shippingAddress!.firstName!,
                             address1: order.shippingAddress!.line1!,
                             address2: order.shippingAddress!.line4!,
                           )
                         : OrderListtile(
                             navigate: () {
-                              viewModel.navigate();
+                              viewModel.navigate(
+                                  order, result.toStringAsFixed(2));
                             },
-                            payment: order.totalInclTax!,
+                            payment: result.toStringAsFixed(2),
                             orderId: order.number!,
                             paid: false,
                             name: order.shippingAddress!.firstName!,

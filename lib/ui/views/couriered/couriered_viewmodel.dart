@@ -26,7 +26,7 @@ class CourieredViewModel extends BaseViewmodelWrapper {
     rebuildUi();
   }
 
-  void navigate() {
-    navigationService.navigateToOrderDetailsView();
+  void navigate(Order order, String price) {
+    navigationService.navigateToOrderDetailsView(order: order, price: price);
   }
 }

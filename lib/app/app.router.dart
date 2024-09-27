@@ -5,10 +5,11 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i14;
+import 'package:flutter/material.dart' as _i15;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i15;
+import 'package:stacked_services/stacked_services.dart' as _i17;
+import 'package:thuprai_delivery/base/model/order_model.dart' as _i16;
 import 'package:thuprai_delivery/ui/views/couriered/couriered_view.dart'
     as _i11;
 import 'package:thuprai_delivery/ui/views/dispatched/dispatched_view.dart'
@@ -22,6 +23,8 @@ import 'package:thuprai_delivery/ui/views/order_details/order_details_view.dart'
 import 'package:thuprai_delivery/ui/views/pending/pending_view.dart' as _i9;
 import 'package:thuprai_delivery/ui/views/picking_up/picking_up_view.dart'
     as _i7;
+import 'package:thuprai_delivery/ui/views/pickup_details/pickup_details_view.dart'
+    as _i14;
 import 'package:thuprai_delivery/ui/views/processing/processing_view.dart'
     as _i8;
 import 'package:thuprai_delivery/ui/views/returned/returned_view.dart' as _i10;
@@ -54,6 +57,8 @@ class Routes {
 
   static const orderDetailsView = '/order-details-view';
 
+  static const pickupDetailsView = '/pickup-details-view';
+
   static const all = <String>{
     homeView,
     startupView,
@@ -67,6 +72,7 @@ class Routes {
     courieredView,
     fulfilledView,
     orderDetailsView,
+    pickupDetailsView,
   };
 }
 
@@ -120,78 +126,93 @@ class StackedRouter extends _i1.RouterBase {
       Routes.orderDetailsView,
       page: _i13.OrderDetailsView,
     ),
+    _i1.RouteDef(
+      Routes.pickupDetailsView,
+      page: _i14.PickupDetailsView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i14.MaterialPageRoute<dynamic>(
+      return _i15.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i3.StartupView: (data) {
-      return _i14.MaterialPageRoute<dynamic>(
+      return _i15.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },
     _i4.UiToolkitsView: (data) {
-      return _i14.MaterialPageRoute<dynamic>(
+      return _i15.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.UiToolkitsView(),
         settings: data,
       );
     },
     _i5.LoginView: (data) {
-      return _i14.MaterialPageRoute<dynamic>(
+      return _i15.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.LoginView(),
         settings: data,
       );
     },
     _i6.DispatchedView: (data) {
-      return _i14.MaterialPageRoute<dynamic>(
+      return _i15.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.DispatchedView(),
         settings: data,
       );
     },
     _i7.PickingUpView: (data) {
-      return _i14.MaterialPageRoute<dynamic>(
+      return _i15.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.PickingUpView(),
         settings: data,
       );
     },
     _i8.ProcessingView: (data) {
-      return _i14.MaterialPageRoute<dynamic>(
+      return _i15.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.ProcessingView(),
         settings: data,
       );
     },
     _i9.PendingView: (data) {
-      return _i14.MaterialPageRoute<dynamic>(
+      return _i15.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.PendingView(),
         settings: data,
       );
     },
     _i10.ReturnedView: (data) {
-      return _i14.MaterialPageRoute<dynamic>(
+      return _i15.MaterialPageRoute<dynamic>(
         builder: (context) => const _i10.ReturnedView(),
         settings: data,
       );
     },
     _i11.CourieredView: (data) {
-      return _i14.MaterialPageRoute<dynamic>(
+      return _i15.MaterialPageRoute<dynamic>(
         builder: (context) => const _i11.CourieredView(),
         settings: data,
       );
     },
     _i12.FulfilledView: (data) {
-      return _i14.MaterialPageRoute<dynamic>(
+      return _i15.MaterialPageRoute<dynamic>(
         builder: (context) => const _i12.FulfilledView(),
         settings: data,
       );
     },
     _i13.OrderDetailsView: (data) {
-      return _i14.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i13.OrderDetailsView(),
+      final args = data.getArgs<OrderDetailsViewArguments>(nullOk: false);
+      return _i15.MaterialPageRoute<dynamic>(
+        builder: (context) => _i13.OrderDetailsView(
+            key: args.key,
+            orderDispatch: args.orderDispatch,
+            order: args.order,
+            price: args.price),
+        settings: data,
+      );
+    },
+    _i14.PickupDetailsView: (data) {
+      return _i15.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i14.PickupDetailsView(),
         settings: data,
       );
     },
@@ -204,7 +225,46 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i15.NavigationService {
+class OrderDetailsViewArguments {
+  const OrderDetailsViewArguments({
+    this.key,
+    this.orderDispatch,
+    required this.order,
+    required this.price,
+  });
+
+  final _i15.Key? key;
+
+  final bool? orderDispatch;
+
+  final _i16.Order order;
+
+  final String price;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "orderDispatch": "$orderDispatch", "order": "$order", "price": "$price"}';
+  }
+
+  @override
+  bool operator ==(covariant OrderDetailsViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key &&
+        other.orderDispatch == orderDispatch &&
+        other.order == order &&
+        other.price == price;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^
+        orderDispatch.hashCode ^
+        order.hashCode ^
+        price.hashCode;
+  }
+}
+
+extension NavigatorStateExtension on _i17.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -359,14 +419,34 @@ extension NavigatorStateExtension on _i15.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToOrderDetailsView([
+  Future<dynamic> navigateToOrderDetailsView({
+    _i15.Key? key,
+    bool? orderDispatch,
+    required _i16.Order order,
+    required String price,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo<dynamic>(Routes.orderDetailsView,
+        arguments: OrderDetailsViewArguments(
+            key: key, orderDispatch: orderDispatch, order: order, price: price),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToPickupDetailsView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
   ]) async {
-    return navigateTo<dynamic>(Routes.orderDetailsView,
+    return navigateTo<dynamic>(Routes.pickupDetailsView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -527,14 +607,34 @@ extension NavigatorStateExtension on _i15.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithOrderDetailsView([
+  Future<dynamic> replaceWithOrderDetailsView({
+    _i15.Key? key,
+    bool? orderDispatch,
+    required _i16.Order order,
+    required String price,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return replaceWith<dynamic>(Routes.orderDetailsView,
+        arguments: OrderDetailsViewArguments(
+            key: key, orderDispatch: orderDispatch, order: order, price: price),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithPickupDetailsView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
   ]) async {
-    return replaceWith<dynamic>(Routes.orderDetailsView,
+    return replaceWith<dynamic>(Routes.pickupDetailsView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

@@ -6,7 +6,7 @@ import 'package:thuprai_delivery/ui/views/login/models/login_response.dart';
 import 'package:thuprai_delivery/ui/views/picking_up/models/picking_up_model.dart';
 part 'api_service.g.dart';
 
-@RestApi(baseUrl: "https://tbe.thuprai.com/v1/")
+@RestApi()
 abstract class ApiService {
   factory ApiService(Dio dio) = _ApiService;
 

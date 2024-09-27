@@ -36,20 +36,26 @@ class PendingView extends StackedView<PendingViewmodel> {
                         double.parse(price!) - double.parse(payment ?? '0');
                     return result == 0
                         ? OrderListtile(
+                            navigate: () {
+                              viewModel.navigate(order, result.toString());
+                            },
                             orderId: order.number!,
                             paid: true,
-                            payment: order.totalInclTax!,
-                            name: order.shippingAddress!.firstName!,
-                            address1: order.shippingAddress!.line1!,
-                            address2: order.shippingAddress!.line4!,
+                            payment: result.toString(),
+                            name: order.shippingAddress?.firstName ?? "",
+                            address1: order.shippingAddress?.line1 ?? "",
+                            address2: order.shippingAddress?.line4 ?? "",
                           )
                         : OrderListtile(
-                            payment: order.totalInclTax!,
+                            navigate: () {
+                              viewModel.navigate(order, result.toString());
+                            },
+                            payment: result.toString(),
                             orderId: order.number!,
                             paid: false,
-                            name: order.shippingAddress!.firstName!,
-                            address1: order.shippingAddress!.line1!,
-                            address2: order.shippingAddress!.line4!,
+                            name: order.shippingAddress?.firstName ?? "",
+                            address1: order.shippingAddress?.line1 ?? "",
+                            address2: order.shippingAddress?.line4 ?? "",
                           );
                   }),
         ));

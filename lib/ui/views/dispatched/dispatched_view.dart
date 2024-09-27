@@ -36,15 +36,23 @@ class DispatchedView extends StackedView<DispatchedViewModel> {
                         double.parse(price!) - double.parse(payment ?? '0');
                     return result == 0
                         ? OrderListtile(
+                            navigate: () {
+                              viewModel.navigate(
+                                  order, result.toStringAsFixed(2));
+                            },
                             orderId: order.number!,
                             paid: true,
-                            payment: order.totalInclTax!,
+                            payment: result.toStringAsFixed(2),
                             name: order.shippingAddress!.firstName!,
                             address1: order.shippingAddress!.line1!,
                             address2: order.shippingAddress!.line4!,
                           )
                         : OrderListtile(
-                            payment: order.totalInclTax!,
+                            navigate: () {
+                              viewModel.navigate(
+                                  order, result.toStringAsFixed(2));
+                            },
+                            payment: result.toStringAsFixed(2),
                             orderId: order.number!,
                             paid: false,
                             name: order.shippingAddress!.firstName!,

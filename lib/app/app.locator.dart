@@ -24,6 +24,7 @@ import '../ui/views/returned/repository/returned_repository_implementation.dart'
 
 final locator = StackedLocator.instance;
 final dio = locator<DioService>().dio;
+
 Future<void> setupLocator({
   String? environment,
   EnvironmentFilter? environmentFilter,

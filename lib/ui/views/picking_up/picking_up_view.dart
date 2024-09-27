@@ -16,43 +16,48 @@ class PickingUpView extends StackedView<PickingUpViewModel> {
   ) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-        child: viewModel.isBusy
-            ? Center(
-                child: CircularProgressIndicator(
-                color: Theme.of(context).colorScheme.onPrimary,
-              ))
-            : ListView.builder(
-                shrinkWrap: true,
-                itemCount: viewModel.orders.length,
-                itemBuilder: (context, i) {
-                  final order = viewModel.orders[i];
+      body: viewModel.isBusy
+          ? Center(
+              child: CircularProgressIndicator(
+              color: Theme.of(context).colorScheme.onPrimary,
+            ))
+          : SingleChildScrollView(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+                child: ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: viewModel.orders.length,
+                  itemBuilder: (context, i) {
+                    final order = viewModel.orders[i];
 
-                  return Column(
-                    children: [
-                      ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: order.lines.length,
-                        itemBuilder: (context, j) {
-                          final line = order.lines[j];
-                          if (line.status == "Picking-Up") {
-                            return PickupTileWidget(
-                              partner: line.partner,
-                              book1: line.title,
-                            );
-                          }
-                          return const SizedBox.shrink();
-                        },
-                      ),
-                      Divider(
-                        color: Theme.of(context).colorScheme.onSecondary,
-                      )
-                    ],
-                  );
-                },
+                    return Column(
+                      children: [
+                        ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: order.lines.length,
+                          itemBuilder: (context, j) {
+                            final line = order.lines[j];
+                            if (line.status == "Picking-Up") {
+                              return PickupTileWidget(
+                                partner: line.partner,
+                                book1: line.title,
+                              );
+                            }
+                            return const SizedBox.shrink();
+                          },
+                        ),
+                        Divider(
+                          color: Theme.of(context).colorScheme.onSecondary,
+                        )
+                      ],
+                    );
+                  },
+                ),
               ),
-      ),
+            ),
     );
   }
 
