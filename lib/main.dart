@@ -26,7 +26,7 @@ class MainApp extends StatelessWidget {
           return MaterialApp(
             theme: light,
             debugShowCheckedModeBanner: false,
-            initialRoute: Routes.startupView,
+            initialRoute: Routes.homeView,
             onGenerateRoute: StackedRouter().onGenerateRoute,
             navigatorKey: StackedService.navigatorKey,
             navigatorObservers: [

@@ -29,8 +29,8 @@ class ReturnedView extends StackedView<ReturnedViewModel> {
                     final order = viewModel.orders[index];
 
                     return OrderListtile(
-                      orderId: order.number,
-                      payment: order.totalInclTax,
+                      orderId: order.number!,
+                      payment: order.totalInclTax!,
                       name: order.shippingAddress?.firstName ?? "",
                       address1: order.shippingAddress?.line1 ?? "",
                       address2: order.shippingAddress?.line4 ?? "",

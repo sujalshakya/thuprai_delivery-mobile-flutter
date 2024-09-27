@@ -1,12 +1,10 @@
 import 'package:thuprai_delivery/app/app.locator.dart';
 import 'package:thuprai_delivery/app/app.router.dart';
 import 'package:thuprai_delivery/base/service/secure_storage_service.dart';
-import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
+import 'package:thuprai_delivery/base/wrapper/base_viewmodel_wrapper.dart';
 
-class HomeViewModel extends BaseViewModel {
+class HomeViewModel extends BaseViewmodelWrapper {
   final _tokenService = locator<SecureStorageService>();
-  final _navigationService = locator<NavigationService>();
   final List<String> titleList = [
     "Dispatched",
     "Picking Up",
@@ -25,6 +23,6 @@ class HomeViewModel extends BaseViewModel {
 
   void logout() {
     _tokenService.deleteToken('token');
-    _navigationService.replaceWithLoginView();
+    navigationService.replaceWithLoginView();
   }
 }

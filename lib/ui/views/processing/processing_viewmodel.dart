@@ -1,24 +1,22 @@
 import 'package:dio/dio.dart';
-import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 import 'package:thuprai_delivery/app/app.dialogs.dart';
 import 'package:thuprai_delivery/app/app.locator.dart';
-import 'package:thuprai_delivery/ui/views/processing/models/processing_model.dart';
+import 'package:thuprai_delivery/base/model/order_model.dart';
+import 'package:thuprai_delivery/base/wrapper/base_viewmodel_wrapper.dart';
 import 'package:thuprai_delivery/ui/views/processing/repository/processing_repository_implementation.dart';
 
-class ProcessingViewModel extends BaseViewModel {
+class ProcessingViewModel extends BaseViewmodelWrapper {
   final _processRepo = locator<ProcessingRepositoryImplementation>();
-  final _dialogService = locator<DialogService>();
-  List<Processing> orders = [];
+  List<Order> orders = [];
 
   Future<void> getOrders() async {
     setBusy(true);
 
     try {
-      List<Processing> fetchedOrders = await _processRepo.getProcessingOrders();
+      List<Order> fetchedOrders = await _processRepo.getProcessingOrders();
       orders = fetchedOrders;
     } on DioException catch (e) {
-      _dialogService.showCustomDialog(
+      dialogService.showCustomDialog(
           variant: DialogType.errorAlert,
           description: e.response!.data['detail']);
     }

@@ -58,12 +58,12 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<List<OrderDispatch>> getDispatchedOrders() async {
+  Future<List<Order>> getDispatchedOrders() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<OrderDispatch>>(Options(
+    final _options = _setStreamType<List<Order>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -80,10 +80,10 @@ class _ApiService implements ApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<OrderDispatch> _value;
+    late List<Order> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => OrderDispatch.fromJson(i as Map<String, dynamic>))
+          .map((dynamic i) => Order.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
@@ -93,12 +93,12 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<List<Pending>> getPendingOrders() async {
+  Future<List<Order>> getPendingOrders() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<Pending>>(Options(
+    final _options = _setStreamType<List<Order>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -115,10 +115,10 @@ class _ApiService implements ApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<Pending> _value;
+    late List<Order> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => Pending.fromJson(i as Map<String, dynamic>))
+          .map((dynamic i) => Order.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
@@ -128,12 +128,12 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<List<Couriered>> getCourieredOrders() async {
+  Future<List<Order>> getCourieredOrders() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<Couriered>>(Options(
+    final _options = _setStreamType<List<Order>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -150,10 +150,10 @@ class _ApiService implements ApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<Couriered> _value;
+    late List<Order> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => Couriered.fromJson(i as Map<String, dynamic>))
+          .map((dynamic i) => Order.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
@@ -198,12 +198,12 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<List<Processing>> getProcessingOrders() async {
+  Future<List<Order>> getProcessingOrders() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<Processing>>(Options(
+    final _options = _setStreamType<List<Order>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -220,10 +220,10 @@ class _ApiService implements ApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<Processing> _value;
+    late List<Order> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => Processing.fromJson(i as Map<String, dynamic>))
+          .map((dynamic i) => Order.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
@@ -233,12 +233,12 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<List<Returned>> getReturnedOrders() async {
+  Future<List<Order>> getReturnedOrders() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<Returned>>(Options(
+    final _options = _setStreamType<List<Order>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -255,10 +255,10 @@ class _ApiService implements ApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<Returned> _value;
+    late List<Order> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => Returned.fromJson(i as Map<String, dynamic>))
+          .map((dynamic i) => Order.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);

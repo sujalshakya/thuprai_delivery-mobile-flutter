@@ -1,5 +1,5 @@
-import 'package:thuprai_delivery/ui/views/pending/models/pending_model.dart';
+import 'package:thuprai_delivery/base/model/order_model.dart';
 
 abstract class PendingRepository {
-  Future<List<Pending>> getPendingOrders();
+  Future<List<Order>> getPendingOrders();
 }

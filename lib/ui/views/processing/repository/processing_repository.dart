@@ -1,5 +1,5 @@
-import 'package:thuprai_delivery/ui/views/processing/models/processing_model.dart';
+import 'package:thuprai_delivery/base/model/order_model.dart';
 
 abstract class ProcessingRepository {
-  Future<List<Processing>> getDispatchedOrders();
+  Future<List<Order>> getDispatchedOrders();
 }

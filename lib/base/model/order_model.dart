@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-class OrderDispatch {
+class Order {
   int? id;
   String? number;
   DateTime? datePlaced;
@@ -9,9 +9,9 @@ class OrderDispatch {
   List<Line>? lines;
   String? shippingMethod;
   String? shippingInclTax;
-  List<dynamic>? paymentEvents;
+  List<PaymentEvent>? paymentEvents;
 
-  OrderDispatch({
+  Order({
     this.id,
     this.number,
     this.datePlaced,
@@ -23,12 +23,11 @@ class OrderDispatch {
     this.paymentEvents,
   });
 
-  factory OrderDispatch.fromRawJson(String str) =>
-      OrderDispatch.fromJson(json.decode(str));
+  factory Order.fromRawJson(String str) => Order.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
-  factory OrderDispatch.fromJson(Map<String, dynamic> json) => OrderDispatch(
+  factory Order.fromJson(Map<String, dynamic> json) => Order(
         id: json["id"],
         number: json["number"],
         datePlaced: json["date_placed"] == null
@@ -45,7 +44,8 @@ class OrderDispatch {
         shippingInclTax: json["shipping_incl_tax"],
         paymentEvents: json["payment_events"] == null
             ? []
-            : List<dynamic>.from(json["payment_events"]!.map((x) => x)),
+            : List<PaymentEvent>.from(
+                json["payment_events"]!.map((x) => PaymentEvent.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -61,7 +61,7 @@ class OrderDispatch {
         "shipping_incl_tax": shippingInclTax,
         "payment_events": paymentEvents == null
             ? []
-            : List<dynamic>.from(paymentEvents!.map((x) => x)),
+            : List<dynamic>.from(paymentEvents!.map((x) => x.toJson())),
       };
 }
 
@@ -122,6 +122,35 @@ class Line {
         "thumbnail": thumbnail,
         "image": image,
         "product_link": productLink,
+      };
+}
+
+class PaymentEvent {
+  String? amount;
+  String? reference;
+  int? eventType;
+
+  PaymentEvent({
+    this.amount,
+    this.reference,
+    this.eventType,
+  });
+
+  factory PaymentEvent.fromRawJson(String str) =>
+      PaymentEvent.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory PaymentEvent.fromJson(Map<String, dynamic> json) => PaymentEvent(
+        amount: json["amount"],
+        reference: json["reference"],
+        eventType: json["event_type"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "amount": amount,
+        "reference": reference,
+        "event_type": eventType,
       };
 }
 

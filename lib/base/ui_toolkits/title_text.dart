@@ -24,7 +24,7 @@ class TitleText extends StatelessWidget {
       text,
       textAlign: align,
       maxLines: maxLines,
-      style: TextStyle(fontWeight: FontWeight.bold, color: color, fontSize: 20),
+      style: TextStyle(fontWeight: FontWeight.bold, color: color, fontSize: 18),
     );
   }
 }

@@ -1,3 +1,3 @@
-import 'package:stacked/stacked.dart';
+import 'package:thuprai_delivery/base/wrapper/base_viewmodel_wrapper.dart';
 
-class OrderDetailsViewModel extends BaseViewModel {}
+class OrderDetailsViewModel extends BaseViewmodelWrapper {}

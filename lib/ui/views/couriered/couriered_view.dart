@@ -36,6 +36,9 @@ class CourieredView extends StackedView<CourieredViewModel> {
                         double.parse(price!) - double.parse(payment ?? '0');
                     return result == 0
                         ? OrderListtile(
+                            navigate: () {
+                              viewModel.navigate();
+                            },
                             orderId: order.number!,
                             paid: true,
                             payment: order.totalInclTax!,
@@ -44,6 +47,9 @@ class CourieredView extends StackedView<CourieredViewModel> {
                             address2: order.shippingAddress!.line4!,
                           )
                         : OrderListtile(
+                            navigate: () {
+                              viewModel.navigate();
+                            },
                             payment: order.totalInclTax!,
                             orderId: order.number!,
                             paid: false,

@@ -1,5 +1,5 @@
-import 'package:thuprai_delivery/ui/views/returned/models/returned_model.dart';
+import 'package:thuprai_delivery/base/model/order_model.dart';
 
 abstract class ReturnedRepository {
-  Future<List<Returned>> getReturnedOrders();
+  Future<List<Order>> getReturnedOrders();
 }
