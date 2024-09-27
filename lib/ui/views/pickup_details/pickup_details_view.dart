@@ -5,7 +5,6 @@ import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_appbar.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_button.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_container.dart';
-
 import 'pickup_details_viewmodel.dart';
 
 class PickupDetailsView extends StackedView<PickupDetailsViewModel> {
@@ -68,9 +67,10 @@ class PickupDetailsView extends StackedView<PickupDetailsViewModel> {
                                   PrimaryText(
                                       text:
                                           "Quantity: ${viewModel.books[index].quantity}"),
-                                  const Padding(
-                                    padding: EdgeInsets.all(8.0),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
                                     child: PrimaryButton(
+                                        onTap: () {},
                                         text: "Mark as Picked Up"),
                                   )
                                 ],

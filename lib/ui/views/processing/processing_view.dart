@@ -39,6 +39,11 @@ class ProcessingView extends StackedView<ProcessingViewModel> {
                             navigate: () {
                               viewModel.navigate(order, result.toString());
                             },
+                            call: () {
+                              viewModel.call(
+                                  phoneNumber:
+                                      order.shippingAddress!.phoneNumber!);
+                            },
                             orderId: order.number!,
                             paid: true,
                             payment: result.toString(),
@@ -49,6 +54,11 @@ class ProcessingView extends StackedView<ProcessingViewModel> {
                         : OrderListtile(
                             navigate: () {
                               viewModel.navigate(order, result.toString());
+                            },
+                            call: () {
+                              viewModel.call(
+                                  phoneNumber:
+                                      order.shippingAddress!.phoneNumber!);
                             },
                             payment: result.toString(),
                             orderId: order.number!,

@@ -14,6 +14,7 @@ class OrderListtile extends StatelessWidget {
       required this.address1,
       required this.address2,
       this.navigate,
+      this.call,
       required this.name});
 
   /// The id of the order.
@@ -33,6 +34,9 @@ class OrderListtile extends StatelessWidget {
 
   /// The second half of the address of delivery.
   final String address2;
+
+  ///The function to call when icon is tapped.
+  final Function()? call;
 
   /// to track from where order details is navigated from.
   final Function()? navigate;
@@ -93,11 +97,14 @@ class OrderListtile extends StatelessWidget {
                 const Spacer(),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: CircleAvatar(
-                    backgroundColor: Theme.of(context).colorScheme.onSurface,
-                    radius: 20,
-                    child: Icon(Icons.phone,
-                        color: Theme.of(context).colorScheme.surface),
+                  child: GestureDetector(
+                    onTap: call,
+                    child: CircleAvatar(
+                      backgroundColor: Theme.of(context).colorScheme.onSurface,
+                      radius: 20,
+                      child: Icon(Icons.phone,
+                          color: Theme.of(context).colorScheme.surface),
+                    ),
                   ),
                 ),
               ],

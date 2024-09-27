@@ -39,6 +39,11 @@ class PendingView extends StackedView<PendingViewmodel> {
                             navigate: () {
                               viewModel.navigate(order, result.toString());
                             },
+                            call: () {
+                              viewModel.call(
+                                  phoneNumber:
+                                      order.shippingAddress!.phoneNumber!);
+                            },
                             orderId: order.number!,
                             paid: true,
                             payment: result.toString(),
@@ -51,6 +56,11 @@ class PendingView extends StackedView<PendingViewmodel> {
                               viewModel.navigate(order, result.toString());
                             },
                             payment: result.toString(),
+                            call: () {
+                              viewModel.call(
+                                  phoneNumber:
+                                      order.shippingAddress!.phoneNumber!);
+                            },
                             orderId: order.number!,
                             paid: false,
                             name: order.shippingAddress?.firstName ?? "",

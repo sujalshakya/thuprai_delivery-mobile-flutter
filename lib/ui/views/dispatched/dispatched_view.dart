@@ -46,11 +46,21 @@ class DispatchedView extends StackedView<DispatchedViewModel> {
                             name: order.shippingAddress!.firstName!,
                             address1: order.shippingAddress!.line1!,
                             address2: order.shippingAddress!.line4!,
+                            call: () {
+                              viewModel.call(
+                                  phoneNumber:
+                                      order.shippingAddress!.phoneNumber!);
+                            },
                           )
                         : OrderListtile(
                             navigate: () {
                               viewModel.navigate(
                                   order, result.toStringAsFixed(2));
+                            },
+                            call: () {
+                              viewModel.call(
+                                  phoneNumber:
+                                      order.shippingAddress!.phoneNumber!);
                             },
                             payment: result.toStringAsFixed(2),
                             orderId: order.number!,

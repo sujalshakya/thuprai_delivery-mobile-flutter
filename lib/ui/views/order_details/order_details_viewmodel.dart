@@ -7,17 +7,6 @@ class OrderDetailsViewModel extends BaseViewmodelWrapper {
     navigationService.back();
   }
 
-  Future<void> call({required String phoneNumber}) async {
-    final Uri urlParsed = Uri.parse('tel:$phoneNumber');
-
-    if (await canLaunchUrl(urlParsed)) {
-      await launchUrl(urlParsed);
-    } else {
-      dialogService.showCustomDialog(
-          variant: DialogType.errorAlert, description: "Could not open call");
-    }
-  }
-
   Future<void> sms({required String phoneNumber}) async {
     final Uri urlParsed = Uri.parse('sms:$phoneNumber');
 

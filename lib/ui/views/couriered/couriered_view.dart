@@ -40,6 +40,11 @@ class CourieredView extends StackedView<CourieredViewModel> {
                               viewModel.navigate(
                                   order, result.toStringAsFixed(2));
                             },
+                            call: () {
+                              viewModel.call(
+                                  phoneNumber:
+                                      order.shippingAddress!.phoneNumber!);
+                            },
                             orderId: order.number!,
                             paid: true,
                             payment: result.toStringAsFixed(2),
@@ -51,6 +56,11 @@ class CourieredView extends StackedView<CourieredViewModel> {
                             navigate: () {
                               viewModel.navigate(
                                   order, result.toStringAsFixed(2));
+                            },
+                            call: () {
+                              viewModel.call(
+                                  phoneNumber:
+                                      order.shippingAddress!.phoneNumber!);
                             },
                             payment: result.toStringAsFixed(2),
                             orderId: order.number!,
