@@ -29,7 +29,7 @@ class HeaderContainer extends StatelessWidget {
             children: [
               TitleText(text: "Order Id: #${order.number}"),
               const Spacer(),
-              price == "0.0"
+              price == "0.00"
                   ? PrimaryText(
                       text: "PAID",
                       fontSize: 16,

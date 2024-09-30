@@ -18,4 +18,8 @@ abstract class BaseViewmodelWrapper extends BaseViewModel {
           variant: DialogType.errorAlert, description: "Could not open call");
     }
   }
+
+  double getFinalPrice(payment, price) {
+    return double.parse(price!) - double.parse(payment ?? '0');
+  }
 }
