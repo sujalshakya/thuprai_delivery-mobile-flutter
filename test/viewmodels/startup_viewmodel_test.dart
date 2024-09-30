@@ -22,7 +22,7 @@ void main() async {
     });
 
     test('startup navigation test to loginView', () async {
-      FlutterSecureStorage.setMockInitialValues({'notoken': "notoken"});
+      FlutterSecureStorage.setMockInitialValues({'': ""});
       final navigation = getAndRegisterNavigationService();
       final model = StartupViewModel();
       await model.runStartupLogic();

@@ -11,12 +11,20 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i5;
 import 'package:stacked_services/stacked_services.dart' as _i4;
+import 'package:thuprai_delivery/base/model/order_model.dart' as _i12;
+import 'package:thuprai_delivery/base/network/api_service.dart' as _i10;
 import 'package:thuprai_delivery/base/service/secure_storage_service.dart'
     as _i9;
+import 'package:thuprai_delivery/ui/views/dispatched/repository/order_dispatched_repository_implementation.dart'
+    as _i14;
+import 'package:thuprai_delivery/ui/views/login/models/login_request.dart'
+    as _i11;
 import 'package:thuprai_delivery/ui/views/login/models/login_response.dart'
     as _i3;
 import 'package:thuprai_delivery/ui/views/login/repository/login_repository_implementation.dart'
-    as _i10;
+    as _i15;
+import 'package:thuprai_delivery/ui/views/picking_up/models/picking_up_model.dart'
+    as _i13;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -753,11 +761,123 @@ class MockSecureStorageService extends _i1.Mock
       );
 }
 
+/// A class which mocks [ApiService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockApiService extends _i1.Mock implements _i10.ApiService {
+  @override
+  _i7.Future<_i3.LoginResponse> login(_i11.LoginRequest? loginRequest) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #login,
+          [loginRequest],
+        ),
+        returnValue: _i7.Future<_i3.LoginResponse>.value(_FakeLoginResponse_1(
+          this,
+          Invocation.method(
+            #login,
+            [loginRequest],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i7.Future<_i3.LoginResponse>.value(_FakeLoginResponse_1(
+          this,
+          Invocation.method(
+            #login,
+            [loginRequest],
+          ),
+        )),
+      ) as _i7.Future<_i3.LoginResponse>);
+
+  @override
+  _i7.Future<List<_i12.Order>> getDispatchedOrders() => (super.noSuchMethod(
+        Invocation.method(
+          #getDispatchedOrders,
+          [],
+        ),
+        returnValue: _i7.Future<List<_i12.Order>>.value(<_i12.Order>[]),
+        returnValueForMissingStub:
+            _i7.Future<List<_i12.Order>>.value(<_i12.Order>[]),
+      ) as _i7.Future<List<_i12.Order>>);
+
+  @override
+  _i7.Future<List<_i12.Order>> getPendingOrders() => (super.noSuchMethod(
+        Invocation.method(
+          #getPendingOrders,
+          [],
+        ),
+        returnValue: _i7.Future<List<_i12.Order>>.value(<_i12.Order>[]),
+        returnValueForMissingStub:
+            _i7.Future<List<_i12.Order>>.value(<_i12.Order>[]),
+      ) as _i7.Future<List<_i12.Order>>);
+
+  @override
+  _i7.Future<List<_i12.Order>> getCourieredOrders() => (super.noSuchMethod(
+        Invocation.method(
+          #getCourieredOrders,
+          [],
+        ),
+        returnValue: _i7.Future<List<_i12.Order>>.value(<_i12.Order>[]),
+        returnValueForMissingStub:
+            _i7.Future<List<_i12.Order>>.value(<_i12.Order>[]),
+      ) as _i7.Future<List<_i12.Order>>);
+
+  @override
+  _i7.Future<List<_i13.PickingUp>> getPickingUpOrders() => (super.noSuchMethod(
+        Invocation.method(
+          #getPickingUpOrders,
+          [],
+        ),
+        returnValue: _i7.Future<List<_i13.PickingUp>>.value(<_i13.PickingUp>[]),
+        returnValueForMissingStub:
+            _i7.Future<List<_i13.PickingUp>>.value(<_i13.PickingUp>[]),
+      ) as _i7.Future<List<_i13.PickingUp>>);
+
+  @override
+  _i7.Future<List<_i12.Order>> getProcessingOrders() => (super.noSuchMethod(
+        Invocation.method(
+          #getProcessingOrders,
+          [],
+        ),
+        returnValue: _i7.Future<List<_i12.Order>>.value(<_i12.Order>[]),
+        returnValueForMissingStub:
+            _i7.Future<List<_i12.Order>>.value(<_i12.Order>[]),
+      ) as _i7.Future<List<_i12.Order>>);
+
+  @override
+  _i7.Future<List<_i12.Order>> getReturnedOrders() => (super.noSuchMethod(
+        Invocation.method(
+          #getReturnedOrders,
+          [],
+        ),
+        returnValue: _i7.Future<List<_i12.Order>>.value(<_i12.Order>[]),
+        returnValueForMissingStub:
+            _i7.Future<List<_i12.Order>>.value(<_i12.Order>[]),
+      ) as _i7.Future<List<_i12.Order>>);
+}
+
+/// A class which mocks [OrderDispatchedRepositoryImplementation].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockOrderDispatchedRepositoryImplementation extends _i1.Mock
+    implements _i14.OrderDispatchedRepositoryImplementation {
+  @override
+  _i7.Future<List<_i12.Order>> getDispatchedOrders() => (super.noSuchMethod(
+        Invocation.method(
+          #getDispatchedOrders,
+          [],
+        ),
+        returnValue: _i7.Future<List<_i12.Order>>.value(<_i12.Order>[]),
+        returnValueForMissingStub:
+            _i7.Future<List<_i12.Order>>.value(<_i12.Order>[]),
+      ) as _i7.Future<List<_i12.Order>>);
+}
+
 /// A class which mocks [LoginRepositoryImplementation].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockLoginRepositoryImplementation extends _i1.Mock
-    implements _i10.LoginRepositoryImplementation {
+    implements _i15.LoginRepositoryImplementation {
   @override
   _i7.Future<_i3.LoginResponse> loginApiRequest(
     dynamic email,
