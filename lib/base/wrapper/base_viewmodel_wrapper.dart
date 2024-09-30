@@ -2,6 +2,8 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:thuprai_delivery/app/app.dialogs.dart';
 import 'package:thuprai_delivery/app/app.locator.dart';
+import 'package:thuprai_delivery/app/app.router.dart';
+import 'package:thuprai_delivery/base/model/order_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 abstract class BaseViewmodelWrapper extends BaseViewModel {
@@ -21,5 +23,9 @@ abstract class BaseViewmodelWrapper extends BaseViewModel {
 
   double getFinalPrice(payment, price) {
     return double.parse(price!) - double.parse(payment ?? '0');
+  }
+
+  void navigate(Order order, String price) {
+    navigationService.navigateToOrderDetailsView(order: order, price: price);
   }
 }

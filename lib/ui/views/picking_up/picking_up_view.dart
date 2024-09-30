@@ -34,7 +34,7 @@ class PickingUpView extends StackedView<PickingUpViewModel> {
 
                     return GestureDetector(
                       onTap: () {
-                        viewModel.navigate(partner);
+                        viewModel.navigateToPickupDetailsView(partner);
                       },
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

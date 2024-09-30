@@ -26,7 +26,7 @@ class DispatchedViewModel extends BaseViewmodelWrapper {
     rebuildUi();
   }
 
-  void navigate(Order order, String price) {
+  void navigateToOrderDetailsView(Order order, String price) {
     navigationService.navigateToOrderDetailsView(
         order: order, price: price, orderDispatch: true);
   }

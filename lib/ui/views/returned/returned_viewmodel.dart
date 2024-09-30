@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 
 import 'package:thuprai_delivery/app/app.dialogs.dart';
 import 'package:thuprai_delivery/app/app.locator.dart';
-import 'package:thuprai_delivery/app/app.router.dart';
 import 'package:thuprai_delivery/base/model/order_model.dart';
 import 'package:thuprai_delivery/base/wrapper/base_viewmodel_wrapper.dart';
 import 'package:thuprai_delivery/ui/views/returned/repository/returned_repository_implementation.dart';
@@ -25,9 +24,5 @@ class ReturnedViewModel extends BaseViewmodelWrapper {
     setBusy(false);
 
     rebuildUi();
-  }
-
-  void navigate(Order order, String price) {
-    navigationService.navigateToOrderDetailsView(order: order, price: price);
   }
 }

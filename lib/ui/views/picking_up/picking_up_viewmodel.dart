@@ -46,7 +46,7 @@ class PickingUpViewModel extends BaseViewmodelWrapper {
     }
   }
 
-  void navigate(String partner) {
+  void navigateToPickupDetailsView(String partner) {
     navigationService.navigateToPickupDetailsView(partner: partner);
   }
 }

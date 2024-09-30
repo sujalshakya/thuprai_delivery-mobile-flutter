@@ -39,7 +39,7 @@ class DispatchedView extends StackedView<DispatchedViewModel> {
                     return result == 0
                         ? OrderListtile(
                             navigate: () {
-                              viewModel.navigate(
+                              viewModel.navigateToOrderDetailsView(
                                   order, result.toStringAsFixed(2));
                             },
                             orderId: order.number!,
@@ -56,7 +56,7 @@ class DispatchedView extends StackedView<DispatchedViewModel> {
                           )
                         : OrderListtile(
                             navigate: () {
-                              viewModel.navigate(
+                              viewModel.navigateToOrderDetailsView(
                                   order, result.toStringAsFixed(2));
                             },
                             call: () {
