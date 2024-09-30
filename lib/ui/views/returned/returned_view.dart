@@ -27,13 +27,16 @@ class ReturnedView extends StackedView<ReturnedViewModel> {
                   itemCount: viewModel.orders.length,
                   itemBuilder: (context, index) {
                     final order = viewModel.orders[index];
+
+                    /// Check if any payment has been made in advance.
                     String? payment = order.paymentEvents?.isNotEmpty == true
                         ? order.paymentEvents![0].amount
                         : '0';
-
                     String? price = order.totalInclTax;
                     double result =
                         double.parse(price!) - double.parse(payment ?? '0');
+
+                    /// Show paid if full price has already been paid.
                     return result == 0
                         ? OrderListtile(
                             navigate: () {
