@@ -19,61 +19,58 @@ class BookOrderedContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PrimaryContainer(
-      child: Expanded(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const TitleText(text: "Book Ordered"),
-            ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: order.lines?.length ?? 0,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: 200.w,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              PrimaryText(
-                                text: order.lines![index].title ?? "",
-                                fontWeight: FontWeight.w600,
-                              ),
-                              PrimaryText(
-                                text:
-                                    "Quantity: ${order.lines![index].quantity ?? ""}",
-                                color:
-                                    Theme.of(context).colorScheme.onSecondary,
-                              )
-                            ],
-                          ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const TitleText(text: "Book Ordered"),
+          ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: order.lines?.length ?? 0,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 200.w,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            PrimaryText(
+                              text: order.lines![index].title ?? "",
+                              fontWeight: FontWeight.w600,
+                            ),
+                            PrimaryText(
+                              text:
+                                  "Quantity: ${order.lines![index].quantity ?? ""}",
+                              color: Theme.of(context).colorScheme.onSecondary,
+                            )
+                          ],
                         ),
-                        const Spacer(),
-                        PrimaryText(
-                          text:
-                              "Rs. ${order.lines![index].unitPriceInclTax ?? ""}",
-                          fontWeight: FontWeight.w600,
-                        )
-                      ],
-                    ),
-                  );
-                }),
-            Row(
-              children: [
-                TitleText(
-                    text: "Total",
-                    color: Theme.of(context).colorScheme.onPrimary),
-                const Spacer(),
-                TitleText(
-                    text: "Rs. ${order.totalInclTax}",
-                    color: Theme.of(context).colorScheme.onPrimary)
-              ],
-            )
-          ],
-        ),
+                      ),
+                      const Spacer(),
+                      PrimaryText(
+                        text:
+                            "Rs. ${order.lines![index].unitPriceInclTax ?? ""}",
+                        fontWeight: FontWeight.w600,
+                      )
+                    ],
+                  ),
+                );
+              }),
+          Row(
+            children: [
+              TitleText(
+                  text: "Total",
+                  color: Theme.of(context).colorScheme.onPrimary),
+              const Spacer(),
+              TitleText(
+                  text: "Rs. ${order.totalInclTax}",
+                  color: Theme.of(context).colorScheme.onPrimary)
+            ],
+          )
+        ],
       ),
     );
   }
