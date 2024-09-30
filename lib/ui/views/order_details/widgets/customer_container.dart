@@ -17,6 +17,8 @@ class CustomerContainer extends StatelessWidget {
 
   /// The details of the specific order.
   final Order order;
+
+  /// Pass specific instance of viewmodel.
   final OrderDetailsViewModel vm;
 
   @override
@@ -31,7 +33,7 @@ class CustomerContainer extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8),
             child: PrimaryText(
-              text: order.shippingAddress!.firstName ?? "",
+              text: order.shippingAddress?.firstName ?? "",
             ),
           ),
           Row(
@@ -50,7 +52,7 @@ class CustomerContainer extends StatelessWidget {
                     vm.openMap("${order.shippingAddress?.line1}");
                   },
                   child: CircleAvatar(
-                    backgroundColor: Theme.of(context).colorScheme.onSurface,
+                    backgroundColor: Theme.of(context).colorScheme.onPrimary,
                     radius: 20,
                     child: Icon(Icons.location_on,
                         color: Theme.of(context).colorScheme.surface),
@@ -71,7 +73,7 @@ class CustomerContainer extends StatelessWidget {
                         phoneNumber: "${order.shippingAddress?.phoneNumber}");
                   },
                   child: CircleAvatar(
-                    backgroundColor: Theme.of(context).colorScheme.onSurface,
+                    backgroundColor: Theme.of(context).colorScheme.onPrimary,
                     radius: 20,
                     child: Icon(Icons.call,
                         color: Theme.of(context).colorScheme.surface),
@@ -83,10 +85,10 @@ class CustomerContainer extends StatelessWidget {
                 child: GestureDetector(
                   onTap: () {
                     vm.sms(
-                        phoneNumber: "${order.shippingAddress?.phoneNumber}");
+                        phoneNumber: order.shippingAddress?.phoneNumber ?? "");
                   },
                   child: CircleAvatar(
-                    backgroundColor: Theme.of(context).colorScheme.onSurface,
+                    backgroundColor: Theme.of(context).colorScheme.onPrimary,
                     radius: 20,
                     child: Icon(Icons.message,
                         color: Theme.of(context).colorScheme.surface),

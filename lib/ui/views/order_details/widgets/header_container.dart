@@ -27,7 +27,7 @@ class HeaderContainer extends StatelessWidget {
         children: [
           Row(
             children: [
-              TitleText(text: "Order Id: ${order.number}"),
+              TitleText(text: "Order Id: #${order.number}"),
               const Spacer(),
               price == "0.0"
                   ? PrimaryText(

@@ -27,7 +27,7 @@ class BookOrderedContainer extends StatelessWidget {
             ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: order.lines?.length,
+                itemCount: order.lines?.length ?? 0,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -39,12 +39,12 @@ class BookOrderedContainer extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               PrimaryText(
-                                text: "${order.lines![index].title}",
+                                text: order.lines![index].title ?? "",
                                 fontWeight: FontWeight.w600,
                               ),
                               PrimaryText(
                                 text:
-                                    "Quantity: ${order.lines![index].quantity}",
+                                    "Quantity: ${order.lines![index].quantity ?? ""}",
                                 color:
                                     Theme.of(context).colorScheme.onSecondary,
                               )
@@ -53,7 +53,8 @@ class BookOrderedContainer extends StatelessWidget {
                         ),
                         const Spacer(),
                         PrimaryText(
-                          text: "${order.lines![index].unitPriceInclTax}",
+                          text:
+                              "Rs. ${order.lines![index].unitPriceInclTax ?? ""}",
                           fontWeight: FontWeight.w600,
                         )
                       ],

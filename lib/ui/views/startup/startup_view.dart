@@ -16,7 +16,7 @@ class StartupView extends StackedView<StartupViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      body: Center(child: Logo(height: 50.h, width: 50.w)),
+      body: Center(child: Logo(height: 150.h, width: 150.w)),
     );
   }
 

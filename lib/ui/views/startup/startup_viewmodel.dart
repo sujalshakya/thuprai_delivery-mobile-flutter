@@ -9,6 +9,7 @@ class StartupViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final _tokenService = locator<SecureStorageService>();
   Future runStartupLogic() async {
+    await Future.delayed(const Duration(seconds: 1));
     final token = await _tokenService.getToken('token');
     debugPrint("token is $token");
     if (token == null) {

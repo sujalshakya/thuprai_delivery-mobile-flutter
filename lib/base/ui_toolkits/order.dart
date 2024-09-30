@@ -42,7 +42,7 @@ class OrderListtile extends StatelessWidget {
   final Function()? navigate;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: navigate,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -100,7 +100,7 @@ class OrderListtile extends StatelessWidget {
                   child: GestureDetector(
                     onTap: call,
                     child: CircleAvatar(
-                      backgroundColor: Theme.of(context).colorScheme.onSurface,
+                      backgroundColor: Theme.of(context).colorScheme.onPrimary,
                       radius: 20,
                       child: Icon(Icons.phone,
                           color: Theme.of(context).colorScheme.surface),

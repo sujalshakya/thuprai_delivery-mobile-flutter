@@ -5,6 +5,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/logo.dart';
+import 'package:thuprai_delivery/base/ui_toolkits/order.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_appbar.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/secondary_button.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_button.dart';
@@ -85,6 +86,14 @@ class UiToolkitsView extends StackedView<UiToolkitsViewModel>
                 text: "Button",
                 onTap: () {},
               ),
+
+              const OrderListtile(
+                  orderId: "9182293",
+                  paid: false,
+                  payment: "999",
+                  address1: "Lalitpur",
+                  address2: "sinchahit",
+                  name: "Sujal")
             ],
           ),
         )));
