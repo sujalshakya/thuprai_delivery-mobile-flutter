@@ -36,39 +36,21 @@ class ReturnedView extends StackedView<ReturnedViewModel> {
                         viewModel.getFinalPrice(payment, order.totalInclTax);
 
                     /// Show paid if full price has already been paid.
-                    return result == 0
-                        ? OrderListtile(
-                            navigate: () {
-                              viewModel.navigate(order, result.toString());
-                            },
-                            call: () {
-                              viewModel.call(
-                                  phoneNumber:
-                                      order.shippingAddress!.phoneNumber!);
-                            },
-                            orderId: order.number!,
-                            paid: true,
-                            payment: result.toString(),
-                            name: order.shippingAddress?.firstName ?? "",
-                            address1: order.shippingAddress?.line1 ?? "",
-                            address2: order.shippingAddress?.line4 ?? "",
-                          )
-                        : OrderListtile(
-                            navigate: () {
-                              viewModel.navigate(order, result.toString());
-                            },
-                            call: () {
-                              viewModel.call(
-                                  phoneNumber:
-                                      order.shippingAddress!.phoneNumber!);
-                            },
-                            payment: result.toString(),
-                            orderId: order.number!,
-                            paid: false,
-                            name: order.shippingAddress?.firstName ?? "",
-                            address1: order.shippingAddress?.line1 ?? "",
-                            address2: order.shippingAddress?.line4 ?? "",
-                          );
+                    return OrderListtile(
+                      navigate: () {
+                        viewModel.navigate(order, result.toString());
+                      },
+                      call: () {
+                        viewModel.call(
+                            phoneNumber: order.shippingAddress!.phoneNumber!);
+                      },
+                      orderId: order.number!,
+                      paid: (result == 0.00 || result == 0.0) ? true : false,
+                      payment: result.toString(),
+                      name: order.shippingAddress?.firstName ?? "",
+                      address1: order.shippingAddress?.line1 ?? "",
+                      address2: order.shippingAddress?.line4 ?? "",
+                    );
                   }),
         ));
   }

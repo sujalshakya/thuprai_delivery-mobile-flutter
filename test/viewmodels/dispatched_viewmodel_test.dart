@@ -12,7 +12,7 @@ void main() async {
   group('DispatchedViewModel Tests -', () {
     setUp(() => registerServices());
 
-    test('All the orders are fetched on widget build', () async {
+    test('Fetch Dispatched Orders', () async {
       final orderService =
           getAndRegisterOrderDispatchedRepositoryImplementation();
       when(orderService.getDispatchedOrders())
