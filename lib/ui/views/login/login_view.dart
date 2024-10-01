@@ -41,6 +41,7 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
                 width: 150.w,
               ),
               PrimaryTextfield(
+                key: const Key('email'),
                 prefix: const Icon(
                   Icons.mail,
                   size: 16,
@@ -60,6 +61,7 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
                 )
               ],
               PrimaryTextfield(
+                key: const Key('password'),
                 obscure: viewModel.passwordVisible,
                 suffix: GestureDetector(
                   onTap: () {
@@ -88,11 +90,11 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
                 height: 10.h,
               ),
               PrimaryButton(
+                key: const Key('login'),
                 text: "Login",
                 onTap: () {
                   viewModel.login(
                       emailController.text, passwordController.text);
-                  syncFormWithViewModel(viewModel);
                 },
               ),
               Row(mainAxisAlignment: MainAxisAlignment.end, children: [
@@ -121,6 +123,7 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
   void onViewModelReady(LoginViewModel viewModel) {
     SchedulerBinding.instance
         .addPostFrameCallback((timeStamp) => viewModel.suffixIconTap());
+    syncFormWithViewModel(viewModel);
   }
 
   @override

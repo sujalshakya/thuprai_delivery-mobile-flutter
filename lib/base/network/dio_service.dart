@@ -12,9 +12,9 @@ class DioService {
       ErrorInterceptor(),
       AwesomeDioInterceptor(
         logger: debugPrint,
-        logRequestHeaders: false,
-        logResponseHeaders: false,
-        logRequestTimeout: false,
+        // logRequestHeaders: false,
+        // logResponseHeaders: false,
+        // logRequestTimeout: false,
       )
     ]);
 }

@@ -38,7 +38,8 @@ class DispatchedView extends StackedView<DispatchedViewModel> {
                     /// Show paid if full price has already been paid.
                     return OrderListtile(
                       navigate: () {
-                        viewModel.navigate(order, result.toString());
+                        viewModel.navigateToOrderDetailsView(
+                            order, result.toString());
                       },
                       call: () {
                         viewModel.call(

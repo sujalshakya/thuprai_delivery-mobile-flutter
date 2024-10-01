@@ -40,6 +40,7 @@ class ErrorAlertDialog extends StackedView<ErrorAlertDialogModel> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Icon(
+                        key: const Key('dialog'),
                         Icons.error_outline,
                         color: Theme.of(context).colorScheme.error,
                         size: 40,
