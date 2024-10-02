@@ -12,13 +12,12 @@ void main() async {
   group('DispatchedViewModel Tests -', () {
     setUp(() => registerServices());
 
-    test('Fetch Dispatched Orders', () async {
-      final orderService =
-          getAndRegisterOrderDispatchedRepositoryImplementation();
-      when(orderService.getDispatchedOrders())
+    test('Fetch Orders', () async {
+      final orderService = getAndRegisterOrderRepositoryImplementation();
+      when(orderService.getOrders("type"))
           .thenAnswer((realInvocation) async => [Order()]);
-      await orderService.getDispatchedOrders();
-      List<Order> orders = await orderService.getDispatchedOrders();
+      await orderService.getOrders("type");
+      List<Order> orders = await orderService.getOrders("type");
 
       expect(orders.toString(), [Order()].toString());
     });

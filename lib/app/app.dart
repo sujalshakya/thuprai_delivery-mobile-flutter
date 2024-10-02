@@ -1,18 +1,14 @@
 import 'package:thuprai_delivery/base/network/dio_service.dart';
 import 'package:thuprai_delivery/base/network/api_service.dart';
+import 'package:thuprai_delivery/base/repository/order_repository_implementation.dart';
 import 'package:thuprai_delivery/base/service/secure_storage_service.dart';
 import 'package:thuprai_delivery/ui/bottom_sheets/floating/floating_box_bottom_sheet.dart';
 import 'package:thuprai_delivery/ui/bottom_sheets/notice/notice_sheet.dart';
 import 'package:thuprai_delivery/ui/dialogs/error_alert/error_alert_dialog.dart';
 import 'package:thuprai_delivery/ui/dialogs/info_alert/info_alert_dialog.dart';
-import 'package:thuprai_delivery/ui/views/couriered/repository/couriered_repository_implementation.dart';
-import 'package:thuprai_delivery/ui/views/dispatched/repository/order_dispatched_repository_implementation.dart';
+
 import 'package:thuprai_delivery/ui/views/home/home_view.dart';
 import 'package:thuprai_delivery/ui/views/login/repository/login_repository_implementation.dart';
-import 'package:thuprai_delivery/ui/views/pending/repository/pending_repository_implementation.dart';
-import 'package:thuprai_delivery/ui/views/picking_up/repository/picking_up_repository_implementation.dart';
-import 'package:thuprai_delivery/ui/views/processing/repository/processing_repository_implementation.dart';
-import 'package:thuprai_delivery/ui/views/returned/repository/returned_repository_implementation.dart';
 import 'package:thuprai_delivery/ui/views/startup/startup_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -53,12 +49,7 @@ import 'package:thuprai_delivery/ui/views/pickup_details/pickup_details_view.dar
     LazySingleton(classType: ApiService),
     LazySingleton(classType: DioService),
     LazySingleton(classType: SecureStorageService),
-    LazySingleton(classType: OrderDispatchedRepositoryImplementation),
-    LazySingleton(classType: ProcessingRepositoryImplementation),
-    LazySingleton(classType: CourieredRepositoryImplementation),
-    LazySingleton(classType: PendingRepositoryImplementation),
-    LazySingleton(classType: ReturnedRepositoryImplementation),
-    LazySingleton(classType: PickingUpRepositoryImplementation),
+    LazySingleton(classType: OrderRepositoryImplementation),
 
     LazySingleton(classType: LoginRepositoryImplementation),
 

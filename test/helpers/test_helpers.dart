@@ -3,8 +3,8 @@ import 'package:mockito/mockito.dart';
 import 'package:thuprai_delivery/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:thuprai_delivery/base/network/api_service.dart';
+import 'package:thuprai_delivery/base/repository/order_repository_implementation.dart';
 import 'package:thuprai_delivery/base/service/secure_storage_service.dart';
-import 'package:thuprai_delivery/ui/views/dispatched/repository/order_dispatched_repository_implementation.dart';
 import 'package:thuprai_delivery/ui/views/login/repository/login_repository_implementation.dart';
 // @stacked-import
 
@@ -16,7 +16,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<DialogService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<SecureStorageService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<ApiService>(onMissingStub: OnMissingStub.returnDefault),
-  MockSpec<OrderDispatchedRepositoryImplementation>(
+  MockSpec<OrderRepositoryImplementation>(
       onMissingStub: OnMissingStub.returnDefault),
 
   MockSpec<LoginRepositoryImplementation>(
@@ -29,7 +29,7 @@ void registerServices() {
   getAndRegisterBottomSheetService();
   getAndRegisterDialogService();
   getAndRegisterLoginRepositoryImplementationService();
-  getAndRegisterOrderDispatchedRepositoryImplementation();
+  getAndRegisterOrderRepositoryImplementation();
   // @stacked-mock-register
 }
 
@@ -84,13 +84,12 @@ MockLoginRepositoryImplementation
   return service;
 }
 
-MockOrderDispatchedRepositoryImplementation
-    getAndRegisterOrderDispatchedRepositoryImplementation() {
-  _removeRegistrationIfExists<MockOrderDispatchedRepositoryImplementation>();
-  final service = MockOrderDispatchedRepositoryImplementation();
+MockOrderRepositoryImplementation
+    getAndRegisterOrderRepositoryImplementation() {
+  _removeRegistrationIfExists<MockOrderRepositoryImplementation>();
+  final service = MockOrderRepositoryImplementation();
 
-  locator
-      .registerSingleton<MockOrderDispatchedRepositoryImplementation>(service);
+  locator.registerSingleton<MockOrderRepositoryImplementation>(service);
   return service;
 }
 

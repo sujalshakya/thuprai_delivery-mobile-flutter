@@ -7,9 +7,10 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:flutter/material.dart' as _i15;
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart' as _i16;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i17;
-import 'package:thuprai_delivery/base/model/order_model.dart' as _i16;
+import 'package:stacked_services/stacked_services.dart' as _i18;
+import 'package:thuprai_delivery/base/model/order_model.dart' as _i17;
 import 'package:thuprai_delivery/ui/views/couriered/couriered_view.dart'
     as _i11;
 import 'package:thuprai_delivery/ui/views/dispatched/dispatched_view.dart'
@@ -235,11 +236,11 @@ class OrderDetailsViewArguments {
     required this.price,
   });
 
-  final _i15.Key? key;
+  final _i16.Key? key;
 
   final bool? orderDispatch;
 
-  final _i16.Order order;
+  final _i17.Order order;
 
   final String price;
 
@@ -272,7 +273,7 @@ class PickupDetailsViewArguments {
     required this.partner,
   });
 
-  final _i15.Key? key;
+  final _i16.Key? key;
 
   final String partner;
 
@@ -293,7 +294,7 @@ class PickupDetailsViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i17.NavigationService {
+extension NavigatorStateExtension on _i18.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -449,9 +450,9 @@ extension NavigatorStateExtension on _i17.NavigationService {
   }
 
   Future<dynamic> navigateToOrderDetailsView({
-    _i15.Key? key,
+    _i16.Key? key,
     bool? orderDispatch,
-    required _i16.Order order,
+    required _i17.Order order,
     required String price,
     int? routerId,
     bool preventDuplicates = true,
@@ -469,7 +470,7 @@ extension NavigatorStateExtension on _i17.NavigationService {
   }
 
   Future<dynamic> navigateToPickupDetailsView({
-    _i15.Key? key,
+    _i16.Key? key,
     required String partner,
     int? routerId,
     bool preventDuplicates = true,
@@ -640,9 +641,9 @@ extension NavigatorStateExtension on _i17.NavigationService {
   }
 
   Future<dynamic> replaceWithOrderDetailsView({
-    _i15.Key? key,
+    _i16.Key? key,
     bool? orderDispatch,
-    required _i16.Order order,
+    required _i17.Order order,
     required String price,
     int? routerId,
     bool preventDuplicates = true,
@@ -660,7 +661,7 @@ extension NavigatorStateExtension on _i17.NavigationService {
   }
 
   Future<dynamic> replaceWithPickupDetailsView({
-    _i15.Key? key,
+    _i16.Key? key,
     required String partner,
     int? routerId,
     bool preventDuplicates = true,

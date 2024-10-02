@@ -13,14 +13,9 @@ import 'package:stacked_shared/stacked_shared.dart';
 
 import '../base/network/api_service.dart';
 import '../base/network/dio_service.dart';
+import '../base/repository/order_repository_implementation.dart';
 import '../base/service/secure_storage_service.dart';
-import '../ui/views/couriered/repository/couriered_repository_implementation.dart';
-import '../ui/views/dispatched/repository/order_dispatched_repository_implementation.dart';
 import '../ui/views/login/repository/login_repository_implementation.dart';
-import '../ui/views/pending/repository/pending_repository_implementation.dart';
-import '../ui/views/picking_up/repository/picking_up_repository_implementation.dart';
-import '../ui/views/processing/repository/processing_repository_implementation.dart';
-import '../ui/views/returned/repository/returned_repository_implementation.dart';
 
 final locator = StackedLocator.instance;
 final dio = locator<DioService>().dio;
@@ -39,12 +34,6 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => ApiService(dio));
   locator.registerLazySingleton(() => DioService());
   locator.registerLazySingleton(() => SecureStorageService());
-  locator
-      .registerLazySingleton(() => OrderDispatchedRepositoryImplementation());
-  locator.registerLazySingleton(() => ProcessingRepositoryImplementation());
-  locator.registerLazySingleton(() => CourieredRepositoryImplementation());
-  locator.registerLazySingleton(() => PendingRepositoryImplementation());
-  locator.registerLazySingleton(() => ReturnedRepositoryImplementation());
-  locator.registerLazySingleton(() => PickingUpRepositoryImplementation());
+  locator.registerLazySingleton(() => OrderRepositoryImplementation());
   locator.registerLazySingleton(() => LoginRepositoryImplementation());
 }
