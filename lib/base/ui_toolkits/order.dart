@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
 
 class OrderListtile extends StatelessWidget {
@@ -95,15 +96,18 @@ class OrderListtile extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: GestureDetector(
-                    onTap: call,
-                    child: CircleAvatar(
-                      backgroundColor: Theme.of(context).colorScheme.onPrimary,
-                      radius: 20,
-                      child: Icon(Icons.phone,
-                          color: Theme.of(context).colorScheme.surface),
+                Skeleton.ignore(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                      onTap: call,
+                      child: CircleAvatar(
+                        backgroundColor:
+                            Theme.of(context).colorScheme.onPrimary,
+                        radius: 20,
+                        child: Icon(Icons.phone,
+                            color: Theme.of(context).colorScheme.surface),
+                      ),
                     ),
                   ),
                 ),
