@@ -23,8 +23,7 @@ class Validators {
   static String? validatePassword(String? value) {
     if (value!.length < 8 ||
         !value.contains(RegExp(r"[a-z]")) ||
-        (!value.contains(RegExp(r"[0-9]"))) ||
-        !value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+        (!value.contains(RegExp(r"[0-9]")))) {
       return 'Requires small letter, number and symbol';
     }
     return null;

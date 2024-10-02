@@ -22,6 +22,7 @@ class FloatingBoxBottomSheet extends StackedView<FloatingBoxModel> {
     Widget? child,
   ) {
     return Padding(
+      key: const Key("BottomSheet"),
       padding: const EdgeInsets.all(25.0),
       child: Container(
         decoration: BoxDecoration(

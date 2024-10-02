@@ -49,6 +49,7 @@ class PickingUpView extends StackedView<PickingUpViewModel> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
                   child: ListView.builder(
+                    key: const Key("pickup"),
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: viewModel.partners.length,

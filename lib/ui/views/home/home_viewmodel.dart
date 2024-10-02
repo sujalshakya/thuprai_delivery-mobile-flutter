@@ -25,7 +25,8 @@ class HomeViewModel extends BaseViewmodelWrapper {
   }
 
   logout() async {
-    await _tokenService.deleteToken('token');
+    _tokenService.deleteToken('token');
+
     _navigationService.replaceWith(Routes.loginView);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:thuprai_delivery/app/app.dialogs.dart';
 import 'package:thuprai_delivery/app/app.locator.dart';
 import 'package:thuprai_delivery/app/app.router.dart';
@@ -27,6 +28,7 @@ class DispatchedViewModel extends BaseViewmodelWrapper {
   }
 
   void navigateToOrderDetailsView(Order order, String price) {
+    debugPrint("order");
     navigationService.navigateToOrderDetailsView(
         order: order, price: price, orderDispatch: true);
   }

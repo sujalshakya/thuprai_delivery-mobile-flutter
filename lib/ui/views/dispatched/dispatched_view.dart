@@ -37,6 +37,7 @@ class DispatchedView extends StackedView<DispatchedViewModel> {
                 ),
               )
             : OrderBuilder(
+                orderDispatch: true,
                 list: viewModel.orders,
                 viewModel: viewModel,
               ),

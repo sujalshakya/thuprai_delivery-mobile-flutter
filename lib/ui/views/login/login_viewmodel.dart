@@ -36,7 +36,7 @@ class LoginViewModel extends FormViewModel with $LoginView {
     } else {
       try {
         await _loginRepo.loginApiRequest(email, password);
-        await _navigationService.replaceWithHomeView();
+        _navigationService.replaceWithHomeView();
         _bottomSheetService.showCustomSheet(
             variant: BottomSheetType.floatingBoxBottom,
             description: "Login Successful");

@@ -5,8 +5,13 @@ import 'package:thuprai_delivery/base/ui_toolkits/order.dart';
 class OrderBuilder extends StatelessWidget {
   // ignore: prefer_typing_uninitialized_variables
   final viewModel;
+  final bool? orderDispatch;
   final List<Order> list;
-  const OrderBuilder({super.key, required this.viewModel, required this.list});
+  const OrderBuilder(
+      {super.key,
+      required this.viewModel,
+      required this.list,
+      this.orderDispatch});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +29,13 @@ class OrderBuilder extends StatelessWidget {
           /// Show paid if full price has already been paid.
           return OrderListtile(
             navigate: () {
-              viewModel.navigate(order, result.toString());
+              orderDispatch ?? false
+                  ? viewModel.navigateToOrderDetailsView(
+                      order, result.toString())
+                  : viewModel.navigate(
+                      order,
+                      result.toString(),
+                    );
             },
             call: () {
               viewModel.call(phoneNumber: order.shippingAddress!.phoneNumber!);
