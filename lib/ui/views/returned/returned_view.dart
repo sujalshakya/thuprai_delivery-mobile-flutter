@@ -3,7 +3,9 @@ import 'package:flutter/scheduler.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:stacked/stacked.dart';
 import 'package:thuprai_delivery/base/model/order_model.dart';
+import 'package:thuprai_delivery/base/ui_toolkits/filter_search.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/order_builder.dart';
+import 'package:thuprai_delivery/base/ui_toolkits/primary_appbar.dart';
 
 import 'returned_viewmodel.dart';
 
@@ -17,6 +19,14 @@ class ReturnedView extends StackedView<ReturnedViewModel> {
     Widget? child,
   ) {
     return Scaffold(
+      appBar: PrimaryAppBar(
+        title: "Returned",
+        logout: viewModel.logout,
+        search: () => showSearch(
+          context: context,
+          delegate: search(viewModel, context, false),
+        ),
+      ),
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),

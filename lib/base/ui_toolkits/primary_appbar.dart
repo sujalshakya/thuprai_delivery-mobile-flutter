@@ -10,7 +10,8 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.leading,
       required this.title,
       this.center,
-      this.actions});
+      this.logout,
+      this.search});
 
   /// The start of the app bar, can be any widget.
   final Widget? leading;
@@ -21,25 +22,49 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// The title of the appbar and the view.
   final String title;
 
-  /// The icons or widgets at the end of appbar.
-  final List<Widget>? actions;
+  final Function()? logout;
+
+  final Function()? search;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        shadowColor: Theme.of(context).colorScheme.primary,
-        centerTitle: center,
-        elevation: 4,
-        leading: leading,
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        title: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: PrimaryText(
-            text: title,
+      shadowColor: Theme.of(context).colorScheme.primary,
+      centerTitle: center,
+      elevation: 4,
+      leading: leading,
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      title: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: PrimaryText(
+          text: title,
+          color: Theme.of(context).colorScheme.onPrimary,
+        ),
+      ),
+      actions: [
+        IconButton(
+          icon: Icon(
+            Icons.search,
             color: Theme.of(context).colorScheme.onPrimary,
           ),
+          onPressed: search,
         ),
-        actions: actions);
+        IconButton(
+          icon: Icon(
+            Icons.logout_outlined,
+            color: Theme.of(context).colorScheme.onPrimary,
+          ),
+          onPressed: logout,
+        ),
+        IconButton(
+          icon: Icon(
+            Icons.qr_code_2_outlined,
+            color: Theme.of(context).colorScheme.onPrimary,
+          ),
+          onPressed: () {},
+        ),
+      ],
+    );
   }
 
   @override

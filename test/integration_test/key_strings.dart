@@ -3,9 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 final loginButton = find.byKey(
   const Key('login'),
-  skipOffstage: false,
 );
-
 final passwordTextfield = find.byKey(const Key('password'));
 final emailTextfield = find.byKey(const Key('email'));
 final logout = find.byIcon(Icons.logout_outlined);

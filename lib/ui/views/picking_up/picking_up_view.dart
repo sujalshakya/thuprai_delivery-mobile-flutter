@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:stacked/stacked.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
+import 'package:thuprai_delivery/base/ui_toolkits/primary_appbar.dart';
 
 import 'picking_up_viewmodel.dart';
 
@@ -17,6 +18,10 @@ class PickingUpView extends StackedView<PickingUpViewModel> {
     Widget? child,
   ) {
     return Scaffold(
+      appBar: PrimaryAppBar(
+        title: "Picking Up",
+        logout: viewModel.logout,
+      ),
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: viewModel.isBusy
           ? Skeletonizer(

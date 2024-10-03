@@ -21,11 +21,6 @@ void main() async {
   group('HomeViewmodelTest -', () {
     setUp(() => registerServices());
 
-    test("Title of the app bar changes according to the bottom tabbar", () {
-      viewModel.setTitle(2);
-      expect(viewModel.currentTitle, "Processing");
-    });
-
     test("When logout method is called, token is deleted in secure storage",
         () async {
       viewModel.logout();

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
-import 'package:thuprai_delivery/base/ui_toolkits/primary_appbar.dart';
 import 'package:thuprai_delivery/ui/views/couriered/couriered_view.dart';
 import 'package:thuprai_delivery/ui/views/dispatched/dispatched_view.dart';
 import 'package:thuprai_delivery/ui/views/fulfilled/fulfilled_view.dart';
@@ -25,34 +24,6 @@ class HomeView extends StackedView<HomeViewModel> {
     return DefaultTabController(
       length: 7,
       child: Scaffold(
-          appBar: PrimaryAppBar(
-            title: viewModel.currentTitle,
-            actions: [
-              IconButton(
-                icon: Icon(
-                  Icons.search,
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.logout_outlined,
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ),
-                onPressed: () {
-                  viewModel.logout();
-                },
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.qr_code_2_outlined,
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ),
-                onPressed: () {},
-              ),
-            ],
-          ),
           body: const TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: [
@@ -70,9 +41,6 @@ class HomeView extends StackedView<HomeViewModel> {
             child: SizedBox(
               height: 50.h,
               child: TabBar(
-                  onTap: (index) {
-                    viewModel.setTitle(index);
-                  },
                   dragStartBehavior: DragStartBehavior.start,
                   isScrollable: true,
                   labelStyle: const TextStyle(fontSize: 16),

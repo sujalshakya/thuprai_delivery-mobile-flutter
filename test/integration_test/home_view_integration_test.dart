@@ -40,10 +40,10 @@ void main() async {
       await tester.pumpAndSettle();
 
       /// Check if tapping on the logout button navigates user to login view.
-      // final logout = find.byIcon(Icons.logout_outlined);
-      // expect(logout, findsOneWidget);
-      // await tester.tap(logout);
-      // await tester.pumpAndSettle();
+      final logout = find.byIcon(Icons.logout_outlined);
+      expect(logout, findsOneWidget);
+      await tester.tap(logout);
+      await tester.pumpAndSettle();
     });
   });
 }
