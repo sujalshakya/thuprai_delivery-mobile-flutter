@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_appbar.dart';
+import 'package:thuprai_delivery/base/ui_toolkits/primary_container.dart';
 import 'package:thuprai_delivery/ui/views/barcode/model/barcode_model.dart';
 import 'barcode_viewmodel.dart';
 
@@ -38,7 +39,9 @@ class BarcodeView extends StackedView<BarcodeViewModel> {
               ),
             ),
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  viewModel.delete(barcodes ?? []);
+                },
                 icon: Icon(
                   Icons.delete,
                   color: Theme.of(context).colorScheme.onPrimary,
@@ -52,17 +55,19 @@ class BarcodeView extends StackedView<BarcodeViewModel> {
                 itemCount: barcodes?.length ?? 0,
                 itemBuilder: (context, index) {
                   final barcode = barcodes?[index];
-                  return ListTile(
-                    leading: PrimaryText(text: index.toString()),
-                    title: PrimaryText(text: barcode!.barcode ?? ""),
-                    subtitle: PrimaryText(
-                      text: barcode.quantity ?? "",
-                    ),
-                    trailing: IconButton(
-                      icon: const Icon(
-                        Icons.edit,
+                  return PrimaryContainer(
+                    child: ListTile(
+                      leading: PrimaryText(text: "${index + 1}"),
+                      title: PrimaryText(text: barcode!.barcode ?? ""),
+                      subtitle: PrimaryText(
+                        text: "Quanity: ${barcode.quantity ?? ""}",
                       ),
-                      onPressed: () {},
+                      trailing: IconButton(
+                        icon: const Icon(
+                          Icons.edit,
+                        ),
+                        onPressed: () {},
+                      ),
                     ),
                   );
                 }));
