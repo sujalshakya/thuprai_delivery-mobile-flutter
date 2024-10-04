@@ -8,6 +8,7 @@ class ScannerViewModel extends BaseViewmodelWrapper {
   bool asked = false;
   String text = "";
   askQuantity(String barcode) async {
+    await Future.delayed(const Duration(seconds: 1));
     final dialog = await dialogService.showCustomDialog(
       variant: DialogType.quantity,
     );
