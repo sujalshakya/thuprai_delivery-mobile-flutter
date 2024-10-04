@@ -8,9 +8,11 @@
 import 'package:flutter/material.dart' as _i17;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i19;
+import 'package:stacked_services/stacked_services.dart' as _i20;
 import 'package:thuprai_delivery/base/model/order_model.dart' as _i18;
 import 'package:thuprai_delivery/ui/views/barcode/barcode_view.dart' as _i15;
+import 'package:thuprai_delivery/ui/views/barcode/model/barcode_model.dart'
+    as _i19;
 import 'package:thuprai_delivery/ui/views/couriered/couriered_view.dart'
     as _i11;
 import 'package:thuprai_delivery/ui/views/dispatched/dispatched_view.dart'
@@ -235,14 +237,21 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i15.BarcodeView: (data) {
+      final args = data.getArgs<BarcodeViewArguments>(
+        orElse: () => const BarcodeViewArguments(),
+      );
       return _i17.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i15.BarcodeView(),
+        builder: (context) =>
+            _i15.BarcodeView(key: args.key, barcodes: args.barcodes),
         settings: data,
       );
     },
     _i16.ScannerView: (data) {
+      final args = data.getArgs<ScannerViewArguments>(
+        orElse: () => const ScannerViewArguments(),
+      );
       return _i17.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i16.ScannerView(),
+        builder: (context) => _i16.ScannerView(key: args.key),
         settings: data,
       );
     },
@@ -321,7 +330,56 @@ class PickupDetailsViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i19.NavigationService {
+class BarcodeViewArguments {
+  const BarcodeViewArguments({
+    this.key,
+    this.barcodes,
+  });
+
+  final _i17.Key? key;
+
+  final List<_i19.BarcodeISbn>? barcodes;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "barcodes": "$barcodes"}';
+  }
+
+  @override
+  bool operator ==(covariant BarcodeViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key && other.barcodes == barcodes;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ barcodes.hashCode;
+  }
+}
+
+class ScannerViewArguments {
+  const ScannerViewArguments({this.key});
+
+  final _i17.Key? key;
+
+  @override
+  String toString() {
+    return '{"key": "$key"}';
+  }
+
+  @override
+  bool operator ==(covariant ScannerViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode;
+  }
+}
+
+extension NavigatorStateExtension on _i20.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -513,28 +571,33 @@ extension NavigatorStateExtension on _i19.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToBarcodeView([
+  Future<dynamic> navigateToBarcodeView({
+    _i17.Key? key,
+    List<_i19.BarcodeISbn>? barcodes,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.barcodeView,
+        arguments: BarcodeViewArguments(key: key, barcodes: barcodes),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
         transition: transition);
   }
 
-  Future<dynamic> navigateToScannerView([
+  Future<dynamic> navigateToScannerView({
+    _i17.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.scannerView,
+        arguments: ScannerViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -732,28 +795,33 @@ extension NavigatorStateExtension on _i19.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithBarcodeView([
+  Future<dynamic> replaceWithBarcodeView({
+    _i17.Key? key,
+    List<_i19.BarcodeISbn>? barcodes,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.barcodeView,
+        arguments: BarcodeViewArguments(key: key, barcodes: barcodes),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
         transition: transition);
   }
 
-  Future<dynamic> replaceWithScannerView([
+  Future<dynamic> replaceWithScannerView({
+    _i17.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.scannerView,
+        arguments: ScannerViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

@@ -1,8 +1,8 @@
-class Barcode {
-  int? quantity;
+class BarcodeISbn {
+  String? quantity;
   String? barcode;
 
-  Barcode({
+  BarcodeISbn({
     this.barcode,
     this.quantity,
   });

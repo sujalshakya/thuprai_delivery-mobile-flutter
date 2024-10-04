@@ -9,8 +9,9 @@ class PrimaryTextfield extends StatelessWidget {
       required this.controller,
       this.hintText,
       this.prefix,
+      this.keyboardType,
       this.suffix,
-      required this.obscure});
+      this.obscure});
 
   /// The text that is inputted in the textfield.
   final TextEditingController controller;
@@ -19,22 +20,23 @@ class PrimaryTextfield extends StatelessWidget {
   final String? hintText;
 
   /// Determine the text in textfield to be visible or not.
-  final bool obscure;
+  final bool? obscure;
 
   /// The widget to be shown at the start of the textfield.
   final Widget? prefix;
 
   /// The widget shown at the end of textfield.
   final Widget? suffix;
-
+  final TextInputType? keyboardType;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: SizedBox(
         child: TextField(
+          keyboardType: keyboardType,
           controller: controller,
-          obscureText: obscure,
+          obscureText: obscure ?? false,
           decoration: InputDecoration(
             enabledBorder: OutlineInputBorder(
                 borderSide:

@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_appbar.dart';
+import 'package:thuprai_delivery/ui/views/barcode/model/barcode_model.dart';
 import 'barcode_viewmodel.dart';
 
 class BarcodeView extends StackedView<BarcodeViewModel> {
-  const BarcodeView({Key? key}) : super(key: key);
+  final List<BarcodeISbn>? barcodes;
 
+  const BarcodeView({Key? key, this.barcodes}) : super(key: key);
   @override
   Widget builder(
     BuildContext context,
@@ -44,18 +46,17 @@ class BarcodeView extends StackedView<BarcodeViewModel> {
           ],
         ),
         backgroundColor: Theme.of(context).colorScheme.surface,
-        body: viewModel.barcodes == []
+        body: barcodes == null
             ? const Center(child: Text("No data"))
             : ListView.builder(
-                itemCount: viewModel.barcodes.length,
+                itemCount: barcodes?.length ?? 0,
                 itemBuilder: (context, index) {
+                  final barcode = barcodes?[index];
                   return ListTile(
                     leading: PrimaryText(text: index.toString()),
-                    title: const PrimaryText(
-                      text: "",
-                    ),
-                    subtitle: const PrimaryText(
-                      text: "",
+                    title: PrimaryText(text: barcode!.barcode ?? ""),
+                    subtitle: PrimaryText(
+                      text: barcode.quantity ?? "",
                     ),
                     trailing: IconButton(
                       icon: const Icon(
