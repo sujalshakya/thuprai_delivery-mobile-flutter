@@ -99,18 +99,32 @@ void main() async {
       await tester.tap(find.text("Returned"));
       await tester.pumpAndSettle();
 
-      /// Open order details view.
+      /// Test search bar
+      await Future.delayed(const Duration(seconds: 2));
+      await tester.tap(search);
+      await Future.delayed(const Duration(seconds: 1));
+      await tester.pumpAndSettle();
+
+      await tester.enterText(find.byType(TextField), "a");
+      await Future.delayed(const Duration(seconds: 1));
+      await tester.pumpAndSettle();
+
+      /// Open order details view from searched orders.
       await Future.delayed(const Duration(seconds: 3));
       await tester.ensureVisible(orderlist.first);
       await tester.tap(orderlist.first);
       await tester.pumpAndSettle();
 
-      /// Go back to home page.
-      await Future.delayed(const Duration(seconds: 5));
+      await Future.delayed(const Duration(seconds: 2));
       await tester.tap(find.byIcon(Icons.arrow_back));
       await tester.pumpAndSettle();
 
-      /// Go to Couriered page
+      /// Go back to home page.
+      await Future.delayed(const Duration(seconds: 3));
+      await tester.tap(find.byIcon(Icons.arrow_back));
+      await tester.pumpAndSettle();
+
+      /// Go to Couriered tab.
       await Future.delayed(const Duration(seconds: 2));
       await tester.tap(find.text("Couriered"));
       await tester.pumpAndSettle();
@@ -122,7 +136,7 @@ void main() async {
       await tester.pumpAndSettle();
 
       /// Go back to home page.
-      await Future.delayed(const Duration(seconds: 5));
+      await Future.delayed(const Duration(seconds: 3));
       await tester.tap(find.byIcon(Icons.arrow_back));
       await tester.pumpAndSettle();
 

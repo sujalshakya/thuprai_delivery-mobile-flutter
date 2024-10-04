@@ -23,6 +23,8 @@ import 'package:thuprai_delivery/ui/views/couriered/couriered_view.dart';
 import 'package:thuprai_delivery/ui/views/fulfilled/fulfilled_view.dart';
 import 'package:thuprai_delivery/ui/views/order_details/order_details_view.dart';
 import 'package:thuprai_delivery/ui/views/pickup_details/pickup_details_view.dart';
+import 'package:thuprai_delivery/ui/views/barcode/barcode_view.dart';
+import 'package:thuprai_delivery/ui/views/scanner/scanner_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -40,6 +42,8 @@ import 'package:thuprai_delivery/ui/views/pickup_details/pickup_details_view.dar
     MaterialRoute(page: FulfilledView),
     MaterialRoute(page: OrderDetailsView),
     MaterialRoute(page: PickupDetailsView),
+    MaterialRoute(page: BarcodeView),
+    MaterialRoute(page: ScannerView),
 // @stacked-route
   ],
   dependencies: [

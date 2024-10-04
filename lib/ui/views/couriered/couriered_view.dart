@@ -20,11 +20,32 @@ class CourieredView extends StackedView<CourieredViewModel> {
     return Scaffold(
         appBar: PrimaryAppBar(
           title: "Couriered",
-          logout: viewModel.logout,
-          search: () => showSearch(
-            context: context,
-            delegate: search(viewModel, context, false),
-          ),
+          actions: [
+            IconButton(
+              icon: Icon(
+                Icons.search,
+                color: Theme.of(context).colorScheme.onPrimary,
+              ),
+              onPressed: () => showSearch(
+                context: context,
+                delegate: search(viewModel, context, false),
+              ),
+            ),
+            IconButton(
+              icon: Icon(
+                Icons.logout_outlined,
+                color: Theme.of(context).colorScheme.onPrimary,
+              ),
+              onPressed: viewModel.logout,
+            ),
+            IconButton(
+              icon: Icon(
+                Icons.qr_code_2_outlined,
+                color: Theme.of(context).colorScheme.onPrimary,
+              ),
+              onPressed: viewModel.barcode,
+            ),
+          ],
         ),
         backgroundColor: Theme.of(context).colorScheme.surface,
         body: Padding(

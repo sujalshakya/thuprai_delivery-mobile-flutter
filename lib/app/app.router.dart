@@ -5,12 +5,12 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i15;
+import 'package:flutter/material.dart' as _i17;
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart' as _i16;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i18;
-import 'package:thuprai_delivery/base/model/order_model.dart' as _i17;
+import 'package:stacked_services/stacked_services.dart' as _i19;
+import 'package:thuprai_delivery/base/model/order_model.dart' as _i18;
+import 'package:thuprai_delivery/ui/views/barcode/barcode_view.dart' as _i15;
 import 'package:thuprai_delivery/ui/views/couriered/couriered_view.dart'
     as _i11;
 import 'package:thuprai_delivery/ui/views/dispatched/dispatched_view.dart'
@@ -29,6 +29,7 @@ import 'package:thuprai_delivery/ui/views/pickup_details/pickup_details_view.dar
 import 'package:thuprai_delivery/ui/views/processing/processing_view.dart'
     as _i8;
 import 'package:thuprai_delivery/ui/views/returned/returned_view.dart' as _i10;
+import 'package:thuprai_delivery/ui/views/scanner/scanner_view.dart' as _i16;
 import 'package:thuprai_delivery/ui/views/startup/startup_view.dart' as _i3;
 import 'package:thuprai_delivery/ui/views/ui_toolkits/ui_toolkits_view.dart'
     as _i4;
@@ -60,6 +61,10 @@ class Routes {
 
   static const pickupDetailsView = '/pickup-details-view';
 
+  static const barcodeView = '/barcode-view';
+
+  static const scannerView = '/scanner-view';
+
   static const all = <String>{
     homeView,
     startupView,
@@ -74,6 +79,8 @@ class Routes {
     fulfilledView,
     orderDetailsView,
     pickupDetailsView,
+    barcodeView,
+    scannerView,
   };
 }
 
@@ -131,78 +138,86 @@ class StackedRouter extends _i1.RouterBase {
       Routes.pickupDetailsView,
       page: _i14.PickupDetailsView,
     ),
+    _i1.RouteDef(
+      Routes.barcodeView,
+      page: _i15.BarcodeView,
+    ),
+    _i1.RouteDef(
+      Routes.scannerView,
+      page: _i16.ScannerView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i3.StartupView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },
     _i4.UiToolkitsView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.UiToolkitsView(),
         settings: data,
       );
     },
     _i5.LoginView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.LoginView(),
         settings: data,
       );
     },
     _i6.DispatchedView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.DispatchedView(),
         settings: data,
       );
     },
     _i7.PickingUpView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.PickingUpView(),
         settings: data,
       );
     },
     _i8.ProcessingView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.ProcessingView(),
         settings: data,
       );
     },
     _i9.PendingView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.PendingView(),
         settings: data,
       );
     },
     _i10.ReturnedView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => const _i10.ReturnedView(),
         settings: data,
       );
     },
     _i11.CourieredView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => const _i11.CourieredView(),
         settings: data,
       );
     },
     _i12.FulfilledView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => const _i12.FulfilledView(),
         settings: data,
       );
     },
     _i13.OrderDetailsView: (data) {
       final args = data.getArgs<OrderDetailsViewArguments>(nullOk: false);
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => _i13.OrderDetailsView(
             key: args.key,
             orderDispatch: args.orderDispatch,
@@ -213,9 +228,21 @@ class StackedRouter extends _i1.RouterBase {
     },
     _i14.PickupDetailsView: (data) {
       final args = data.getArgs<PickupDetailsViewArguments>(nullOk: false);
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i14.PickupDetailsView(key: args.key, partner: args.partner),
+        settings: data,
+      );
+    },
+    _i15.BarcodeView: (data) {
+      return _i17.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i15.BarcodeView(),
+        settings: data,
+      );
+    },
+    _i16.ScannerView: (data) {
+      return _i17.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i16.ScannerView(),
         settings: data,
       );
     },
@@ -236,11 +263,11 @@ class OrderDetailsViewArguments {
     required this.price,
   });
 
-  final _i16.Key? key;
+  final _i17.Key? key;
 
   final bool? orderDispatch;
 
-  final _i17.Order order;
+  final _i18.Order order;
 
   final String price;
 
@@ -273,7 +300,7 @@ class PickupDetailsViewArguments {
     required this.partner,
   });
 
-  final _i16.Key? key;
+  final _i17.Key? key;
 
   final String partner;
 
@@ -294,7 +321,7 @@ class PickupDetailsViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i18.NavigationService {
+extension NavigatorStateExtension on _i19.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -450,9 +477,9 @@ extension NavigatorStateExtension on _i18.NavigationService {
   }
 
   Future<dynamic> navigateToOrderDetailsView({
-    _i16.Key? key,
+    _i17.Key? key,
     bool? orderDispatch,
-    required _i17.Order order,
+    required _i18.Order order,
     required String price,
     int? routerId,
     bool preventDuplicates = true,
@@ -470,7 +497,7 @@ extension NavigatorStateExtension on _i18.NavigationService {
   }
 
   Future<dynamic> navigateToPickupDetailsView({
-    _i16.Key? key,
+    _i17.Key? key,
     required String partner,
     int? routerId,
     bool preventDuplicates = true,
@@ -480,6 +507,34 @@ extension NavigatorStateExtension on _i18.NavigationService {
   }) async {
     return navigateTo<dynamic>(Routes.pickupDetailsView,
         arguments: PickupDetailsViewArguments(key: key, partner: partner),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToBarcodeView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.barcodeView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToScannerView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.scannerView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -641,9 +696,9 @@ extension NavigatorStateExtension on _i18.NavigationService {
   }
 
   Future<dynamic> replaceWithOrderDetailsView({
-    _i16.Key? key,
+    _i17.Key? key,
     bool? orderDispatch,
-    required _i17.Order order,
+    required _i18.Order order,
     required String price,
     int? routerId,
     bool preventDuplicates = true,
@@ -661,7 +716,7 @@ extension NavigatorStateExtension on _i18.NavigationService {
   }
 
   Future<dynamic> replaceWithPickupDetailsView({
-    _i16.Key? key,
+    _i17.Key? key,
     required String partner,
     int? routerId,
     bool preventDuplicates = true,
@@ -671,6 +726,34 @@ extension NavigatorStateExtension on _i18.NavigationService {
   }) async {
     return replaceWith<dynamic>(Routes.pickupDetailsView,
         arguments: PickupDetailsViewArguments(key: key, partner: partner),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithBarcodeView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.barcodeView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithScannerView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.scannerView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

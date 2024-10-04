@@ -12,7 +12,6 @@ import '../helpers/test_helpers.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();
-
   FlutterSecureStorage.setMockInitialValues({'token': "random string"});
   Get.testMode = true;
   final viewModel = HomeViewModel();
@@ -37,9 +36,8 @@ void main() async {
         () async {
       final navigation = getAndRegisterNavigationService();
       final viewModel = HomeViewModel();
-
+      FlutterSecureStorage.setMockInitialValues({'token': "random string"});
       await viewModel.logout();
-
       verify(navigation.replaceWith(Routes.loginView));
     });
 

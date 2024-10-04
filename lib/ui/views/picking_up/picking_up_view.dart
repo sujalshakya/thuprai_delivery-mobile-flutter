@@ -20,7 +20,22 @@ class PickingUpView extends StackedView<PickingUpViewModel> {
     return Scaffold(
       appBar: PrimaryAppBar(
         title: "Picking Up",
-        logout: viewModel.logout,
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.logout_outlined,
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
+            onPressed: viewModel.logout,
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.qr_code_2_outlined,
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
+            onPressed: viewModel.barcode,
+          ),
+        ],
       ),
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: viewModel.isBusy

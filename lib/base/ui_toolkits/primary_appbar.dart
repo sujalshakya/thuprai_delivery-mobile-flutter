@@ -10,8 +10,7 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.leading,
       required this.title,
       this.center,
-      this.logout,
-      this.search});
+      this.actions});
 
   /// The start of the app bar, can be any widget.
   final Widget? leading;
@@ -22,10 +21,7 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// The title of the appbar and the view.
   final String title;
 
-  final Function()? logout;
-
-  final Function()? search;
-
+  final List<Widget>? actions;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -41,29 +37,7 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: Theme.of(context).colorScheme.onPrimary,
         ),
       ),
-      actions: [
-        IconButton(
-          icon: Icon(
-            Icons.search,
-            color: Theme.of(context).colorScheme.onPrimary,
-          ),
-          onPressed: search,
-        ),
-        IconButton(
-          icon: Icon(
-            Icons.logout_outlined,
-            color: Theme.of(context).colorScheme.onPrimary,
-          ),
-          onPressed: logout,
-        ),
-        IconButton(
-          icon: Icon(
-            Icons.qr_code_2_outlined,
-            color: Theme.of(context).colorScheme.onPrimary,
-          ),
-          onPressed: () {},
-        ),
-      ],
+      actions: actions,
     );
   }
 

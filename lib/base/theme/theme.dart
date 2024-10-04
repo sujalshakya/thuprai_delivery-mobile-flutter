@@ -14,4 +14,6 @@ final ThemeData light = ThemeData(
   iconTheme: const IconThemeData(
     color: Color(0xff0066FF),
   ),
+  inputDecorationTheme: const InputDecorationTheme(
+      hintStyle: TextStyle(color: Color(0xff0066FF))),
 );

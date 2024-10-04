@@ -32,6 +32,10 @@ abstract class BaseViewmodelWrapper extends BaseViewModel {
     return double.parse(price!) - double.parse(payment ?? '0');
   }
 
+  barcode() async {
+    navigationService.navigateToBarcodeView();
+  }
+
   void navigate(Order order, String price) {
     navigationService.navigateToOrderDetailsView(order: order, price: price);
   }
