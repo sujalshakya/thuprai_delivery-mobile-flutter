@@ -52,7 +52,7 @@ class BookOrderedContainer extends StatelessWidget {
                       const Spacer(),
                       PrimaryText(
                         text:
-                            "Rs. ${order.lines![index].unitPriceInclTax ?? ""}",
+                            "Rs. ${order.lines![index].linePriceInclTax ?? ""}",
                         fontWeight: FontWeight.w600,
                       )
                     ],

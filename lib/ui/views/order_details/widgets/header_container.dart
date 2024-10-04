@@ -4,18 +4,17 @@ import 'package:thuprai_delivery/base/model/order_model.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_container.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/title_text.dart';
+import 'package:thuprai_delivery/ui/views/order_details/order_details_viewmodel.dart';
 
 class HeaderContainer extends StatelessWidget {
   /// The first container in the order details page.
   /// Requires [order] and [price].
-  const HeaderContainer({
-    super.key,
-    required this.order,
-    required this.price,
-  });
+  const HeaderContainer(
+      {super.key, required this.order, required this.price, required this.vm});
 
   /// The details of the specific order.
   final Order order;
+  final OrderDetailsViewModel vm;
 
   /// The price of the order after substracting advance from total price.
   final String price;
@@ -45,7 +44,7 @@ class HeaderContainer extends StatelessWidget {
                   text: DateFormat('kk:mm - EEE, dd MMM ')
                       .format(order.datePlaced!)),
               const Spacer(),
-              PrimaryText(text: "Quantity: ${order.lines!.length}")
+              PrimaryText(text: "Quantity: ${vm.quantity}")
             ],
           )
         ],

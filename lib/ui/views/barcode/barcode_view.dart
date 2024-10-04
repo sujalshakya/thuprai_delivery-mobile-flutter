@@ -93,7 +93,7 @@ class BarcodeView extends StackedView<BarcodeViewModel> {
                 onPressed: () {
                   viewModel.share(barcodes ?? []);
                 },
-                backgroundColor: Theme.of(context).colorScheme.secondary,
+                backgroundColor: Theme.of(context).colorScheme.onPrimary,
                 foregroundColor: Theme.of(context).colorScheme.surface,
                 child: const Icon(Icons.download),
               ),

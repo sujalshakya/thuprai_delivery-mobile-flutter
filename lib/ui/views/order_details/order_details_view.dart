@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:stacked/stacked.dart';
 import 'package:thuprai_delivery/base/model/order_model.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_appbar.dart';
@@ -41,7 +42,7 @@ class OrderDetailsView extends StackedView<OrderDetailsViewModel> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              HeaderContainer(order: order, price: price),
+              HeaderContainer(order: order, price: price, vm: viewModel),
               CustomerContainer(order: order, vm: viewModel),
               BookOrderedContainer(order: order),
               orderDispatch ?? false
@@ -62,8 +63,12 @@ class OrderDetailsView extends StackedView<OrderDetailsViewModel> {
   }
 
   @override
+  void onViewModelReady(OrderDetailsViewModel viewModel) =>
+      SchedulerBinding.instance
+          .addPostFrameCallback((timeStamp) => viewModel.getQuanity());
+  @override
   OrderDetailsViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      OrderDetailsViewModel();
+      OrderDetailsViewModel(order);
 }
