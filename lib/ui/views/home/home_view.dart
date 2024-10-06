@@ -39,7 +39,7 @@ class HomeView extends StackedView<HomeViewModel> {
           bottomNavigationBar: Material(
             color: Theme.of(context).colorScheme.onPrimary,
             child: SizedBox(
-              height: 50.h,
+              height: 60.h,
               child: TabBar(
                   dragStartBehavior: DragStartBehavior.start,
                   isScrollable: true,

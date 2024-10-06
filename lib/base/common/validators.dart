@@ -21,7 +21,10 @@ class Validators {
   /// Dont allow controller without length of 8 and containing atleast 1 of
   /// small letter, capital letter, number and symbol.
   static String? validatePassword(String? value) {
-    if (value!.length < 8 ||
+    if (value == null || value.isEmpty) {
+      return 'Please enter your email';
+    }
+    if (value.length < 8 ||
         !value.contains(RegExp(r"[a-z]")) ||
         (!value.contains(RegExp(r"[0-9]")))) {
       return 'Requires small letter, number and symbol';

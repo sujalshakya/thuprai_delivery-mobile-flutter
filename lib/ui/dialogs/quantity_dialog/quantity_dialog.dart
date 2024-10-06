@@ -102,6 +102,7 @@ class QuantityDialog extends StackedView<QuantityDialogModel>
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   PrimaryButton(
                     width: 90.w,

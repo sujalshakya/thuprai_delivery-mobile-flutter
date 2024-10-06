@@ -38,20 +38,21 @@ class PickupDetailsView extends StackedView<PickupDetailsViewModel> {
                   color: Theme.of(context).colorScheme.onPrimary,
                 ),
               )
-            : Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Center(
-                      child: PrimaryText(
-                        text: partner,
-                        color: Theme.of(context).colorScheme.onPrimary,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
+            : SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Center(
+                        child: PrimaryText(
+                          text: partner,
+                          color: Theme.of(context).colorScheme.onPrimary,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      child: ListView.builder(
+                      ListView.builder(
+                        shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: viewModel.books.length,
                         itemBuilder: (context, index) {
@@ -78,9 +79,9 @@ class PickupDetailsView extends StackedView<PickupDetailsViewModel> {
                             ),
                           );
                         },
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ));
   }

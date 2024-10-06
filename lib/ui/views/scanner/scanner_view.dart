@@ -39,7 +39,7 @@ class ScannerView extends StackedView<ScannerViewModel> {
                     final List<Barcode> barcodes = capture.barcodes;
                     for (final barcode in barcodes) {
                       await controller.stop();
-
+                      await controller.dispose();
                       await viewModel.askQuantity(barcode.rawValue.toString());
                       await Future.delayed(const Duration(seconds: 1));
                       if (viewModel.asked) {

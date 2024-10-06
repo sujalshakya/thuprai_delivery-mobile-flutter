@@ -15,7 +15,7 @@ class BarcodeViewModel extends BaseViewmodelWrapper {
   List<String> quantity = [];
   BarcodeViewModel(this.barcodes, {Key? key});
   void leadingTap() {
-    navigationService.back();
+    navigationService.replaceWithHomeView();
   }
 
   void delete(List<BarcodeISbn> barcodes) {
