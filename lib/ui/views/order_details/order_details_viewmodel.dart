@@ -1,6 +1,7 @@
 import 'package:thuprai_delivery/app/app.bottomsheets.dart';
 import 'package:thuprai_delivery/app/app.dialogs.dart';
 import 'package:thuprai_delivery/app/app.locator.dart';
+import 'package:thuprai_delivery/app/app.router.dart';
 import 'package:thuprai_delivery/base/model/order_model.dart';
 import 'package:thuprai_delivery/base/wrapper/base_viewmodel_wrapper.dart';
 import 'package:thuprai_delivery/ui/views/order_details/models/order_status_change.dart';
@@ -34,6 +35,7 @@ class OrderDetailsViewModel extends BaseViewmodelWrapper {
       bottomSheetService.showCustomSheet(
           variant: BottomSheetType.floatingBoxBottom,
           description: "Order Status Changed Sucessfull");
+      navigationService.navigateToHomeView();
       return true;
     } else {
       bottomSheetService.showCustomSheet(

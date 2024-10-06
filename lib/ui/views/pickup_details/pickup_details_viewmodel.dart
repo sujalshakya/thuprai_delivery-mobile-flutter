@@ -14,6 +14,7 @@ class PickupDetailsViewModel extends BaseViewmodelWrapper {
   List<Order> orders = [];
   List<Line> lines = [];
   List<Line> books = [];
+  List<Line> pickedup = [];
 
   PickupDetailsViewModel({required this.partner});
   Future<void> getOrders(String partner) async {
@@ -50,7 +51,7 @@ class PickupDetailsViewModel extends BaseViewmodelWrapper {
       bottomSheetService.showCustomSheet(
           variant: BottomSheetType.floatingBoxBottom,
           description: "Pickup Status change Sucessfull");
-      getOrders(partner);
+      await getOrders(partner);
       rebuildUi();
       return true;
     } else {
@@ -65,6 +66,9 @@ class PickupDetailsViewModel extends BaseViewmodelWrapper {
     for (int i = 0; i < lines.length; i++) {
       if (lines[i].partner == partner && lines[i].status != "Picked-Up") {
         books.add(lines[i]);
+      }
+      if (lines[i].partner == partner && lines[i].status == "Picked-Up") {
+        pickedup.add(lines[i]);
       }
     }
   }

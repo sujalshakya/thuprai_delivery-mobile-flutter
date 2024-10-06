@@ -83,7 +83,33 @@ class PickupDetailsView extends StackedView<PickupDetailsViewModel> {
                             ),
                           );
                         },
-                      )
+                      ),
+                      viewModel.pickedup == []
+                          ? const SizedBox.shrink()
+                          : PrimaryContainer(
+                              child: Column(
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Center(
+                                        child: PrimaryText(
+                                      text: "PickedUp books",
+                                      fontSize: 18,
+                                    )),
+                                  ),
+                                  ListView.builder(
+                                      shrinkWrap: true,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      itemCount: viewModel.pickedup.length,
+                                      itemBuilder: (context, index) {
+                                        return PrimaryText(
+                                            text: viewModel
+                                                .pickedup[index].title!);
+                                      })
+                                ],
+                              ),
+                            ),
                     ],
                   ),
                 ),
