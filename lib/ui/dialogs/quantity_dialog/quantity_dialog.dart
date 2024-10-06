@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked_annotations.dart';
-import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
+import 'package:thuprai_delivery/base/ui_toolkits/primary_text.dart';
 
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';

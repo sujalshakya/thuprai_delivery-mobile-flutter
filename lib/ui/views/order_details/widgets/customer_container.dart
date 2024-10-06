@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thuprai_delivery/base/model/order_model.dart';
-import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
+import 'package:thuprai_delivery/base/ui_toolkits/primary_text.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_container.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/title_text.dart';
 import 'package:thuprai_delivery/ui/views/order_details/order_details_viewmodel.dart';

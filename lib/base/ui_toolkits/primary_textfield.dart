@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class PrimaryTextfield extends StatelessWidget {
   /// The main textfield to be used in the app.
-  /// requires [controller] and [obscure].
-  /// Does not require [hintText], [prefix] and [suffix].
+  /// requires [controller] .
+  /// Does not require [hintText], [prefix] , [obscure], [keyboardType] and [suffix].
   const PrimaryTextfield(
       {super.key,
       required this.controller,
@@ -27,6 +27,8 @@ class PrimaryTextfield extends StatelessWidget {
 
   /// The widget shown at the end of textfield.
   final Widget? suffix;
+
+  /// The type of keyboard to be shown.
   final TextInputType? keyboardType;
   @override
   Widget build(BuildContext context) {

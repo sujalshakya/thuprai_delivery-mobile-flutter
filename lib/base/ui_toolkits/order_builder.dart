@@ -5,8 +5,13 @@ import 'package:thuprai_delivery/base/ui_toolkits/order.dart';
 class OrderBuilder extends StatelessWidget {
   // ignore: prefer_typing_uninitialized_variables
   final viewModel;
+
+  /// Navigation from Order Dispatch or not.
   final bool? orderDispatch;
+
+  /// List of orders.
   final List<Order> list;
+
   const OrderBuilder(
       {super.key,
       required this.viewModel,

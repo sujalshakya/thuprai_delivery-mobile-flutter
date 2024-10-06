@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:search_page/search_page.dart';
 import 'package:thuprai_delivery/base/model/order_model.dart';
 import 'package:thuprai_delivery/base/theme/theme.dart';
-import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
+import 'package:thuprai_delivery/base/ui_toolkits/primary_text.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/order.dart';
 
+/// Method of searching for orders.
+/// Searches using orders name, address and number.
 SearchPage<Order> search(viewModel, BuildContext context, bool orderDispatch) {
   return SearchPage<Order>(
       barTheme: light,

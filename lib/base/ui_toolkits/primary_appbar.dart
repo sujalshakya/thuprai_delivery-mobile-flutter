@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thuprai_delivery/base/ui_toolkits/label_text.dart';
+import 'package:thuprai_delivery/base/ui_toolkits/primary_text.dart';
 
 class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// the primary app bar.
@@ -21,6 +21,7 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// The title of the appbar and the view.
   final String title;
 
+  /// The list of widgets at the end of the app bar.
   final List<Widget>? actions;
   @override
   Widget build(BuildContext context) {

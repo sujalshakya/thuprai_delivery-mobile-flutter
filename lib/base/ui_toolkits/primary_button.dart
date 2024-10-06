@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PrimaryButton extends StatelessWidget {
   /// Button with filled in colors.
-  /// Requires [text] and [onTap].
+  /// Requires [text].
+  /// Does not require [width] and [onTap].
   const PrimaryButton({super.key, required this.text, this.onTap, this.width});
 
   /// Text to be shown in button.

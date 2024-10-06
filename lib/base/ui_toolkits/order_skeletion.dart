@@ -5,6 +5,7 @@ import 'package:thuprai_delivery/base/ui_toolkits/order_builder.dart';
 import 'package:thuprai_delivery/ui/views/dispatched/dispatched_viewmodel.dart';
 
 class OrderSkeleton extends StatelessWidget {
+  /// Skeleton loader to replace circular progress indicator.
   const OrderSkeleton({
     super.key,
   });
