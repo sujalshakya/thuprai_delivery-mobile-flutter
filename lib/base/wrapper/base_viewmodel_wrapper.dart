@@ -10,6 +10,8 @@ import 'package:url_launcher/url_launcher.dart';
 abstract class BaseViewmodelWrapper extends BaseViewModel {
   final navigationService = locator<NavigationService>();
   final dialogService = locator<DialogService>();
+  final bottomSheetService = locator<BottomSheetService>();
+
   final tokenService = locator<SecureStorageService>();
   Future<void> call({required String phoneNumber}) async {
     final Uri urlParsed = Uri.parse('tel:$phoneNumber');

@@ -1,3 +1,4 @@
+import 'package:thuprai_delivery/app/app.bottomsheets.dart';
 import 'package:thuprai_delivery/app/app.dialogs.dart';
 import 'package:thuprai_delivery/app/app.locator.dart';
 import 'package:thuprai_delivery/base/model/order_model.dart';
@@ -30,8 +31,14 @@ class OrderDetailsViewModel extends BaseViewmodelWrapper {
         await orderRepo.changeOrderStatus(id.toString(), type);
 
     if (response.error == null) {
+      bottomSheetService.showCustomSheet(
+          variant: BottomSheetType.floatingBoxBottom,
+          description: "Order Status Changed Sucessfull");
       return true;
     } else {
+      bottomSheetService.showCustomSheet(
+          variant: BottomSheetType.floatingBoxBottom,
+          description: "Order Status Change Error");
       return false;
     }
   }

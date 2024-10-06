@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:thuprai_delivery/app/app.bottomsheets.dart';
 import 'package:thuprai_delivery/app/app.dialogs.dart';
 import 'package:thuprai_delivery/app/app.locator.dart';
 import 'package:thuprai_delivery/base/model/order_model.dart';
@@ -46,8 +47,16 @@ class PickupDetailsViewModel extends BaseViewmodelWrapper {
         await pickupRepo.changePickupStatus(id);
 
     if (response.error == null) {
+      bottomSheetService.showCustomSheet(
+          variant: BottomSheetType.floatingBoxBottom,
+          description: "Pickup Status change Sucessfull");
+      getOrders(partner);
+      rebuildUi();
       return true;
     } else {
+      bottomSheetService.showCustomSheet(
+          variant: BottomSheetType.floatingBoxBottom,
+          description: "Pickup Status change Error");
       return false;
     }
   }
