@@ -1,20 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:thuprai_delivery/app/app.dialogs.dart';
-import 'package:thuprai_delivery/app/app.locator.dart';
 import 'package:thuprai_delivery/app/app.router.dart';
 import 'package:thuprai_delivery/base/model/order_model.dart';
-import 'package:thuprai_delivery/base/repository/order_repository_implementation.dart';
 import 'package:thuprai_delivery/base/wrapper/base_viewmodel_wrapper.dart';
 
 class DispatchedViewModel extends BaseViewmodelWrapper {
-  final _dispatchRepo = locator<OrderRepositoryImplementation>();
-
   List<Order> orders = [];
 
   Future<void> getOrders() async {
     setBusy(true);
     try {
-      List<Order> fetchedOrders = await _dispatchRepo.getOrders("dispatched");
+      List<Order> fetchedOrders = await orderRepo.getOrders("dispatched");
       orders = fetchedOrders;
     } on DioException catch (e) {
       dialogService.showCustomDialog(

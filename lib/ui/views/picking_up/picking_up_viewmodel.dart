@@ -14,6 +14,9 @@ class PickingUpViewModel extends BaseViewmodelWrapper {
   List<String> partners = [];
 
   Future<void> getOrders() async {
+    orders.clear();
+    lines.clear();
+    partners.clear();
     try {
       setBusy(true);
       List<Order> fetchedOrders = await _pickingupRepo.getOrders("picking-up");

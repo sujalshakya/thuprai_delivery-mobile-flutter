@@ -4,6 +4,7 @@ import 'package:thuprai_delivery/app/app.dialogs.dart';
 import 'package:thuprai_delivery/app/app.locator.dart';
 import 'package:thuprai_delivery/app/app.router.dart';
 import 'package:thuprai_delivery/base/model/order_model.dart';
+import 'package:thuprai_delivery/base/repository/order_repository_implementation.dart';
 import 'package:thuprai_delivery/base/service/secure_storage_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -11,6 +12,7 @@ abstract class BaseViewmodelWrapper extends BaseViewModel {
   final navigationService = locator<NavigationService>();
   final dialogService = locator<DialogService>();
   final bottomSheetService = locator<BottomSheetService>();
+  final orderRepo = locator<OrderRepositoryImplementation>();
 
   final tokenService = locator<SecureStorageService>();
   Future<void> call({required String phoneNumber}) async {

@@ -84,7 +84,7 @@ class PickupDetailsView extends StackedView<PickupDetailsViewModel> {
                           );
                         },
                       ),
-                      viewModel.pickedup == []
+                      viewModel.pickedup.isEmpty
                           ? const SizedBox.shrink()
                           : PrimaryContainer(
                               child: Column(
