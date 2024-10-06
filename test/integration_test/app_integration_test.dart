@@ -140,16 +140,23 @@ void main() async {
       await tester.tap(find.byIcon(Icons.arrow_back));
       await tester.pumpAndSettle();
 
+      /// Go to barcode scanner.
       await tester.tap(find.byIcon(Icons.qr_code_2_outlined));
       await tester.pumpAndSettle();
-
       await tester.tap(find.byIcon(Icons.qr_code));
+      await tester.pumpAndSettle();
+      await Future.delayed(const Duration(seconds: 1));
+      await tester.tap(find.byIcon(Icons.arrow_back));
+      await tester.pumpAndSettle();
+
+      await Future.delayed(const Duration(seconds: 1));
+      await tester.tap(find.byIcon(Icons.arrow_back));
       await tester.pumpAndSettle();
 
       /// Logout.
-      // await tester.tap(logout);
-      // await Future.delayed(const Duration(seconds: 1));
-      // await tester.pumpAndSettle();
+      await tester.tap(logout);
+      await Future.delayed(const Duration(seconds: 1));
+      await tester.pumpAndSettle();
     });
   });
 }

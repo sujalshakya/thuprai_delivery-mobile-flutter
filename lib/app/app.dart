@@ -9,6 +9,7 @@ import 'package:thuprai_delivery/ui/dialogs/quantity_dialog/quantity_dialog.dart
 
 import 'package:thuprai_delivery/ui/views/home/home_view.dart';
 import 'package:thuprai_delivery/ui/views/login/repository/login_repository_implementation.dart';
+import 'package:thuprai_delivery/ui/views/order_details/repository/order_details_repository_implementation.dart';
 import 'package:thuprai_delivery/ui/views/startup/startup_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -54,6 +55,7 @@ import 'package:thuprai_delivery/ui/views/scanner/scanner_view.dart';
     LazySingleton(classType: DioService),
     LazySingleton(classType: SecureStorageService),
     LazySingleton(classType: OrderRepositoryImplementation),
+    LazySingleton(classType: OrderDetailsRepositoryImplementation),
 
     LazySingleton(classType: LoginRepositoryImplementation),
 

@@ -48,13 +48,19 @@ class OrderDetailsView extends StackedView<OrderDetailsViewModel> {
               orderDispatch ?? false
                   ? PrimaryButton(
                       text: "Delivered",
-                      onTap: () {},
+                      onTap: () {
+                        viewModel.changeOrderStatus(
+                            order.id.toString(), "delivered");
+                      },
                     )
                   : const SizedBox.shrink(),
               orderDispatch ?? false
                   ? PrimaryButton(
                       text: "Returned",
-                      onTap: () {},
+                      onTap: () {
+                        viewModel.changeOrderStatus(
+                            order.id.toString(), "returned");
+                      },
                     )
                   : const SizedBox.shrink(),
             ],

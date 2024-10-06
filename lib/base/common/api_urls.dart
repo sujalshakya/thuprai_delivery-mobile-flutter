@@ -8,8 +8,8 @@ class ApiUrls {
   static String processingEndPoint = "$orderEndPoint/processing/";
   static String pickingUpEndPoint = "$orderEndPoint/picking-up/";
   static String courieredEndPoint = "$orderEndPoint/couriered/";
-  static String markDelivered = "order/id/mark-delivered/";
-  static String markRelivered = "order/id/mark-returned/";
+  static String markDelivered = "$orderEndPoint/id/mark-delivered/";
+  static String markRelivered = "$orderEndPoint/id/mark-returned/";
   static String changeDeliveryStatusEndPoint = "delivery/";
   static String markAsPickedUpEndPoint = "delivery/order/mark-pickedup/";
 }

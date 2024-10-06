@@ -4,6 +4,8 @@ import 'package:thuprai_delivery/app/app.locator.dart';
 import 'package:thuprai_delivery/base/model/order_model.dart';
 import 'package:thuprai_delivery/base/repository/order_repository_implementation.dart';
 import 'package:thuprai_delivery/base/wrapper/base_viewmodel_wrapper.dart';
+import 'package:thuprai_delivery/ui/views/order_details/models/order_status_change.dart';
+import 'package:thuprai_delivery/ui/views/pickup_details/repository/pickup_details_repository_implementation.dart';
 
 class PickupDetailsViewModel extends BaseViewmodelWrapper {
   final String partner;
@@ -34,6 +36,19 @@ class PickupDetailsViewModel extends BaseViewmodelWrapper {
       for (int j = 0; j < orders[i].lines!.length; j++) {
         lines.add(orders[i].lines![j]);
       }
+    }
+  }
+
+  Future<bool> changePickupStatus(String id) async {
+    final pickupRepo = locator<PickupDetailsRepositoryImplementation>();
+
+    OrderStatusChangeResponse response =
+        await pickupRepo.changePickupStatus(id);
+
+    if (response.error == null) {
+      return true;
+    } else {
+      return false;
     }
   }
 

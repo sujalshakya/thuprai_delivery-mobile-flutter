@@ -1,6 +1,9 @@
 import 'package:thuprai_delivery/app/app.dialogs.dart';
+import 'package:thuprai_delivery/app/app.locator.dart';
 import 'package:thuprai_delivery/base/model/order_model.dart';
 import 'package:thuprai_delivery/base/wrapper/base_viewmodel_wrapper.dart';
+import 'package:thuprai_delivery/ui/views/order_details/models/order_status_change.dart';
+import 'package:thuprai_delivery/ui/views/order_details/repository/order_details_repository_implementation.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class OrderDetailsViewModel extends BaseViewmodelWrapper {
@@ -18,6 +21,19 @@ class OrderDetailsViewModel extends BaseViewmodelWrapper {
       quantity += order.lines?[i].quantity ?? 0;
     }
     rebuildUi();
+  }
+
+  Future<bool> changeOrderStatus(String id, String type) async {
+    final orderRepo = locator<OrderDetailsRepositoryImplementation>();
+
+    OrderStatusChangeResponse response =
+        await orderRepo.changeOrderStatus(id.toString(), type);
+
+    if (response.error == null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   Future<void> sms({required String phoneNumber}) async {

@@ -29,6 +29,7 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: center,
       elevation: 4,
       leading: leading,
+      automaticallyImplyLeading: false,
       backgroundColor: Theme.of(context).colorScheme.surface,
       title: Padding(
         padding: const EdgeInsets.all(8.0),

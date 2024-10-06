@@ -71,7 +71,11 @@ class PickupDetailsView extends StackedView<PickupDetailsViewModel> {
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: PrimaryButton(
-                                        onTap: () {},
+                                        onTap: () {
+                                          viewModel.changePickupStatus(viewModel
+                                              .books[index].id
+                                              .toString());
+                                        },
                                         text: "Mark as Picked Up"),
                                   )
                                 ],
