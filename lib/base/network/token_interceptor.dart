@@ -3,24 +3,30 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:thuprai_delivery/app/app.locator.dart';
+import 'package:thuprai_delivery/base/network/check_network.dart';
 import 'package:thuprai_delivery/base/service/secure_storage_service.dart';
 
 class TokenInterceptor extends Interceptor {
   final dio = Dio();
   final _secureStorage = locator<SecureStorageService>();
+  final _checkNetwork = locator<CheckNetworkService>();
 
   /// Add headers to requests, include token when token is not null in secure storage.
   @override
   Future<void> onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    options.headers.addAll({
-      "Content-Type": "application/json",
-    });
-    final token = await _secureStorage.getToken('token');
-    if (token != null) {
+    final connected = await _checkNetwork.checkNetwork();
+
+    if (connected) {
       options.headers.addAll({
-        "Authorization": "token $token",
+        "Content-Type": "application/json",
       });
+      final token = await _secureStorage.getToken('token');
+      if (token != null) {
+        options.headers.addAll({
+          "Authorization": "token $token",
+        });
+      }
     }
 
     return super.onRequest(options, handler);

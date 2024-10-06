@@ -43,7 +43,7 @@ class OrderListtile extends StatelessWidget {
   final Function()? navigate;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       key: const Key("OrderList"),
       onTap: navigate,
       child: Padding(

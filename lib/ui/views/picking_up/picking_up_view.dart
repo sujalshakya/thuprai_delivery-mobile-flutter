@@ -39,67 +39,73 @@ class PickingUpView extends StackedView<PickingUpViewModel> {
         ),
         backgroundColor: Theme.of(context).colorScheme.surface,
         body: viewModel.isBusy
-            ? const PickUpSkeleton()
+            ? RefreshIndicator(
+                onRefresh: () {
+                  return viewModel.getOrders();
+                },
+                child: const PickUpSkeleton())
             : RefreshIndicator(
                 onRefresh: () {
                   return viewModel.getOrders();
                 },
                 child: SingleChildScrollView(
+                    physics: const AlwaysScrollableScrollPhysics(),
                     child: Column(children: [
-                  Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16.0, vertical: 8),
-                      child: ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          key: const Key("pickup"),
-                          shrinkWrap: true,
-                          itemCount: viewModel.partners.length,
-                          itemBuilder: (context, i) {
-                            final partner = viewModel.partners[i];
-                            return GestureDetector(
-                                onTap: () {
-                                  viewModel
-                                      .navigateToPickupDetailsView(partner);
-                                },
-                                child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      PrimaryText(
-                                        text: "Partner: $partner",
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .onPrimary,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                      ListView.builder(
-                                        physics:
-                                            const NeverScrollableScrollPhysics(),
-                                        shrinkWrap: true,
-                                        itemCount: viewModel.lines.length,
-                                        itemBuilder: (context, j) {
-                                          final line = viewModel.lines[j];
-                                          if (line.status == "Picking-Up") {
-                                            if (line.partner == partner) {
-                                              return PrimaryText(
-                                                  text: "Book: ${line.title}");
-                                            }
-                                          }
-                                          return const SizedBox.shrink();
-                                        },
-                                      ),
-                                      Divider(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .onSecondary,
-                                      )
-                                    ]));
-                          })),
-                  SizedBox(
-                    height: 50.h,
-                  )
-                ]))));
+                      Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16.0, vertical: 8),
+                          child: ListView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              key: const Key("pickup"),
+                              shrinkWrap: true,
+                              itemCount: viewModel.partners.length,
+                              itemBuilder: (context, i) {
+                                final partner = viewModel.partners[i];
+                                return GestureDetector(
+                                    onTap: () {
+                                      viewModel
+                                          .navigateToPickupDetailsView(partner);
+                                    },
+                                    child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          PrimaryText(
+                                            text: "Partner: $partner",
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onPrimary,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          ListView.builder(
+                                            physics:
+                                                const NeverScrollableScrollPhysics(),
+                                            shrinkWrap: true,
+                                            itemCount: viewModel.lines.length,
+                                            itemBuilder: (context, j) {
+                                              final line = viewModel.lines[j];
+                                              if (line.status == "Picking-Up") {
+                                                if (line.partner == partner) {
+                                                  return PrimaryText(
+                                                      text:
+                                                          "Book: ${line.title}");
+                                                }
+                                              }
+                                              return const SizedBox.shrink();
+                                            },
+                                          ),
+                                          Divider(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onSecondary,
+                                          )
+                                        ]));
+                              })),
+                      SizedBox(
+                        height: 50.h,
+                      )
+                    ]))));
   }
 
   @override

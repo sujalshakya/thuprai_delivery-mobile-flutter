@@ -10,6 +10,7 @@ import 'package:stacked_services/src/bottom_sheet/bottom_sheet_service.dart';
 import 'package:stacked_services/src/dialog/dialog_service.dart';
 import 'package:stacked_services/src/navigation/navigation_service.dart';
 import 'package:stacked_shared/stacked_shared.dart';
+import 'package:thuprai_delivery/base/network/check_network.dart';
 import 'package:thuprai_delivery/ui/views/pickup_details/repository/pickup_details_repository_implementation.dart';
 
 import '../base/network/api_service.dart';
@@ -32,6 +33,8 @@ Future<void> setupLocator({
 // Register dependencies
   locator.registerLazySingleton(() => BottomSheetService());
   locator.registerLazySingleton(() => DialogService());
+  locator.registerLazySingleton(() => CheckNetworkService());
+
   locator.registerLazySingleton(() => NavigationService());
   locator.registerLazySingleton(() => ApiService(dio));
   locator.registerLazySingleton(() => DioService());

@@ -1,3 +1,4 @@
+import 'package:thuprai_delivery/base/network/check_network.dart';
 import 'package:thuprai_delivery/base/network/dio_service.dart';
 import 'package:thuprai_delivery/base/network/api_service.dart';
 import 'package:thuprai_delivery/base/repository/order_repository_implementation.dart';
@@ -53,6 +54,8 @@ import 'package:thuprai_delivery/ui/views/scanner/scanner_view.dart';
     LazySingleton(classType: NavigationService),
     LazySingleton(classType: ApiService),
     LazySingleton(classType: DioService),
+    LazySingleton(classType: CheckNetworkService),
+
     LazySingleton(classType: SecureStorageService),
     LazySingleton(classType: OrderRepositoryImplementation),
     LazySingleton(classType: OrderDetailsRepositoryImplementation),
