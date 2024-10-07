@@ -24,7 +24,7 @@ class MainApp extends StatelessWidget {
         designSize: const Size(360, 800),
         builder: (context, child) {
           return MaterialApp(
-            theme: light,
+            theme: ThemeClass().light,
             debugShowCheckedModeBanner: false,
             initialRoute: Routes.startupView,
             onGenerateRoute: StackedRouter().onGenerateRoute,

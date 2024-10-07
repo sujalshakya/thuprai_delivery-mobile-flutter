@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked_annotations.dart';
+import 'package:thuprai_delivery/base/theme/theme.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_text.dart';
 
 import 'package:stacked/stacked.dart';
@@ -43,7 +44,7 @@ class QuantityDialog extends StackedView<QuantityDialogModel>
               padding: const EdgeInsets.all(8.0),
               child: PrimaryText(
                 text: "Quantity Dialog",
-                color: Theme.of(context).colorScheme.onPrimary,
+                color: ThemeClass().getOnPrimaryColor(context),
                 fontSize: 18,
               ),
             ),

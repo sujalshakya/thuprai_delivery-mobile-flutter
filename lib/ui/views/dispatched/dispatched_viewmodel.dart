@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:thuprai_delivery/app/app.dialogs.dart';
-import 'package:thuprai_delivery/app/app.router.dart';
 import 'package:thuprai_delivery/base/model/order_model.dart';
 import 'package:thuprai_delivery/base/wrapper/base_viewmodel_wrapper.dart';
 
@@ -20,10 +19,5 @@ class DispatchedViewModel extends BaseViewmodelWrapper {
     setBusy(false);
 
     rebuildUi();
-  }
-
-  void navigateToOrderDetailsView(Order order, String price) {
-    navigationService.navigateToOrderDetailsView(
-        order: order, price: price, orderDispatch: true);
   }
 }

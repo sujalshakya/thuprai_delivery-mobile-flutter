@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:thuprai_delivery/base/model/order_model.dart';
+import 'package:thuprai_delivery/base/theme/theme.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_text.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_container.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/title_text.dart';
@@ -32,7 +33,7 @@ class HeaderContainer extends StatelessWidget {
                   ? PrimaryText(
                       text: "PAID",
                       fontSize: 16,
-                      color: Theme.of(context).colorScheme.secondary,
+                      color: ThemeClass().getSecondaryColor(context),
                       fontWeight: FontWeight.w700,
                     )
                   : TitleText(text: "Rs.$price")

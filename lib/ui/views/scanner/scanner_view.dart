@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:stacked/stacked.dart';
+import 'package:thuprai_delivery/base/theme/theme.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_text.dart';
 
 import 'scanner_viewmodel.dart';
@@ -26,7 +27,7 @@ class ScannerView extends StackedView<ScannerViewModel> {
               },
               icon: const Icon(Icons.arrow_back)),
         ),
-        backgroundColor: Theme.of(context).colorScheme.surface,
+        backgroundColor: ThemeClass().getSurfaceColor(context),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

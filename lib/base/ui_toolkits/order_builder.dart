@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:thuprai_delivery/base/model/order_model.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/order.dart';
+import 'package:thuprai_delivery/base/wrapper/base_viewmodel_wrapper.dart';
 
 class OrderBuilder extends StatelessWidget {
-  // ignore: prefer_typing_uninitialized_variables
-  final viewModel;
+  final BaseViewmodelWrapper viewModel;
 
   /// Navigation from Order Dispatch or not.
   final bool? orderDispatch;

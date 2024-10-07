@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:stacked/stacked.dart';
+import 'package:thuprai_delivery/base/theme/theme.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_text.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_appbar.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_button.dart';
@@ -18,14 +19,14 @@ class PickupDetailsView extends StackedView<PickupDetailsViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.surface,
+        backgroundColor: ThemeClass().getSurfaceColor(context),
         appBar: PrimaryAppBar(
           title: "PickUp Details",
           center: true,
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back,
-              color: Theme.of(context).colorScheme.onPrimary,
+              color: ThemeClass().getOnPrimaryColor(context),
             ),
             onPressed: () {
               viewModel.leadingTap();
@@ -35,7 +36,7 @@ class PickupDetailsView extends StackedView<PickupDetailsViewModel> {
         body: viewModel.isBusy
             ? Center(
                 child: CircularProgressIndicator(
-                  color: Theme.of(context).colorScheme.onPrimary,
+                  color: ThemeClass().getOnPrimaryColor(context),
                 ),
               )
             : SingleChildScrollView(
@@ -46,7 +47,7 @@ class PickupDetailsView extends StackedView<PickupDetailsViewModel> {
                       Center(
                         child: PrimaryText(
                           text: partner,
-                          color: Theme.of(context).colorScheme.onPrimary,
+                          color: ThemeClass().getOnPrimaryColor(context),
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
                         ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
+import 'package:thuprai_delivery/base/theme/theme.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_text.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_appbar.dart';
 import 'package:thuprai_delivery/ui/views/picking_up/widgets/pickup_skeleton.dart';
@@ -24,20 +25,20 @@ class PickingUpView extends StackedView<PickingUpViewModel> {
             IconButton(
               icon: Icon(
                 Icons.logout_outlined,
-                color: Theme.of(context).colorScheme.onPrimary,
+                color: ThemeClass().getOnPrimaryColor(context),
               ),
               onPressed: viewModel.logout,
             ),
             IconButton(
               icon: Icon(
                 Icons.qr_code_2_outlined,
-                color: Theme.of(context).colorScheme.onPrimary,
+                color: ThemeClass().getOnPrimaryColor(context),
               ),
-              onPressed: viewModel.barcode,
+              onPressed: viewModel.tapOnBarcode,
             ),
           ],
         ),
-        backgroundColor: Theme.of(context).colorScheme.surface,
+        backgroundColor: ThemeClass().getSurfaceColor(context),
         body: viewModel.isBusy
             ? RefreshIndicator(
                 onRefresh: () {
@@ -72,9 +73,8 @@ class PickingUpView extends StackedView<PickingUpViewModel> {
                                         children: [
                                           PrimaryText(
                                             text: "Partner: $partner",
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .onPrimary,
+                                            color: ThemeClass()
+                                                .getOnPrimaryColor(context),
                                             fontSize: 18,
                                             fontWeight: FontWeight.w600,
                                           ),
@@ -96,9 +96,8 @@ class PickingUpView extends StackedView<PickingUpViewModel> {
                                             },
                                           ),
                                           Divider(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .onSecondary,
+                                            color: ThemeClass()
+                                                .getOnSecondaryColor(context),
                                           )
                                         ]));
                               })),

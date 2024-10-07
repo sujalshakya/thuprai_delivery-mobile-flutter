@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:thuprai_delivery/base/common/validators.dart';
+import 'package:thuprai_delivery/base/theme/theme.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_text.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/logo.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_button.dart';
@@ -25,7 +26,7 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
     Widget? child,
   ) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.surface,
+      backgroundColor: ThemeClass().getSurfaceColor(context),
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Form(
@@ -56,7 +57,7 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
                   child: Text(
                     viewModel.emailValidationMessage!,
                     style:
-                        TextStyle(color: Theme.of(context).colorScheme.error),
+                        TextStyle(color: ThemeClass().getErrorColor(context)),
                   ),
                 )
               ],
@@ -82,7 +83,7 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
                   child: Text(
                     viewModel.passwordValidationMessage!,
                     style:
-                        TextStyle(color: Theme.of(context).colorScheme.error),
+                        TextStyle(color: ThemeClass().getErrorColor(context)),
                   ),
                 )
               ],
@@ -102,7 +103,7 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: PrimaryText(
                     text: "Forgot Password?",
-                    color: Theme.of(context).colorScheme.onPrimary,
+                    color: ThemeClass().getOnPrimaryColor(context),
                   ),
                 )
               ]),

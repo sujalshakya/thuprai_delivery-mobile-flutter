@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:thuprai_delivery/base/theme/theme.dart';
 
 class PrimaryButton extends StatelessWidget {
   /// Button with filled in colors.
@@ -25,12 +26,12 @@ class PrimaryButton extends StatelessWidget {
             width: width,
             height: 50.h,
             decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.onPrimary,
+                color: ThemeClass().getOnPrimaryColor(context),
                 borderRadius: BorderRadius.circular(12)),
             child: Center(
                 child: Text(
               text,
-              style: TextStyle(color: Theme.of(context).colorScheme.surface),
+              style: TextStyle(color: ThemeClass().getSurfaceColor(context)),
             ))),
       ),
     );

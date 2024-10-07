@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thuprai_delivery/base/model/order_model.dart';
+import 'package:thuprai_delivery/base/theme/theme.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_text.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_container.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/title_text.dart';
@@ -44,7 +45,7 @@ class BookOrderedContainer extends StatelessWidget {
                             PrimaryText(
                               text:
                                   "Quantity: ${order.lines![index].quantity ?? ""}",
-                              color: Theme.of(context).colorScheme.onSecondary,
+                              color: ThemeClass().getOnSecondaryColor(context),
                             )
                           ],
                         ),
@@ -63,11 +64,11 @@ class BookOrderedContainer extends StatelessWidget {
             children: [
               TitleText(
                   text: "Total",
-                  color: Theme.of(context).colorScheme.onPrimary),
+                  color: ThemeClass().getOnPrimaryColor(context)),
               const Spacer(),
               TitleText(
                   text: "Rs. ${order.totalInclTax}",
-                  color: Theme.of(context).colorScheme.onPrimary)
+                  color: ThemeClass().getOnPrimaryColor(context))
             ],
           )
         ],

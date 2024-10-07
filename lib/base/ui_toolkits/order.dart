@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+import 'package:thuprai_delivery/base/theme/theme.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_text.dart';
 
 class OrderListtile extends StatelessWidget {
@@ -58,20 +59,20 @@ class OrderListtile extends StatelessWidget {
                     text: "Order Id: #$orderId",
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
-                    color: Theme.of(context).colorScheme.onPrimary,
+                    color: ThemeClass().getOnPrimaryColor(context),
                   ),
                   const Spacer(),
                   paid
                       ? PrimaryText(
                           text: "PAID",
                           fontSize: 16,
-                          color: Theme.of(context).colorScheme.secondary,
+                          color: ThemeClass().getOnSecondaryColor(context),
                           fontWeight: FontWeight.w700,
                         )
                       : PrimaryText(
                           text: "Rs. $payment",
                           fontSize: 16,
-                          color: Theme.of(context).colorScheme.primary,
+                          color: ThemeClass().getPrimaryColor(context),
                           fontWeight: FontWeight.w700,
                         )
                 ],
@@ -88,7 +89,7 @@ class OrderListtile extends StatelessWidget {
                       children: [
                         PrimaryText(
                           text: name,
-                          color: Theme.of(context).colorScheme.onSecondary,
+                          color: ThemeClass().getOnSecondaryColor(context),
                           fontWeight: FontWeight.w700,
                         ),
                         PrimaryText(text: "$address1, $address2"),
@@ -104,10 +105,10 @@ class OrderListtile extends StatelessWidget {
                       onTap: call,
                       child: CircleAvatar(
                         backgroundColor:
-                            Theme.of(context).colorScheme.onPrimary,
+                            ThemeClass().getOnPrimaryColor(context),
                         radius: 20,
                         child: Icon(Icons.phone,
-                            color: Theme.of(context).colorScheme.surface),
+                            color: ThemeClass().getSurfaceColor(context)),
                       ),
                     ),
                   ),
@@ -115,7 +116,7 @@ class OrderListtile extends StatelessWidget {
               ],
             ),
             Divider(
-              color: Theme.of(context).colorScheme.onSecondary,
+              color: ThemeClass().getOnSecondaryColor(context),
             )
           ],
         ),

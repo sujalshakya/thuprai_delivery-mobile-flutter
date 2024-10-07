@@ -3,6 +3,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
+import 'package:thuprai_delivery/base/theme/theme.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_text.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/logo.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/order.dart';
@@ -28,7 +29,7 @@ class UiToolkitsView extends StackedView<UiToolkitsViewModel>
     Widget? child,
   ) {
     return Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.surface,
+        backgroundColor: ThemeClass().getSurfaceColor(context),
 
         /// AppBar
         appBar: const PrimaryAppBar(
@@ -52,7 +53,7 @@ class UiToolkitsView extends StackedView<UiToolkitsViewModel>
               PrimaryText(
                 text: "primary text",
                 align: TextAlign.center,
-                color: Theme.of(context).colorScheme.onPrimary,
+                color: ThemeClass().getOnPrimaryColor(context),
                 fontWeight: FontWeight.w300,
                 maxLines: 2,
               ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:thuprai_delivery/base/theme/theme.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_button.dart';
 import 'package:thuprai_delivery/base/common/app_colors.dart';
 import 'package:thuprai_delivery/base/common/ui_helpers.dart';
@@ -42,7 +43,7 @@ class ErrorAlertDialog extends StackedView<ErrorAlertDialogModel> {
                       Icon(
                         key: const Key('dialog'),
                         Icons.error_outline,
-                        color: Theme.of(context).colorScheme.error,
+                        color: ThemeClass().getErrorColor(context),
                         size: 40,
                       ),
                       SizedBox(

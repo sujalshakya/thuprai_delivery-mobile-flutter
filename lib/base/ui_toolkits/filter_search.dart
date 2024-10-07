@@ -9,10 +9,10 @@ import 'package:thuprai_delivery/base/ui_toolkits/order.dart';
 /// Searches using orders name, address and number.
 SearchPage<Order> search(viewModel, BuildContext context, bool orderDispatch) {
   return SearchPage<Order>(
-      barTheme: light,
+      barTheme: ThemeClass().light,
       items: viewModel.orders,
       searchLabel: 'Search orders',
-      searchStyle: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
+      searchStyle: TextStyle(color: ThemeClass().getOnPrimaryColor(context)),
       suggestion: const Center(
         child: PrimaryText(text: 'Filter orders by name, address or id'),
       ),

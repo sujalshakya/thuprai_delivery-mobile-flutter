@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:thuprai_delivery/base/theme/theme.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_text.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/logo.dart';
 import 'package:thuprai_delivery/ui/bottom_sheets/floating/floating_box_model.dart';
@@ -26,7 +27,7 @@ class FloatingBoxBottomSheet extends StackedView<FloatingBoxModel> {
       padding: const EdgeInsets.all(25.0),
       child: Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surface,
+          color: ThemeClass().getSurfaceColor(context),
           borderRadius: BorderRadius.circular(15),
         ),
         child: Column(

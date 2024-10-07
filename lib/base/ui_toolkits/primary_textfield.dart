@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thuprai_delivery/base/theme/theme.dart';
 
 class PrimaryTextfield extends StatelessWidget {
   /// The main textfield to be used in the app.
@@ -42,18 +43,18 @@ class PrimaryTextfield extends StatelessWidget {
           decoration: InputDecoration(
             enabledBorder: OutlineInputBorder(
                 borderSide:
-                    BorderSide(color: Theme.of(context).colorScheme.onPrimary),
+                    BorderSide(color: ThemeClass().getOnPrimaryColor(context)),
                 borderRadius: BorderRadius.circular(16)),
             focusedBorder: OutlineInputBorder(
                 borderSide:
-                    BorderSide(color: Theme.of(context).colorScheme.onPrimary),
+                    BorderSide(color: ThemeClass().getOnPrimaryColor(context)),
                 borderRadius: BorderRadius.circular(16)),
             hintText: hintText,
-            hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
+            hintStyle: TextStyle(color: ThemeClass().getPrimaryColor(context)),
             suffixIcon: suffix,
-            suffixIconColor: Theme.of(context).colorScheme.onPrimary,
+            suffixIconColor: ThemeClass().getOnPrimaryColor(context),
             prefixIcon: prefix,
-            prefixIconColor: Theme.of(context).colorScheme.onPrimary,
+            prefixIconColor: ThemeClass().getOnPrimaryColor(context),
           ),
         ),
       ),

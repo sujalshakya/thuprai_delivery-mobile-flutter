@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thuprai_delivery/base/theme/theme.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_text.dart';
 
 class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -26,17 +27,17 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      shadowColor: Theme.of(context).colorScheme.primary,
+      shadowColor: ThemeClass().getPrimaryColor(context),
       centerTitle: center,
       elevation: 4,
       leading: leading,
       automaticallyImplyLeading: false,
-      backgroundColor: Theme.of(context).colorScheme.surface,
+      backgroundColor: ThemeClass().getSurfaceColor(context),
       title: Padding(
         padding: const EdgeInsets.all(8.0),
         child: PrimaryText(
           text: title,
-          color: Theme.of(context).colorScheme.onPrimary,
+          color: ThemeClass().getOnPrimaryColor(context),
         ),
       ),
       actions: actions,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:stacked/stacked.dart';
+import 'package:thuprai_delivery/base/theme/theme.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/filter_search.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/order_builder.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/order_skeletion.dart';
@@ -24,7 +25,7 @@ class ProcessingView extends StackedView<ProcessingViewModel> {
           IconButton(
             icon: Icon(
               Icons.search,
-              color: Theme.of(context).colorScheme.onPrimary,
+              color: ThemeClass().getOnPrimaryColor(context),
             ),
             onPressed: () => showSearch(
               context: context,
@@ -34,20 +35,20 @@ class ProcessingView extends StackedView<ProcessingViewModel> {
           IconButton(
             icon: Icon(
               Icons.logout_outlined,
-              color: Theme.of(context).colorScheme.onPrimary,
+              color: ThemeClass().getOnPrimaryColor(context),
             ),
             onPressed: viewModel.logout,
           ),
           IconButton(
             icon: Icon(
               Icons.qr_code_2_outlined,
-              color: Theme.of(context).colorScheme.onPrimary,
+              color: ThemeClass().getOnPrimaryColor(context),
             ),
-            onPressed: viewModel.barcode,
+            onPressed: viewModel.tapOnBarcode,
           ),
         ],
       ),
-      backgroundColor: Theme.of(context).colorScheme.surface,
+      backgroundColor: ThemeClass().getSurfaceColor(context),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: viewModel.isBusy

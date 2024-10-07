@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
+import 'package:thuprai_delivery/base/theme/theme.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_text.dart';
 import 'package:thuprai_delivery/ui/views/couriered/couriered_view.dart';
 import 'package:thuprai_delivery/ui/views/dispatched/dispatched_view.dart';
@@ -37,7 +38,7 @@ class HomeView extends StackedView<HomeViewModel> {
             ],
           ),
           bottomNavigationBar: Material(
-            color: Theme.of(context).colorScheme.onPrimary,
+            color: ThemeClass().getOnPrimaryColor(context),
             child: SizedBox(
               height: 60.h,
               child: TabBar(
@@ -46,9 +47,9 @@ class HomeView extends StackedView<HomeViewModel> {
                   labelStyle: const TextStyle(fontSize: 16),
                   indicator: const BoxDecoration(),
                   splashFactory: NoSplash.splashFactory,
-                  labelColor: Theme.of(context).colorScheme.surface,
+                  labelColor: ThemeClass().getSurfaceColor(context),
                   unselectedLabelColor:
-                      Theme.of(context).colorScheme.onSecondary,
+                      ThemeClass().getOnSecondaryColor(context),
                   tabs: const [
                     PrimaryText(text: "Dispatched"),
                     PrimaryText(text: "Picking Up"),

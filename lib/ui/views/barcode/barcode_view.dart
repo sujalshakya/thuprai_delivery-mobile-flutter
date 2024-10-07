@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:thuprai_delivery/base/theme/theme.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_text.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_appbar.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_container.dart';
@@ -21,7 +22,7 @@ class BarcodeView extends StackedView<BarcodeViewModel> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: Theme.of(context).colorScheme.onPrimary,
+            color: ThemeClass().getOnPrimaryColor(context),
           ),
           onPressed: () {
             viewModel.leadingTap();
@@ -35,7 +36,7 @@ class BarcodeView extends StackedView<BarcodeViewModel> {
             },
             icon: Icon(
               Icons.qr_code,
-              color: Theme.of(context).colorScheme.onPrimary,
+              color: ThemeClass().getOnPrimaryColor(context),
             ),
           ),
           IconButton(
@@ -44,11 +45,11 @@ class BarcodeView extends StackedView<BarcodeViewModel> {
               },
               icon: Icon(
                 Icons.delete,
-                color: Theme.of(context).colorScheme.onPrimary,
+                color: ThemeClass().getOnPrimaryColor(context),
               ))
         ],
       ),
-      backgroundColor: Theme.of(context).colorScheme.surface,
+      backgroundColor: ThemeClass().getSurfaceColor(context),
       body: barcodes == null
           ? const Center(child: Text("No barcode scanned"))
           : ListView.builder(
@@ -72,11 +73,11 @@ class BarcodeView extends StackedView<BarcodeViewModel> {
                     ),
                     subtitle: PrimaryText(
                         text: "Quanity: $quantity",
-                        color: Theme.of(context).colorScheme.onSecondary),
+                        color: ThemeClass().getOnSecondaryColor(context)),
                     trailing: IconButton(
                       icon: Icon(
                         Icons.edit,
-                        color: Theme.of(context).colorScheme.onPrimary,
+                        color: ThemeClass().getOnPrimaryColor(context),
                       ),
                       onPressed: () async {
                         quantity = await viewModel.edit(index);
@@ -93,8 +94,8 @@ class BarcodeView extends StackedView<BarcodeViewModel> {
                 onPressed: () {
                   viewModel.share(barcodes ?? []);
                 },
-                backgroundColor: Theme.of(context).colorScheme.onPrimary,
-                foregroundColor: Theme.of(context).colorScheme.surface,
+                backgroundColor: ThemeClass().getOnPrimaryColor(context),
+                foregroundColor: ThemeClass().getSurfaceColor(context),
                 child: const Icon(Icons.download),
               ),
             ),

@@ -26,7 +26,7 @@ abstract class BaseViewmodelWrapper extends BaseViewModel {
     }
   }
 
-  logout() async {
+  void logout() async {
     tokenService.deleteToken('token');
 
     navigationService.replaceWith(Routes.loginView);
@@ -36,11 +36,16 @@ abstract class BaseViewmodelWrapper extends BaseViewModel {
     return double.parse(price!) - double.parse(payment ?? '0');
   }
 
-  barcode() async {
+  void tapOnBarcode() async {
     navigationService.navigateToBarcodeView();
   }
 
   void navigate(Order order, String price) {
     navigationService.navigateToOrderDetailsView(order: order, price: price);
+  }
+
+  void navigateToOrderDetailsView(Order order, String price) {
+    navigationService.navigateToOrderDetailsView(
+        order: order, price: price, orderDispatch: true);
   }
 }

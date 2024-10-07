@@ -14,7 +14,7 @@ class SecureStorageService {
   }
 
   /// Delete Value
-  deleteToken(String key) async {
+  void deleteToken(String key) async {
     await storage.delete(key: key);
   }
 }

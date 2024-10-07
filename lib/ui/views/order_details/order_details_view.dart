@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:stacked/stacked.dart';
 import 'package:thuprai_delivery/base/model/order_model.dart';
+import 'package:thuprai_delivery/base/theme/theme.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_appbar.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_button.dart';
 import 'package:thuprai_delivery/ui/views/order_details/widgets/book_ordered_container.dart';
@@ -25,14 +26,14 @@ class OrderDetailsView extends StackedView<OrderDetailsViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.surface,
+        backgroundColor: ThemeClass().getSurfaceColor(context),
         appBar: PrimaryAppBar(
           title: "Order Details",
           center: true,
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back,
-              color: Theme.of(context).colorScheme.onPrimary,
+              color: ThemeClass().getOnPrimaryColor(context),
             ),
             onPressed: () {
               viewModel.leadingTap();

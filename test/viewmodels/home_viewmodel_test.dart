@@ -37,7 +37,7 @@ void main() async {
       final navigation = getAndRegisterNavigationService();
       final viewModel = HomeViewModel();
       FlutterSecureStorage.setMockInitialValues({'token': "random string"});
-      await viewModel.logout();
+      viewModel.logout();
       verify(navigation.replaceWith(Routes.loginView));
     });
 

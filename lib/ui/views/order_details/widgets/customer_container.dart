@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thuprai_delivery/base/model/order_model.dart';
+import 'package:thuprai_delivery/base/theme/theme.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_text.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_container.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/title_text.dart';
@@ -52,10 +53,10 @@ class CustomerContainer extends StatelessWidget {
                     vm.openMap("${order.shippingAddress?.line1}");
                   },
                   child: CircleAvatar(
-                    backgroundColor: Theme.of(context).colorScheme.onPrimary,
+                    backgroundColor: ThemeClass().getOnPrimaryColor(context),
                     radius: 20,
                     child: Icon(Icons.location_on,
-                        color: Theme.of(context).colorScheme.surface),
+                        color: ThemeClass().getSurfaceColor(context)),
                   ),
                 ),
               ),
@@ -73,10 +74,10 @@ class CustomerContainer extends StatelessWidget {
                         phoneNumber: "${order.shippingAddress?.phoneNumber}");
                   },
                   child: CircleAvatar(
-                    backgroundColor: Theme.of(context).colorScheme.onPrimary,
+                    backgroundColor: ThemeClass().getOnPrimaryColor(context),
                     radius: 20,
                     child: Icon(Icons.call,
-                        color: Theme.of(context).colorScheme.surface),
+                        color: ThemeClass().getSurfaceColor(context)),
                   ),
                 ),
               ),
@@ -88,10 +89,10 @@ class CustomerContainer extends StatelessWidget {
                         phoneNumber: order.shippingAddress?.phoneNumber ?? "");
                   },
                   child: CircleAvatar(
-                    backgroundColor: Theme.of(context).colorScheme.onPrimary,
+                    backgroundColor: ThemeClass().getOnPrimaryColor(context),
                     radius: 20,
                     child: Icon(Icons.message,
-                        color: Theme.of(context).colorScheme.surface),
+                        color: ThemeClass().getSurfaceColor(context)),
                   ),
                 ),
               ),

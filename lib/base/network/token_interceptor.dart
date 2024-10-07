@@ -27,9 +27,14 @@ class TokenInterceptor extends Interceptor {
           "Authorization": "token $token",
         });
       }
+      return super.onRequest(options, handler);
+    } else {
+      return handler.reject(DioException(
+        requestOptions: options,
+        type: DioExceptionType.cancel,
+        error: 'Request canceled by interceptor',
+      ));
     }
-
-    return super.onRequest(options, handler);
   }
 
   /// Print status code after every api response.
