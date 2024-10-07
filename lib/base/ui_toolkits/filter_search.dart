@@ -21,9 +21,9 @@ SearchPage<Order> search(viewModel, BuildContext context, bool orderDispatch) {
       ),
       filter: (order) => [
             order.number,
-            order.shippingAddress!.firstName,
-            order.shippingAddress!.line1,
-            order.shippingAddress!.line4,
+            order.shippingAddress?.firstName,
+            order.shippingAddress?.line1,
+            order.shippingAddress?.line4,
           ],
       builder: (order) => OrderListtile(
             navigate: () {
@@ -41,9 +41,10 @@ SearchPage<Order> search(viewModel, BuildContext context, bool orderDispatch) {
                     );
             },
             call: () {
-              viewModel.call(phoneNumber: order.shippingAddress!.phoneNumber!);
+              viewModel.call(
+                  phoneNumber: order.shippingAddress?.phoneNumber ?? "");
             },
-            orderId: order.number!,
+            orderId: order.number ?? "",
             paid: false,
             payment: order.totalInclTax ?? "0",
             name: order.shippingAddress?.firstName ?? "",

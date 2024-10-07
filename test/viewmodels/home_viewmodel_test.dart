@@ -6,7 +6,7 @@ import 'package:mockito/mockito.dart';
 import 'package:thuprai_delivery/app/app.locator.dart';
 import 'package:thuprai_delivery/app/app.router.dart';
 import 'package:thuprai_delivery/base/service/secure_storage_service.dart';
-import 'package:thuprai_delivery/ui/views/home/home_viewmodel.dart';
+import 'package:thuprai_delivery/ui/views/dispatched/dispatched_viewmodel.dart';
 import '../helpers/test_helpers.dart';
 
 void main() async {
@@ -14,7 +14,7 @@ void main() async {
   await setupLocator();
   FlutterSecureStorage.setMockInitialValues({'token': "random string"});
   Get.testMode = true;
-  final viewModel = HomeViewModel();
+  final viewModel = DispatchedViewModel();
   final tokenService = locator<SecureStorageService>();
 
   group('HomeViewmodelTest -', () {
@@ -35,7 +35,7 @@ void main() async {
     test('When logout method is called, user is navigated to login page',
         () async {
       final navigation = getAndRegisterNavigationService();
-      final viewModel = HomeViewModel();
+      final viewModel = DispatchedViewModel();
       FlutterSecureStorage.setMockInitialValues({'token': "random string"});
       viewModel.logout();
       verify(navigation.replaceWith(Routes.loginView));

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_text.dart';
+import 'package:thuprai_delivery/base/wrapper/skeletonizer_wrapper.dart';
 
 class PickUpSkeleton extends StatelessWidget {
   const PickUpSkeleton({
@@ -10,8 +10,7 @@ class PickUpSkeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Skeletonizer(
-        child: Padding(
+    return SkeletonizerWrapper().skeletonizer(Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: ListView.builder(
           itemCount: 10,

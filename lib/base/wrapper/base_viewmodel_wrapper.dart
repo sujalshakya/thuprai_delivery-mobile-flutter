@@ -13,8 +13,8 @@ abstract class BaseViewmodelWrapper extends BaseViewModel {
   final dialogService = locator<DialogService>();
   final bottomSheetService = locator<BottomSheetService>();
   final orderRepo = locator<OrderRepositoryImplementation>();
-
   final tokenService = locator<SecureStorageService>();
+
   Future<void> call({required String phoneNumber}) async {
     final Uri urlParsed = Uri.parse('tel:$phoneNumber');
 
@@ -28,7 +28,6 @@ abstract class BaseViewmodelWrapper extends BaseViewModel {
 
   void logout() async {
     tokenService.deleteToken('token');
-
     navigationService.replaceWith(Routes.loginView);
   }
 

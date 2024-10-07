@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 import 'package:thuprai_delivery/base/model/order_model.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/order_builder.dart';
+import 'package:thuprai_delivery/base/wrapper/skeletonizer_wrapper.dart';
 import 'package:thuprai_delivery/ui/views/dispatched/dispatched_viewmodel.dart';
 
 class OrderSkeleton extends StatelessWidget {
@@ -12,8 +12,8 @@ class OrderSkeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Skeletonizer(
-      child: OrderBuilder(
+    return SkeletonizerWrapper().skeletonizer(
+      OrderBuilder(
         viewModel: DispatchedViewModel(),
         list: List.filled(
             8,

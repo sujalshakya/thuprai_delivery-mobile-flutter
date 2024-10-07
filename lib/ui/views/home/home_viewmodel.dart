@@ -1,3 +1,3 @@
-import 'package:thuprai_delivery/base/wrapper/base_viewmodel_wrapper.dart';
+import 'package:stacked/stacked.dart';
 
-class HomeViewModel extends BaseViewmodelWrapper {}
+class HomeViewModel extends BaseViewModel {}
