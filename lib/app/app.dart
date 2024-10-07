@@ -7,7 +7,6 @@ import 'package:thuprai_delivery/ui/bottom_sheets/floating/floating_box_bottom_s
 import 'package:thuprai_delivery/ui/bottom_sheets/notice/notice_sheet.dart';
 import 'package:thuprai_delivery/ui/dialogs/error_alert/error_alert_dialog.dart';
 import 'package:thuprai_delivery/ui/dialogs/quantity_dialog/quantity_dialog.dart';
-
 import 'package:thuprai_delivery/ui/views/home/home_view.dart';
 import 'package:thuprai_delivery/ui/views/login/repository/login_repository_implementation.dart';
 import 'package:thuprai_delivery/ui/views/order_details/repository/order_details_repository_implementation.dart';

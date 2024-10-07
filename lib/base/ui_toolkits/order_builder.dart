@@ -31,21 +31,16 @@ class OrderBuilder extends StatelessWidget {
               : '0';
           double result = viewModel.getFinalPrice(payment, order.totalInclTax);
 
-          /// Show paid if full price has already been paid.
           return OrderListtile(
             navigate: () {
-              orderDispatch ?? false
-                  ? viewModel.navigateToOrderDetailsView(
-                      order, result.toString())
-                  : viewModel.navigate(
-                      order,
-                      result.toString(),
-                    );
+              viewModel.navigate(
+                  order, result.toString(), orderDispatch ?? false);
             },
             call: () {
-              viewModel.call(phoneNumber: order.shippingAddress!.phoneNumber!);
+              viewModel.call(
+                  phoneNumber: order.shippingAddress!.phoneNumber ?? "");
             },
-            orderId: order.number!,
+            orderId: order.number ?? "",
             paid: (result == 0.00 || result == 0.0) ? true : false,
             payment: result.toString(),
             name: order.shippingAddress?.firstName ?? "",

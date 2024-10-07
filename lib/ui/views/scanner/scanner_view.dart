@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:isbn/isbn.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:stacked/stacked.dart';
 import 'package:thuprai_delivery/base/theme/theme.dart';
@@ -38,15 +39,29 @@ class ScannerView extends StackedView<ScannerViewModel> {
                   controller: controller,
                   onDetect: (BarcodeCapture capture) async {
                     final List<Barcode> barcodes = capture.barcodes;
+
+                    // Stop the scanner while processing the barcode.
+                    await controller.stop();
+
                     for (final barcode in barcodes) {
-                      await controller.stop();
-                      await controller.dispose();
-                      await viewModel.askQuantity(barcode.rawValue.toString());
-                      await Future.delayed(const Duration(seconds: 1));
-                      if (viewModel.asked) {
-                        await controller.start();
+                      if (barcode.rawValue != null &&
+                          !viewModel.isAlreadyScanned(barcode.rawValue!)) {
+                        Isbn isbn = Isbn();
+
+                        if (barcode.format == BarcodeFormat.ean13) {
+                          if ((isbn.isIsbn10(barcode.rawValue!)) ||
+                              isbn.isIsbn13(barcode.rawValue ?? "")) {
+                            viewModel.addScannedBarcode(barcode.rawValue!);
+
+                            await viewModel.askQuantity(barcode.rawValue!);
+
+                            await Future.delayed(const Duration(seconds: 1));
+                          }
+                        }
                       }
                     }
+
+                    controller.start();
                   },
                 ),
               ),

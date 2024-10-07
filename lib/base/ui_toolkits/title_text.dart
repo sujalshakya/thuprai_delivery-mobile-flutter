@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TitleText extends StatelessWidget {
   /// Text to be used for titles and headings.
@@ -24,7 +25,8 @@ class TitleText extends StatelessWidget {
       text,
       textAlign: align,
       maxLines: maxLines,
-      style: TextStyle(fontWeight: FontWeight.bold, color: color, fontSize: 16),
+      style:
+          TextStyle(fontWeight: FontWeight.bold, color: color, fontSize: 16.sp),
     );
   }
 }

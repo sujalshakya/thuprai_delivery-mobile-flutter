@@ -1,3 +1,5 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:thuprai_delivery/app/app.bottomsheets.dart';
 import 'package:thuprai_delivery/app/app.dialogs.dart';
@@ -12,7 +14,12 @@ Future<void> main() async {
   await setupLocator();
   setupDialogUi();
   setupBottomSheetUi();
-  runApp(const MainApp());
+  runApp(DevicePreview(
+    enabled: !kReleaseMode,
+    builder: (BuildContext context) {
+      return const MainApp();
+    },
+  ));
 }
 
 class MainApp extends StatelessWidget {
@@ -24,6 +31,8 @@ class MainApp extends StatelessWidget {
         designSize: const Size(360, 800),
         builder: (context, child) {
           return MaterialApp(
+            locale: DevicePreview.locale(context),
+            builder: DevicePreview.appBuilder,
             theme: ThemeClass().light,
             debugShowCheckedModeBanner: false,
             initialRoute: Routes.startupView,

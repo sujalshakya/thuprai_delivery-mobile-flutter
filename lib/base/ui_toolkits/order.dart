@@ -54,26 +54,31 @@ class OrderListtile extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  PrimaryText(
-                    text: "Order Id: #$orderId",
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                    color: ThemeClass().getOnPrimaryColor(context),
+                  Expanded(
+                    child: PrimaryText(
+                      text: "Order Id: #$orderId",
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w700,
+                      color: ThemeClass().getOnPrimaryColor(context),
+                    ),
                   ),
-                  const Spacer(),
                   paid
                       ? PrimaryText(
                           text: "PAID",
-                          fontSize: 16,
-                          color: ThemeClass().getOnSecondaryColor(context),
+                          fontSize: 16.sp,
+                          color: ThemeClass().getSecondaryColor(context),
                           fontWeight: FontWeight.w700,
                         )
-                      : PrimaryText(
-                          text: "Rs. $payment",
-                          fontSize: 16,
-                          color: ThemeClass().getPrimaryColor(context),
-                          fontWeight: FontWeight.w700,
+                      : Expanded(
+                          flex: 0,
+                          child: PrimaryText(
+                            text: "Rs. $payment",
+                            fontSize: 16.sp,
+                            color: ThemeClass().getPrimaryColor(context),
+                            fontWeight: FontWeight.w700,
+                          ),
                         )
                 ],
               ),

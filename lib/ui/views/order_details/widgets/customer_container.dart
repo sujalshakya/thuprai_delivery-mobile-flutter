@@ -40,7 +40,7 @@ class CustomerContainer extends StatelessWidget {
           Row(
             children: [
               SizedBox(
-                width: 250.w,
+                width: 220.w,
                 child: PrimaryText(
                     text:
                         "${order.shippingAddress?.line1 ?? ""}, ${order.shippingAddress?.line4 ?? ""}"),

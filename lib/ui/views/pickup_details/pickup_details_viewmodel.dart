@@ -41,17 +41,17 @@ class PickupDetailsViewModel extends BaseViewmodelWrapper {
     }
   }
 
-  Future<bool> changePickupStatus(String id) async {
+  Future<bool> changePickupStatus(int id) async {
     final pickupRepo = locator<PickupDetailsRepositoryImplementation>();
 
     OrderStatusChangeResponse response =
-        await pickupRepo.changePickupStatus(id);
+        await pickupRepo.changePickupStatus(id.toString());
 
     if (response.error == null) {
       bottomSheetService.showCustomSheet(
           variant: BottomSheetType.floatingBoxBottom,
           description: "Pickup Status change Sucessfull");
-      await getOrders(partner);
+      books.removeWhere((item) => item.id == id);
       rebuildUi();
       return true;
     } else {

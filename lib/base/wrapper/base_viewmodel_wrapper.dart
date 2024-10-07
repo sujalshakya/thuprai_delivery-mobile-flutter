@@ -39,12 +39,8 @@ abstract class BaseViewmodelWrapper extends BaseViewModel {
     navigationService.navigateToBarcodeView();
   }
 
-  void navigate(Order order, String price) {
-    navigationService.navigateToOrderDetailsView(order: order, price: price);
-  }
-
-  void navigateToOrderDetailsView(Order order, String price) {
+  void navigate(Order order, String price, bool orderDispatch) {
     navigationService.navigateToOrderDetailsView(
-        order: order, price: price, orderDispatch: true);
+        order: order, price: price, orderDispatch: orderDispatch);
   }
 }

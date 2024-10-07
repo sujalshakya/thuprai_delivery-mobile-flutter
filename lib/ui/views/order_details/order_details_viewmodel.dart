@@ -35,7 +35,7 @@ class OrderDetailsViewModel extends BaseViewmodelWrapper {
       bottomSheetService.showCustomSheet(
           variant: BottomSheetType.floatingBoxBottom,
           description: "Order Status Changed Sucessfull");
-      navigationService.navigateToHomeView();
+      navigationService.pushNamedAndRemoveUntil(Routes.homeView);
       return true;
     } else {
       bottomSheetService.showCustomSheet(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 import 'package:thuprai_delivery/base/theme/theme.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_text.dart';
@@ -64,7 +65,7 @@ class BarcodeView extends StackedView<BarcodeViewModel> {
                       padding: const EdgeInsets.all(8.0),
                       child: PrimaryText(
                         text: "${index + 1}",
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         fontWeight: FontWeight.w300,
                       ),
                     ),
@@ -86,7 +87,7 @@ class BarcodeView extends StackedView<BarcodeViewModel> {
                   ),
                 );
               }),
-      floatingActionButton: barcodes == null
+      floatingActionButton: barcodes?.isEmpty ?? true
           ? const SizedBox.shrink()
           : Padding(
               padding: const EdgeInsets.all(24.0),
