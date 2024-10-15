@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:get/get_common/get_reset.dart';
 import 'package:thuprai_delivery/app/app.bottomsheets.dart';
 import 'package:thuprai_delivery/app/app.dialogs.dart';
 import 'package:thuprai_delivery/app/app.locator.dart';
@@ -51,6 +52,7 @@ class PickupDetailsViewModel extends BaseViewmodelWrapper {
       bottomSheetService.showCustomSheet(
           variant: BottomSheetType.floatingBoxBottom,
           description: "Pickup Status change Sucessfull");
+      pickedup.add(books.firstWhere((item) => item.id == id));
       books.removeWhere((item) => item.id == id);
       rebuildUi();
       return true;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:stacked/stacked.dart';
 import 'package:thuprai_delivery/base/theme/theme.dart';
 import 'package:thuprai_delivery/base/ui_toolkits/primary_appbar.dart';
@@ -21,6 +22,9 @@ class FulfilledView extends StackedView<FulfilledViewModel> {
       backgroundColor: ThemeClass().getSurfaceColor(context),
       body: Container(
         padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+        child: appFlavor == "staging"
+            ? const Center(child: Text("Staging"))
+            : const Center(child: Text("Development")),
       ),
     );
   }

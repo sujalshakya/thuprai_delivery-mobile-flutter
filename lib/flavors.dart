@@ -8,15 +8,14 @@ class F {
 
   static String get name => appFlavor?.name ?? '';
 
-  static String get title {
+  static String get fulfilled {
     switch (appFlavor) {
       case Flavor.staging:
-        return 'Staging App';
+        return 'No fulfilled page- staging';
       case Flavor.development:
-        return 'Development App';
+        return 'No fulfilled page - development';
       default:
-        return 'title';
+        return 'No fulfilled page';
     }
   }
-
 }
