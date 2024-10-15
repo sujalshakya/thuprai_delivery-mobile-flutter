@@ -29,6 +29,10 @@ class PickingUpViewModel extends BaseViewmodelWrapper {
           description: e.response!.data['detail']);
     }
     setBusy(false);
+    if (orders.isEmpty) {
+      dialogService.showCustomDialog(
+          variant: DialogType.errorAlert, description: "No Orders");
+    }
     rebuildUi();
   }
 

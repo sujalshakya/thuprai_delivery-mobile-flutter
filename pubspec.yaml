@@ -42,6 +42,31 @@ dev_dependencies:
   integration_test:
     sdk: flutter
 
+flavorizr:
+  app:
+    android:
+      flavorDimensions: "flavor-type"
+
+  flavors:
+    staging:
+      app:
+        name: "Staging App"
+
+      android:
+        applicationId: "com.example.staging"
+
+      ios:
+        bundleId: "com.example.staging"
+
+    development:
+      app:
+        name: "Development App"
+
+      android:
+        applicationId: "com.example.development"
+      ios:
+        bundleId: "com.example.development"
+
 flutter:
   uses-material-design: true
   assets:
