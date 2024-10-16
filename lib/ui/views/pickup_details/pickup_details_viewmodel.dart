@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:get/get_common/get_reset.dart';
 import 'package:thuprai_delivery/app/app.bottomsheets.dart';
 import 'package:thuprai_delivery/app/app.dialogs.dart';
 import 'package:thuprai_delivery/app/app.locator.dart';

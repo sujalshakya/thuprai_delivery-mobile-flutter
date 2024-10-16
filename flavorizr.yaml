@@ -1,0 +1,19 @@
+flavors:
+  staging:
+    app:
+      name: "Thuprai Delivery -Staging"
+
+    android:
+      applicationId: "com.example.staging"
+
+    ios:
+      bundleId: "com.example.staging"
+
+  development:
+    app:
+      name: "Thuprai Delivery -Development"
+
+    android:
+      applicationId: "com.example.development"
+    ios:
+      bundleId: "com.example.development"

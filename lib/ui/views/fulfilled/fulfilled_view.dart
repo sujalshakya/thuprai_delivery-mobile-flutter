@@ -18,6 +18,7 @@ class FulfilledView extends StackedView<FulfilledViewModel> {
     return Scaffold(
       appBar: const PrimaryAppBar(
         title: "Fulfilled",
+        center: false,
       ),
       backgroundColor: ThemeClass().getSurfaceColor(context),
       body: Container(

@@ -3,5 +3,5 @@
 
 FLUTTER_TARGET=lib/main_development.dart
 ASSET_PREFIX=development
-BUNDLE_NAME=Development App
-BUNDLE_DISPLAY_NAME=Development App
+BUNDLE_NAME=Thuprai Delivery -Development
+BUNDLE_DISPLAY_NAME=Thuprai Delivery -Development
