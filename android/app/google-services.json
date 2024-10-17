@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "508704932302",
+    "project_id": "thuprai-delivery",
+    "storage_bucket": "thuprai-delivery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508704932302:android:2745d361f6d30a6c5eab9f",
+        "android_client_info": {
+          "package_name": "com.example.development"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmavmmdoyGf07G5r7xDIV5ffb7PulL6wI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508704932302:android:6c0787bd5729335d5eab9f",
+        "android_client_info": {
+          "package_name": "com.example.staging"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmavmmdoyGf07G5r7xDIV5ffb7PulL6wI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

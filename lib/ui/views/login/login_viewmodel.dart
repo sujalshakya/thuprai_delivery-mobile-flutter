@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:thuprai_delivery/app/app.bottomsheets.dart';
 import 'package:thuprai_delivery/app/app.dialogs.dart';
 import 'package:thuprai_delivery/app/app.locator.dart';
 import 'package:thuprai_delivery/app/app.router.dart';
@@ -12,17 +11,16 @@ class LoginViewModel extends FormViewModel with $LoginView {
   final formKey = GlobalKey<FormState>();
   final _loginRepo = locator<LoginRepositoryImplementation>();
   final _navigationService = locator<NavigationService>();
-  final _bottomSheetService = locator<BottomSheetService>();
   final _dialogService = locator<DialogService>();
-  bool passwordVisible = true;
-  Icon suffixIcon = const Icon(Icons.visibility);
+  bool passwordVisible = false;
+  Icon suffixIcon = const Icon(Icons.visibility_off);
 
   /// Toggle visibility
   suffixIconTap() {
     passwordVisible = !passwordVisible;
     suffixIcon = passwordVisible
-        ? const Icon(Icons.visibility)
-        : const Icon(Icons.visibility_off);
+        ? const Icon(Icons.visibility_off)
+        : const Icon(Icons.visibility);
     rebuildUi();
   }
 
@@ -37,9 +35,9 @@ class LoginViewModel extends FormViewModel with $LoginView {
       try {
         await _loginRepo.loginApiRequest(email, password);
         _navigationService.replaceWithHomeView();
-        _bottomSheetService.showCustomSheet(
-            variant: BottomSheetType.floatingBoxBottom,
-            description: "Login Successful");
+        // _bottomSheetService.showCustomSheet(
+        //     variant: BottomSheetType.floatingBoxBottom,
+        //     description: "Login Successful");
         return true;
       } catch (e) {
         _dialogService.showCustomDialog(

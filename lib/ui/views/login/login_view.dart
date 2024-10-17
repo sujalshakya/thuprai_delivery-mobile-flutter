@@ -52,39 +52,52 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
                 hintText: "Email",
               ),
               if (viewModel.hasEmailValidationMessage) ...[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    viewModel.emailValidationMessage!,
-                    style:
-                        TextStyle(color: ThemeClass().getErrorColor(context)),
-                  ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                      ),
+                      child: Text(
+                        viewModel.emailValidationMessage!,
+                        style: TextStyle(
+                            color: ThemeClass().getErrorColor(context)),
+                      ),
+                    ),
+                  ],
                 )
               ],
-              PrimaryTextfield(
-                key: const Key('password'),
-                obscure: viewModel.passwordVisible,
-                suffix: GestureDetector(
-                  onTap: () {
-                    viewModel.suffixIconTap();
-                  },
-                  child: viewModel.suffixIcon,
-                ),
-                controller: passwordController,
-                hintText: "Password",
-                prefix: const Icon(
-                  Icons.lock,
-                  size: 16,
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+                child: PrimaryTextfield(
+                  key: const Key('password'),
+                  obscure: viewModel.passwordVisible,
+                  suffix: GestureDetector(
+                    onTap: () {
+                      viewModel.suffixIconTap();
+                    },
+                    child: viewModel.suffixIcon,
+                  ),
+                  controller: passwordController,
+                  hintText: "Password",
+                  prefix: const Icon(
+                    Icons.lock,
+                    size: 16,
+                  ),
                 ),
               ),
               if (viewModel.hasPasswordValidationMessage) ...[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    viewModel.passwordValidationMessage!,
-                    style:
-                        TextStyle(color: ThemeClass().getErrorColor(context)),
-                  ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Text(
+                        viewModel.passwordValidationMessage!,
+                        style: TextStyle(
+                            color: ThemeClass().getErrorColor(context)),
+                      ),
+                    ),
+                  ],
                 )
               ],
               SizedBox(

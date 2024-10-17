@@ -1,0 +1,71 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+fastlane_require ‘fastlane-plugin-firebase_app_distribution’
+
+default_platform(:android)
+
+platform :android do
+  desc "Flutter App"
+  gradle(
+    task: ‘assemble’,
+    flags: “-Ptarget=lib/main_staging.dart”,
+    build_type: ‘Release’,
+    properties: {
+    “android.injected.signing.store.file” => ENV[‘PWD’] + “/app/upload-keystore.jks”,
+    “android.injected.signing.store.password” => “sxfum21m”,
+    “android.injected.signing.key.alias” => “upload”,
+    “android.injected.signing.key.password” => “sxfum21m”
+    }
+    )
+
+    # lane :increment_version do|options|
+    #   result = flutter_bump_version(
+    #     parts: options[:bump],
+    #     pubspec: "../pubspec.yaml",
+    #     bump_build: options[:bump_build]
+    #   )
+    #   sh("flutter", "clean")
+    #   sh("flutter", "pub", "get")
+    #   sh("flutter", "build", "apk", "--flavor", ENV["FLAVOR"], "-t", ENV["MAIN"])
+    # end
+
+
+    
+    lane :deploy do|options|
+      result = flutter_bump_version(
+        parts: options[:bump],
+        pubspec: "../pubspec.yaml",
+        bump_build: options[:bump_build]
+      )
+      sh("flutter", "clean")
+      sh("flutter", "pub", "get")
+      sh("flutter", "build", "apk", "--flavor", ENV["FLAVOR"], "-t", ENV["MAIN"])
+
+      firebase_app_distribution(
+      app: ENV["APP_ID"],
+      groups: "mobile_testers",
+      release_notes: “First Release”,
+      apk_path: "../build/app/outputs/flutter-apk/app-" +ENV["FLAVOR"]+ "-release.apk"
+      )
+    end  
+
+    lane(:add_testers) do
+        firebase_app_distribution_add_testers(
+          emails: "sujal2111009@iimscollege.edu.np"
+        )
+    end
+      
+  end
