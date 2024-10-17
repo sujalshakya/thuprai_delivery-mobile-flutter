@@ -1,7 +1,7 @@
 name: thuprai_delivery
 description: A new Flutter project.
 publish_to: "none"
-version: 1.2.3+5
+version: 1.2.4+6
 
 environment:
   sdk: ">=3.0.3 <4.0.0"

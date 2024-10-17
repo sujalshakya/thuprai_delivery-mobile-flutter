@@ -15,21 +15,13 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## Android
 
-### android increment_version
-
-```sh
-[bundle exec] fastlane android increment_version
-```
-
-Flutter App
-
 ### android deploy
 
 ```sh
 [bundle exec] fastlane android deploy
 ```
 
-
+Flutter App
 
 ### android add_testers
 

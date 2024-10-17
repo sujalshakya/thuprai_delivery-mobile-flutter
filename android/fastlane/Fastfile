@@ -31,19 +31,6 @@ platform :android do
     }
     )
 
-    # lane :increment_version do|options|
-    #   result = flutter_bump_version(
-    #     parts: options[:bump],
-    #     pubspec: "../pubspec.yaml",
-    #     bump_build: options[:bump_build]
-    #   )
-    #   sh("flutter", "clean")
-    #   sh("flutter", "pub", "get")
-    #   sh("flutter", "build", "apk", "--flavor", ENV["FLAVOR"], "-t", ENV["MAIN"])
-    # end
-
-
-    
     lane :deploy do|options|
       result = flutter_bump_version(
         parts: options[:bump],
@@ -54,17 +41,19 @@ platform :android do
       sh("flutter", "pub", "get")
       sh("flutter", "build", "apk", "--flavor", ENV["FLAVOR"], "-t", ENV["MAIN"])
 
+      note = prompt(text: "Release Notes: ")
+
       firebase_app_distribution(
       app: ENV["APP_ID"],
       groups: "mobile_testers",
-      release_notes: “First Release”,
+      release_notes: note,
       apk_path: "../build/app/outputs/flutter-apk/app-" +ENV["FLAVOR"]+ "-release.apk"
       )
     end  
 
     lane(:add_testers) do
         firebase_app_distribution_add_testers(
-          emails: "sujal2111009@iimscollege.edu.np"
+          emails: "email"
         )
     end
       
