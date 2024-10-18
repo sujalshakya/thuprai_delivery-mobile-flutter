@@ -30,7 +30,7 @@ platform :android do
     “android.injected.signing.key.password” => “sxfum21m”
     }
     )
-
+# fastlane deploy bump: option --env flavor
     lane :deploy do|options|
       result = flutter_bump_version(
         parts: options[:bump],
@@ -53,7 +53,7 @@ platform :android do
 
     lane(:add_testers) do
         firebase_app_distribution_add_testers(
-          emails: "email"
+          emails: "emails separated by commas"
         )
     end
       
